@@ -1,0 +1,173 @@
+{
+  "eval": "deepseek-v4-deepthink",
+  "results": [
+    {
+      "Kurz": "SPD",
+      "Name": "Sozialdemokratische Partei Deutschlands",
+      "Punkte": "77/88",
+      "Übereinstimmung": 87.5
+    },
+    {
+      "Kurz": "GRÜNE",
+      "Name": "BÜNDNIS 90/DIE GRÜNEN",
+      "Punkte": "73/88",
+      "Übereinstimmung": 82.95454545454545
+    },
+    {
+      "Kurz": "SSW",
+      "Name": "Südschleswigscher Wählerverband",
+      "Punkte": "70/88",
+      "Übereinstimmung": 79.54545454545455
+    },
+    {
+      "Kurz": "Tierschutz",
+      "Name": "PARTEI MENSCH UMWELT TIERSCHUTZ",
+      "Punkte": "70/88",
+      "Übereinstimmung": 79.54545454545455
+    },
+    {
+      "Kurz": "Volt",
+      "Name": "Volt Deutschland",
+      "Punkte": "69/88",
+      "Übereinstimmung": 78.4090909090909
+    },
+    {
+      "Kurz": "Die PARTEI",
+      "Name": "Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative",
+      "Punkte": "66/88",
+      "Übereinstimmung": 75.0
+    },
+    {
+      "Kurz": "Die Linke",
+      "Name": "Die Linke",
+      "Punkte": "65/88",
+      "Übereinstimmung": 73.86363636363636
+    },
+    {
+      "Kurz": "PIRATEN",
+      "Name": "Piratenpartei Deutschland",
+      "Punkte": "65/88",
+      "Übereinstimmung": 73.86363636363636
+    },
+    {
+      "Kurz": "MERA25",
+      "Name": "MERA25 - Gemeinsam für Europäische Unabhängigkeit",
+      "Punkte": "63/88",
+      "Übereinstimmung": 71.5909090909091
+    },
+    {
+      "Kurz": "MLPD",
+      "Name": "Marxistisch-Leninistische Partei Deutschlands",
+      "Punkte": "62/88",
+      "Übereinstimmung": 70.45454545454545
+    },
+    {
+      "Kurz": "PdF",
+      "Name": "Partei des Fortschritts",
+      "Punkte": "62/88",
+      "Übereinstimmung": 70.45454545454545
+    },
+    {
+      "Kurz": "Todenhöfer",
+      "Name": "Die Gerechtigkeitspartei - Team Todenhöfer",
+      "Punkte": "61/88",
+      "Übereinstimmung": 69.31818181818183
+    },
+    {
+      "Kurz": "ÖDP",
+      "Name": "Ökologisch-Demokratische Partei - Die Naturschutzpartei",
+      "Punkte": "61/88",
+      "Übereinstimmung": 69.31818181818183
+    },
+    {
+      "Kurz": "PdH",
+      "Name": "Partei der Humanisten - Fakten, Freiheit, Fortschritt",
+      "Punkte": "61/88",
+      "Übereinstimmung": 69.31818181818183
+    },
+    {
+      "Kurz": "Verjüngung",
+      "Name": "Partei für Verjüngungsforschung",
+      "Punkte": "58/88",
+      "Übereinstimmung": 65.9090909090909
+    },
+    {
+      "Kurz": "SGP",
+      "Name": "Sozialistische Gleichheitspartei, Vierte Internationale",
+      "Punkte": "58/88",
+      "Übereinstimmung": 65.9090909090909
+    },
+    {
+      "Kurz": "BSW",
+      "Name": "Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit",
+      "Punkte": "55/88",
+      "Übereinstimmung": 62.5
+    },
+    {
+      "Kurz": "CDU / CSU",
+      "Name": "Christlich Demokratische Union Deutschlands / Christlich-Soziale Union in Bayern e.V.",
+      "Punkte": "50/88",
+      "Übereinstimmung": 56.81818181818182
+    },
+    {
+      "Kurz": "MENSCHLICHE",
+      "Name": "Menschliche Welt - für das Wohl und Glücklichsein aller",
+      "Punkte": "48/88",
+      "Übereinstimmung": 54.54545454545454
+    },
+    {
+      "Kurz": "FDP",
+      "Name": "Freie Demokratische Partei",
+      "Punkte": "46/88",
+      "Übereinstimmung": 52.27272727272727
+    },
+    {
+      "Kurz": "FREIE WÄHLER",
+      "Name": "FREIE WÄHLER",
+      "Punkte": "46/88",
+      "Übereinstimmung": 52.27272727272727
+    },
+    {
+      "Kurz": "dieBasis",
+      "Name": "Basisdemokratische Partei Deutschland",
+      "Punkte": "42/88",
+      "Übereinstimmung": 47.72727272727273
+    },
+    {
+      "Kurz": "BüSo",
+      "Name": "Bürgerrechtsbewegung Solidarität",
+      "Punkte": "36/88",
+      "Übereinstimmung": 40.909090909090914
+    },
+    {
+      "Kurz": "BÜNDNIS D",
+      "Name": "BÜNDNIS DEUTSCHLAND",
+      "Punkte": "34/88",
+      "Übereinstimmung": 38.63636363636363
+    },
+    {
+      "Kurz": "WerteUnion",
+      "Name": "WerteUnion",
+      "Punkte": "32/88",
+      "Übereinstimmung": 36.36363636363637
+    },
+    {
+      "Kurz": "Bündnis C",
+      "Name": "Bündnis C - Christen für Deutschland",
+      "Punkte": "30/88",
+      "Übereinstimmung": 34.090909090909086
+    },
+    {
+      "Kurz": "BP",
+      "Name": "Bayernpartei",
+      "Punkte": "28/88",
+      "Übereinstimmung": 31.818181818181817
+    },
+    {
+      "Kurz": "AfD",
+      "Name": "Alternative für Deutschland",
+      "Punkte": "25/88",
+      "Übereinstimmung": 28.40909090909091
+    }
+  ]
+}

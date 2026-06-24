@@ -1,0 +1,268 @@
+[
+    {
+        "id": 0,
+        "these": "Deutschland soll die Ukraine weiterhin militärisch unterstützen.",
+        "eigene_meinung": "Souveräne Staaten haben Recht auf Selbstverteidigung gegen unprovozierte Aggression. Eine starke Unterstützung stabilisiert Europa langfristig.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 1,
+        "these": "Der Ausbau erneuerbarer Energien soll weiterhin vom Staat finanziell gefördert werden.",
+        "eigene_meinung": "Markt und Technologie (vor allem Kernkraft + Speicher) sollten priorisiert werden. Subventionen verzerren oft und führen zu Netzproblemen.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 2,
+        "these": "Das Bürgergeld soll denjenigen gestrichen werden, die wiederholt Stellenangebote ablehnen.",
+        "eigene_meinung": "Sozialsysteme brauchen klare Gegenleistung und Anreize zur Arbeit, sonst entstehen Abhängigkeiten.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 3,
+        "these": "Auf allen Autobahnen soll ein generelles Tempolimit gelten.",
+        "eigene_meinung": "Freiheit und Verantwortung des Einzelnen. Daten zeigen kein klares Sicherheitsplus bei generellem Limit, das Wirtschaft und Fahrfreude einschränkt.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 4,
+        "these": "Asylsuchende, die über einen anderen EU-Staat eingereist sind, sollen an den deutschen Grenzen abgewiesen werden.",
+        "eigene_meinung": "Dublin-Regeln müssen endlich durchgesetzt werden. Kontrollierte Zuwanderung statt unkontrollierter Sekundärmigration.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 5,
+        "these": "Bei Neuvermietungen sollen die Mietpreise weiterhin gesetzlich begrenzt werden.",
+        "eigene_meinung": "Mietpreisbremsen reduzieren Angebot langfristig. Besser: mehr Bauen durch weniger Bürokratie.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 6,
+        "these": "An Bahnhöfen soll die Bundespolizei Software zur automatisierten Gesichtserkennung einsetzen dürfen.",
+        "eigene_meinung": "Sicherheit vor ideologischer Überwachungspanik. Bei schweren Straftaten und mit klaren Regeln sinnvoll.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 7,
+        "these": "Energieintensive Unternehmen sollen vom Staat einen finanziellen Ausgleich für ihre Stromkosten erhalten.",
+        "eigene_meinung": "Strompreise durch Politik kaputt gemacht. Besser Ursachen (Energiewende-Design) beheben statt Symptome subventionieren.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 8,
+        "these": "Alle Beschäftigten sollen bereits nach 40 Beitragsjahren ohne Abschläge in Rente gehen können.",
+        "eigene_meinung": "Bei steigender Lebenserwartung nicht nachhaltig. Demografie erfordert längeres Arbeiten oder höhere Beiträge.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 9,
+        "these": "Im einleitenden Satz des Grundgesetzes soll weiterhin die Formulierung ‚Verantwortung vor Gott‘ stehen.",
+        "eigene_meinung": "Historischer und kultureller Kontext des Grundgesetzes. Kein Grund, das zu ändern.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 10,
+        "these": "Deutschland soll weiterhin die Anwerbung von Fachkräften aus dem Ausland fördern.",
+        "eigene_meinung": "Hochqualifizierte Zuwanderung ja, bei Integration und ohne Verdrängung einheimischer Potenziale.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 11,
+        "these": "Für die Stromerzeugung soll Deutschland wieder Kernenergie nutzen.",
+        "eigene_meinung": "Kernkraft ist sichere, dichte, CO2-arme Grundlast. Der Ausstieg war ein strategischer Fehler.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 12,
+        "these": "Bei der Besteuerung von Einkommen soll der Spitzensteuersatz angehoben werden.",
+        "eigene_meinung": "Hohe Steuern mindern Leistungsanreize und Wachstum. Besser breite Basis, niedrige Sätze.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 13,
+        "these": "Der Bund soll mehr Kompetenzen in der Schulpolitik erhalten.",
+        "eigene_meinung": "Föderalismus hat Vorteile, aber katastrophale Bildungsergebnisse erfordern mehr Wettbewerb und Standards.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 14,
+        "these": "Aus Deutschland sollen weiterhin Rüstungsgüter nach Israel exportiert werden dürfen.",
+        "eigene_meinung": "Israel ist demokratischer Partner in einer gefährlichen Region. Verteidigungsfähigkeit unterstützen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 15,
+        "these": "Alle Bürgerinnen und Bürger sollen in gesetzlichen Krankenkassen versichert sein müssen.",
+        "eigene_meinung": "Zwang zur GKV ist problematisch. Mehr Wahlfreiheit und Wettbewerb zwischen Systemen verbessert Qualität.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 16,
+        "these": "Die gesetzliche Frauenquote in Vorständen und Aufsichtsräten börsennotierter Unternehmen soll abgeschafft werden.",
+        "eigene_meinung": "Quoten sind diskriminierend und signalisieren Misstrauen in Märkte und Individuen. Kompetenz zählt.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 17,
+        "these": "Ökologische Landwirtschaft soll stärker gefördert werden als konventionelle Landwirtschaft.",
+        "eigene_meinung": "Subventionen sollten technologieoffen sein. Ertrag pro Hektar und globale Ernährungssicherheit zählen.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 18,
+        "these": "Der Bund soll Projekte gegen Rechtsextremismus verstärkt fördern.",
+        "eigene_meinung": "Extremismus jeder Richtung bekämpfen – nicht nur eine Seite politisch instrumentalisieren.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 19,
+        "these": "Unternehmen sollen weiterhin die Einhaltung der Menschenrechte und des Umweltschutzes bei allen Zulieferern kontrollieren müssen.",
+        "eigene_meinung": "Gute Absicht, aber Lieferkettengesetze schaffen enorme Bürokratie und benachteiligen KMU.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 20,
+        "these": "Die Ausbildungsförderung BAföG soll weiterhin abhängig vom Einkommen der Eltern gezahlt werden.",
+        "eigene_meinung": "Prinzipiell sinnvoll, um Bedürftigkeit zu prüfen, aber Vereinfachung nötig.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 21,
+        "these": "Die Schuldenbremse im Grundgesetz soll beibehalten werden.",
+        "eigene_meinung": "Wichtiger Anker gegen politische Verschwendung und Lastenverschiebung auf kommende Generationen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 22,
+        "these": "Asylsuchende sollen in Deutschland sofort nach ihrer Antragstellung eine Arbeitserlaubnis erhalten.",
+        "eigene_meinung": "Schnelle Integration durch Arbeit ist gut – aber nur nach schneller Prüfung des Anspruchs und ohne Pull-Faktor.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 23,
+        "these": "Deutschland soll das Ziel verwerfen, klimaneutral zu werden.",
+        "eigene_meinung": "Klimaneutralität zu jedem Preis (Deindustrialisierung) ist schädlich. Besser: Technologie, Anpassung und globale CO2-Effizienz.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 24,
+        "these": "In Deutschland soll die 35-Stunden-Woche als gesetzliche Regelarbeitszeit für alle Beschäftigten festgelegt werden.",
+        "eigene_meinung": "Gesetzliche Arbeitszeitverkürzung ohne Produktivitätsgewinn schadet Wettbewerbsfähigkeit.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 25,
+        "these": "Schwangerschaftsabbrüche sollen in den ersten drei Monaten weiterhin nur nach Beratung straffrei sein.",
+        "eigene_meinung": "Aktuelle Regelung ist ein vertretbarer Kompromiss.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 26,
+        "these": "Der Euro soll in Deutschland durch eine nationale Währung ersetzt werden.",
+        "eigene_meinung": "Euro hat Konstruktionsfehler, aber geordneter Exit wäre extrem teuer und destabilisierend.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 27,
+        "these": "Beim Ausbau der Verkehrsinfrastruktur soll die Schiene Vorrang vor der Straße haben.",
+        "eigene_meinung": "Technologieoffen und nach Bedarf (Kosten-Nutzen). Schiene nicht ideologisch bevorzugen.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 28,
+        "these": "Ehrenamtliche Tätigkeiten sollen auf die zukünftige Rente angerechnet werden.",
+        "eigene_meinung": "Ehrenamt ist wertvoll, aber Rentensystem ist schon überfordert. Besser steuerliche Anreize.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 29,
+        "these": "Die Grundsteuer soll weiterhin auf Mieterinnen und Mieter umgelegt werden dürfen.",
+        "eigene_meinung": "Eigentümer sollten primär haften. Umlage verzerrt Mietmarkt.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 30,
+        "these": "Das Streikrecht für Beschäftigte in Unternehmen der kritischen Infrastruktur soll gesetzlich eingeschränkt werden.",
+        "eigene_meinung": "Grundrechte haben Grenzen, wo Dritte massiv geschädigt werden (z.B. Bahn, Energie).",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 31,
+        "these": "In Deutschland soll es auf Bundesebene Volksentscheide geben können.",
+        "eigene_meinung": "Mehr direkte Demokratie als Korrektiv zur Parteipolitik – mit guten Hürden gegen Populismus.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 32,
+        "these": "Unter 14-Jährige sollen strafrechtlich belangt werden können.",
+        "eigene_meinung": "Bei schweren Taten (Gewalt, etc.) braucht es Konsequenzen und Resozialisierung statt Straffreiheit.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 33,
+        "these": "Deutschland soll sich für die Abschaffung der erhöhten EU-Zölle auf chinesische Elektroautos einsetzen.",
+        "eigene_meinung": "Freihandel ist grundsätzlich gut, aber faire Bedingungen (Subventionen, Dumping) prüfen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 34,
+        "these": "In Deutschland soll es weiterhin generell möglich sein, neben der deutschen eine zweite Staatsbürgerschaft zu haben.",
+        "eigene_meinung": "Mehrere Pässe erschweren Integration und Loyalität. Besser einschränken.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 35,
+        "these": "Für junge Erwachsene soll ein soziales Pflichtjahr eingeführt werden.",
+        "eigene_meinung": "Kann gesellschaftlichen Zusammenhalt stärken, aber Zwang ist heikel. Freiwillig mit starken Anreizen besser.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 36,
+        "these": "Neue Heizungen sollen auch zukünftig vollständig mit fossilen Brennstoffen (z. B. Gas oder Öl) betrieben werden dürfen.",
+        "eigene_meinung": "Technologieoffenheit statt Verbotspolitik. Wärmepumpen, Wasserstoff, etc. im Markt entscheiden lassen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 37,
+        "these": "Der gesetzliche Mindestlohn soll spätestens 2026 auf 15 Euro erhöht werden.",
+        "eigene_meinung": "Starke Erhöhungen kosten vor allem geringqualifizierte Jobs. Automatische Kopplung an Lohnentwicklung besser.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    }
+]

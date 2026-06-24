@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wahl-O-Mat · LLM-Alignment · __ELECTION__</title>
+<style>
+:root{
+  --bg:#0c0e16;
+  --bg2:#12141f;
+  --panel:#161a28;
+  --panel2:#1b2030;
+  --line:rgba(255,255,255,.07);
+  --line2:rgba(255,255,255,.12);
+  --txt:#e6e9f2;
+  --txt2:#9aa3b8;
+  --txt3:#6b7388;
+  --accent:#7aa2f7;
+  --accent2:#bb9af7;
+  --radius:14px;
+  --shadow:0 10px 40px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(122,162,247,.10), transparent 60%),
+    radial-gradient(1000px 500px at 100% 0%, rgba(187,154,247,.08), transparent 55%),
+    var(--bg);
+  color:var(--txt);
+  font-family:"Inter","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.45;
+  min-height:100vh;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 80px}
+
+header.hero{margin-bottom:28px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);
+  border:1px solid var(--line2);padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.02);
+}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+h1{
+  font-size:clamp(28px,4vw,46px);line-height:1.05;margin:14px 0 6px;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(95deg,#fff 10%, #c9d4ff 45%, var(--accent2) 75%, var(--accent) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sub{color:var(--txt2);font-size:15px;max-width:680px}
+
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 30px}
+.card{
+  background:linear-gradient(180deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+.card .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3)}
+.card .v{font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+.card .v small{font-size:13px;color:var(--txt2);font-weight:500;margin-left:4px}
+.card .x{font-size:12px;color:var(--txt2);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0 16px}
+.tabs{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:4px}
+.tab{
+  appearance:none;border:0;background:transparent;color:var(--txt2);cursor:pointer;
+  font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:7px;transition:.15s;
+}
+.tab:hover{color:var(--txt)}
+.tab.active{background:linear-gradient(180deg,rgba(122,162,247,.25),rgba(122,162,247,.1));color:#fff;box-shadow:inset 0 0 0 1px rgba(122,162,247,.35)}
+.spacer{flex:1}
+.search{
+  display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:8px 12px;width:240px;
+}
+.search input{
+  background:transparent;border:0;outline:0;color:var(--txt);font:inherit;font-size:13px;width:100%;
+}
+.search input::placeholder{color:var(--txt3)}
+
+.legend{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-size:12px;color:var(--txt3)}
+.legend .bar{flex:0 0 220px;height:10px;border-radius:6px;border:1px solid var(--line2)}
+.legend .ends{display:flex;justify-content:space-between;width:220px;margin-top:2px;font-variant-numeric:tabular-nums}
+
+.panel{
+  background:linear-gradient(180deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+/* ---------- Heatmap ---------- */
+.heat{overflow:auto}
+.heat-grid{display:inline-grid;gap:3px;padding:14px;min-width:100%}
+.cell{height:38px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;
+  font-variant-numeric:tabular-nums;border-radius:7px;transition:transform .12s, box-shadow .12s;cursor:default;min-width:54px}
+.h-head{
+  height:54px;display:flex;align-items:flex-end;justify-content:center;text-align:center;
+  font-size:11px;font-weight:600;color:var(--txt2);line-height:1.2;padding:6px 4px;
+  border-radius:8px;cursor:pointer;position:relative;
+}
+.h-head:hover{color:#fff;background:rgba(255,255,255,.04)}
+.h-head.active{color:#fff}
+.h-head.active::after{content:"";position:absolute;left:50%;bottom:2px;transform:translateX(-50%);
+  width:60%;height:3px;border-radius:3px;background:var(--accent)}
+.h-corner{min-width:170px;align-self:center;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--txt3);padding-left:4px}
+.h-party{
+  display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;min-width:170px;padding-right:8px;
+  cursor:pointer;border-radius:8px;
+}
+.h-party:hover{background:rgba(255,255,255,.04)}
+.h-party .pdot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;box-shadow:0 0 0 2px rgba(0,0,0,.25),0 0 8px rgba(255,255,255,.08)}
+.h-party .pname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cell.miss{background:rgba(255,255,255,.025);color:var(--txt3)}
+.cell.hl-row{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.55)}
+.cell.hl-col{box-shadow:inset 0 0 0 1.5px rgba(122,162,247,.8)}
+.cell.hl-both{box-shadow:inset 0 0 0 2px #fff}
+
+/* ---------- Spread / dumbbell ---------- */
+.spread{padding:8px 6px 18px}
+.spread-row{display:grid;grid-template-columns:200px 1fr 70px;align-items:center;gap:14px;padding:7px 12px;border-radius:9px}
+.spread-row:hover{background:rgba(255,255,255,.03)}
+.sp-party{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;overflow:hidden}
+.sp-party .pname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.track{position:relative;height:30px;border-radius:8px;
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px, transparent 1px 25%),
+    rgba(255,255,255,.025);
+  border:1px solid var(--line);
+}
+.range-bar{position:absolute;top:7px;bottom:7px;border-radius:6px;
+  background:linear-gradient(90deg,rgba(122,162,247,.35),rgba(187,154,247,.35));border:1px solid rgba(255,255,255,.12)}
+.avg-mark{position:absolute;top:3px;bottom:3px;width:3px;border-radius:3px;background:#fff;
+  box-shadow:0 0 10px rgba(255,255,255,.7)}
+.avg-mark::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);
+  width:9px;height:9px;background:#fff;border-radius:2px}
+.sdot{position:absolute;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;
+  border:2px solid rgba(0,0,0,.35);transition:transform .12s;cursor:default}
+.sdot:hover{transform:translate(-50%,-50%) scale(1.6);z-index:5}
+.sp-val{text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.sp-val small{display:block;font-size:10px;color:var(--txt3);font-weight:500}
+
+.view{display:none}
+.view.active{display:block}
+
+.tip{
+  position:fixed;z-index:50;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:#0a0c14;border:1px solid var(--line2);border-radius:10px;padding:9px 12px;
+  font-size:12px;box-shadow:var(--shadow);max-width:260px;
+}
+.tip .t-t{font-weight:700;margin-bottom:3px}
+.tip .t-r{color:var(--txt2);font-variant-numeric:tabular-nums}
+.tip .t-m{color:var(--accent);font-size:11px;margin-top:3px}
+
+footer{margin-top:30px;color:var(--txt3);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.kbd{font:inherit;font-size:11px;border:1px solid var(--line2);border-radius:5px;padding:1px 6px;color:var(--txt2)}
+.hint-row{color:var(--txt3);font-size:12px;margin:0 0 14px;display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.spread-row{grid-template-columns:130px 1fr 56px;gap:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <span class="eyebrow"><span class="dot"></span> Wahl-O-Mat für Sprachmodelle</span>
+    <h1>Wie politisch positionieren sich LLMs?</h1>
+    <p class="sub">Jedes Modell hat den Wahl-O-Mat <span id="which-election">__ELECTION__</span> beantwortet.
+    Übereinstimmung mit jeder Partei in Prozent. Höher = stärkere inhaltliche Nähe.</p>
+  </header>
+
+  <section class="cards" id="cards"></section>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-view="heatmap">Heatmap</button>
+      <button class="tab" data-view="spread">Streubreite</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="filter" type="text" placeholder="Partei filtern…" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="hint-row">
+    <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
+    <span><span class="kbd">Klick</span> auf eine Partei sortiert nach Ø</span>
+    <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
+  </div>
+
+  <div class="legend">
+    <span>Übereinstimmung</span>
+    <div>
+      <div class="bar" id="legend-bar"></div>
+      <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="view active" id="view-heatmap">
+      <div class="heat"><div class="heat-grid" id="heat-grid"></div></div>
+    </div>
+    <div class="view" id="view-spread">
+      <div class="spread" id="spread-grid"></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Daten aus <code>results/*--__ELECTION__.json</code></span>
+    <span id="rendered-info"></span>
+  </footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const DATA = __DATA__;
+
+const STOPS = [
+  [0.00,[13,9,42]],
+  [0.30,[86,16,120]],
+  [0.55,[170,34,80]],
+  [0.75,[226,95,38]],
+  [1.00,[255,225,95]],
+];
+
+function clamp01(t){return Math.max(0,Math.min(1,t));}
+function lerp(a,b,t){return a+(b-a)*t;}
+function colorFor(t){
+  t=clamp01(t);
+  for(let i=1;i<STOPS.length;i++){
+    if(t<=STOPS[i][0]){
+      const [t0,c0]=STOPS[i-1],[t1,c1]=STOPS[i];
+      const k=(t-t0)/(t1-t0)||0;
+      const r=Math.round(lerp(c0[0],c1[0],k));
+      const g=Math.round(lerp(c0[1],c1[1],k));
+      const b=Math.round(lerp(c0[2],c1[2],k));
+      return [r,g,b];
+    }
+  }
+  return STOPS[STOPS.length-1][1];
+}
+function rgbStr(c){return "rgb("+c[0]+","+c[1]+","+c[2]+")";}
+function textFor(c){const lum=0.299*c[0]+0.587*c[1]+0.114*c[2];return lum>150?"#132":"#fff";}
+
+/* ---- state ---- */
+let sortKey = null; // null = average sort
+let filterText = "";
+
+const $ = s=>document.querySelector(s);
+const tip = $("#tip");
+
+function showTip(html,e){
+  tip.innerHTML=html;tip.style.opacity=1;
+  const r=tip.getBoundingClientRect();
+  let x=e.clientX+14,y=e.clientY+14;
+  if(x+r.width>window.innerWidth-10) x=e.clientX-r.width-14;
+  if(y+r.height>window.innerHeight-10) y=e.clientY-r.height-14;
+  tip.style.left=x+"px";tip.style.top=y+"px";
+}
+function hideTip(){tip.style.opacity=0;}
+
+function parties(){
+  const f=filterText.trim().toLowerCase();
+  let list=DATA.parties.slice();
+  if(f) list=list.filter(p=>(p.kurz+" "+p.name).toLowerCase().includes(f));
+  if(sortKey){
+    list.sort((a,b)=>{
+      const sa=DATA.scores[a.kurz]?.[sortKey]?.pct ?? -1;
+      const sb=DATA.scores[b.kurz]?.[sortKey]?.pct ?? -1;
+      return sb-sa;
+    });
+  }
+  return list;
+}
+
+/* ---- legend ---- */
+(function legend(){
+  const stops=[];
+  for(let i=0;i<=10;i++){const t=i/10;stops.push(rgbStr(colorFor(t))+" "+Math.round(t*100)+"%");}
+  $("#legend-bar").style.background="linear-gradient(90deg,"+stops.join(",")+")";
+})();
+
+/* ---- cards ---- */
+(function cards(){
+  const s=DATA.summary;
+  const rows=[
+    ["Modelle", s.models, "LLMs verglichen"],
+    ["Parteien", s.parties, "im Vergleich"],
+    ["Ø Übereinstimmung", s.overall_avg+"%", "über alle Modelle & Parteien"],
+    ["Top-Partei", s.top? s.top.avg+"%":"—", s.top? s.top.kurz:"—"],
+  ];
+  $("#cards").innerHTML = rows.map(r=>
+    `<div class="card"><div class="k">${r[0]}</div><div class="v">${r[1]}</div><div class="x">${r[2]}</div></div>`
+  ).join("");
+})();
+
+/* ---- heatmap ---- */
+function renderHeatmap(){
+  const grid=$("#heat-grid");
+  const models=DATA.models;
+  const cols = 1 + models.length + 1;
+  grid.style.gridTemplateColumns = "170px repeat("+models.length+", minmax(54px,1fr)) 64px";
+  grid.innerHTML="";
+
+  // header
+  const corner = document.createElement("div");
+  corner.className="cell h-corner";
+  corner.textContent="Partei / Modell";
+  grid.appendChild(corner);
+  models.forEach(m=>{
+    const h=document.createElement("div");
+    h.className="h-head"+(sortKey===m?" active":"");
+    h.textContent=m.split("-").slice(0,3).join("-"); // compact model label
+    h.title=m;
+    h.onclick=()=>{ sortKey = (sortKey===m)? null : m; renderAll(); };
+    grid.appendChild(h);
+  });
+  const avgHead=document.createElement("div");
+  avgHead.className="h-head"+(sortKey===null?" active":"");
+  avgHead.textContent="Ø";
+  avgHead.title="Mittelwert über alle Modelle";
+  avgHead.onclick=()=>{ sortKey=null; renderAll(); };
+  grid.appendChild(avgHead);
+
+  // rows
+  parties().forEach(p=>{
+    const name=document.createElement("div");
+    name.className="h-party";
+    name.innerHTML=`<span class="pdot" style="background:${p.color}"></span><span class="pname" title="${escapeHtml(p.name)}">${escapeHtml(p.kurz)}</span>`;
+    name.onclick=()=>{ sortKey=null; renderAll(); };
+    grid.appendChild(name);
+
+    models.forEach(m=>{
+      const v=DATA.scores[p.kurz]?.[m];
+      const cell=document.createElement("div");
+      if(!v){ cell.className="cell miss"; cell.textContent="–"; }
+      else{
+        const c=colorFor(v.pct/100);
+        cell.className="cell";
+        cell.style.background=rgbStr(c);
+        cell.style.color=textFor(c);
+        cell.textContent=Math.round(v.pct);
+        cell.dataset.kurz=p.kurz; cell.dataset.model=m;
+        cell.onmouseenter=(e)=>{
+          showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div>
+            <div class="t-r">${escapeHtml(p.name)}</div>
+            <div class="t-r">${escapeHtml(m)} · <b>${v.pct.toFixed(1)}%</b></div>
+            <div class="t-r">Punkte: ${escapeHtml(v.punkte)}</div>`,e);
+          document.querySelectorAll('.cell[data-model="'+m+'"]').forEach(x=>x.classList.add('hl-col'));
+          document.querySelectorAll('.cell[data-kurz="'+p.kurz+'"]').forEach(x=>x.classList.add('hl-row'));
+        };
+        cell.onmouseleave=()=>{ hideTip();
+          document.querySelectorAll('.cell.hl-row,.cell.hl-col').forEach(x=>x.classList.remove('hl-row','hl-col'));
+        };
+      }
+      grid.appendChild(cell);
+    });
+
+    const avg=document.createElement("div");
+    const c=colorFor(p.avg/100);
+    avg.className="cell";
+    avg.style.background=rgbStr(c);
+    avg.style.color=textFor(c);
+    avg.style.fontWeight="800";
+    avg.textContent=Math.round(p.avg);
+    avg.onmouseenter=(e)=>showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div><div class="t-r">Ø ${p.avg.toFixed(1)}% · Spanne ${p.min}–${p.max}%</div>`,e);
+    avg.onmouseleave=hideTip;
+    grid.appendChild(avg);
+  });
+}
+
+/* ---- spread / dumbbell ---- */
+function renderSpread(){
+  const root=$("#spread-grid");
+  root.innerHTML="";
+  const models=DATA.models;
+  parties().forEach(p=>{
+    const row=document.createElement("div");
+    row.className="spread-row";
+    row.innerHTML=`<div class="sp-party"><span class="pdot" style="background:${p.color}"></span><span class="pname" title="${escapeHtml(p.name)}">${escapeHtml(p.kurz)}</span></div>`;
+    const track=document.createElement("div");
+    track.className="track";
+    const left=p.min, w=Math.max(1.2,p.max-p.min);
+    const bar=document.createElement("div");
+    bar.className="range-bar";bar.style.left=left+"%";bar.style.width=w+"%";
+    track.appendChild(bar);
+    const avgMark=document.createElement("div");
+    avgMark.className="avg-mark";avgMark.style.left=p.avg+"%";
+    track.appendChild(avgMark);
+    models.forEach(m=>{
+      const v=DATA.scores[p.kurz]?.[m]; if(!v) return;
+      const d=document.createElement("div");
+      d.className="sdot";
+      d.style.left=v.pct+"%";
+      d.style.background=DATA.modelColors[m];
+      d.onmouseenter=(e)=>showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div><div class="t-m">${escapeHtml(m)}</div><div class="t-r"><b>${v.pct.toFixed(1)}%</b> · ${escapeHtml(v.punkte)}</div>`,e);
+      d.onmouseleave=hideTip;
+      track.appendChild(d);
+    });
+    row.appendChild(track);
+    const val=document.createElement("div");
+    val.className="sp-val";
+    val.innerHTML=`${p.avg.toFixed(0)}%<small>${p.min}–${p.max}</small>`;
+    row.appendChild(val);
+    root.appendChild(row);
+  });
+}
+
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+function renderAll(){renderHeatmap();renderSpread();}
+
+/* ---- tabs ---- */
+document.querySelectorAll(".tab").forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    const v=t.dataset.view;
+    document.querySelectorAll(".view").forEach(x=>x.classList.remove("active"));
+    $("#view-"+v).classList.add("active");
+  };
+});
+$("#filter").addEventListener("input",e=>{filterText=e.target.value;renderAll();});
+
+renderAll();
+$("#rendered-info").textContent = DATA.models.length+" Modelle · "+DATA.parties.length+" Parteien";
+</script>
+</body>
+</html>
