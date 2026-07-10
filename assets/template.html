@@ -139,6 +139,33 @@ h1{
 .sp-val{text-align:right;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
 .sp-val small{display:block;font-size:10px;color:var(--txt3);font-weight:500}
 
+/* ---------- Similarity matrix ---------- */
+.sim{padding:18px}
+.sim-summary{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.sim-chip{
+  display:flex;align-items:center;gap:10px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:11px;padding:10px 14px;flex:1;min-width:220px;
+}
+.sim-chip .sk{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt3)}
+.sim-chip .sv{font-size:13px;font-weight:600;margin-top:2px}
+.sim-chip .sv b{font-variant-numeric:tabular-nums}
+.sim-sw{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+.sim-legend{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:12px;color:var(--txt3)}
+.sim-legend .sbar{flex:0 0 220px;height:10px;border-radius:6px;border:1px solid var(--line2)}
+.sim-legend .sends{display:flex;justify-content:space-between;width:220px;font-variant-numeric:tabular-nums}
+.sim-wrap{overflow:auto}
+.sim-grid{display:inline-grid;gap:3px;min-width:100%}
+.s-cell{height:50px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;
+  font-variant-numeric:tabular-nums;border-radius:8px;transition:transform .12s,box-shadow .12s;cursor:default;min-width:64px}
+.s-head{height:60px;display:flex;align-items:flex-end;justify-content:center;text-align:center;
+  font-size:11px;font-weight:600;color:var(--txt2);line-height:1.2;padding:6px 4px;border-radius:8px}
+.s-lab{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;min-width:140px;padding-right:8px}
+.s-lab .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.s-lab .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s-cell.diag{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.s-cell:hover{transform:scale(1.12);z-index:5;box-shadow:0 0 0 2px #fff}
+.s-corner{min-width:140px;align-self:center;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--txt3);padding-left:4px}
+
 .view{display:none}
 .view.active{display:block}
 
@@ -172,6 +199,7 @@ footer{margin-top:30px;color:var(--txt3);font-size:12px;display:flex;justify-con
     <div class="tabs">
       <button class="tab active" data-view="heatmap">Heatmap</button>
       <button class="tab" data-view="spread">Streubreite</button>
+      <button class="tab" data-view="similarity">Ähnlichkeit</button>
     </div>
     <div class="spacer"></div>
     <div class="search">
@@ -200,6 +228,20 @@ footer{margin-top:30px;color:var(--txt3);font-size:12px;display:flex;justify-con
     </div>
     <div class="view" id="view-spread">
       <div class="spread" id="spread-grid"></div>
+    </div>
+    <div class="view" id="view-similarity">
+      <div class="sim">
+        <div class="sim-summary" id="sim-summary"></div>
+        <div class="sim-legend">
+          <span>Korrelation (r)</span>
+          <div>
+            <div class="sbar" id="sim-legend-bar"></div>
+            <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+          </div>
+          <span style="margin-left:12px">grün = ähnliche Profil · rot = gegensätzlich</span>
+        </div>
+        <div class="sim-wrap"><div class="sim-grid" id="sim-grid"></div></div>
+      </div>
     </div>
   </div>
 
@@ -404,9 +446,149 @@ function renderSpread(){
   });
 }
 
+/* ---- similarity / correlation matrix ---- */
+const SIM_STOPS=[
+  [0.00,[214,72,80]],
+  [0.50,[205,185,75]],
+  [1.00,[80,210,135]],
+];
+function simColor(t){
+  t=clamp01(t);
+  for(let i=1;i<SIM_STOPS.length;i++){
+    if(t<=SIM_STOPS[i][0]){
+      const [t0,c0]=SIM_STOPS[i-1],[t1,c1]=SIM_STOPS[i];
+      const k=(t-t0)/(t1-t0)||0;
+      return [Math.round(lerp(c0[0],c1[0],k)),Math.round(lerp(c0[1],c1[1],k)),Math.round(lerp(c0[2],c1[2],k))];
+    }
+  }
+  return SIM_STOPS[SIM_STOPS.length-1][1];
+}
+function pearson(xs,ys){
+  const n=xs.length;
+  if(n<2) return null;
+  let mx=0,my=0;
+  for(let i=0;i<n;i++){mx+=xs[i];my+=ys[i];}
+  mx/=n;my/=n;
+  let sxx=0,syy=0,sxy=0;
+  for(let i=0;i<n;i++){const dx=xs[i]-mx,dy=ys[i]-my;sxx+=dx*dx;syy+=dy*dy;sxy+=dx*dy;}
+  const d=Math.sqrt(sxx*syy);
+  return d===0?0:sxy/d;
+}
+function modelPairStats(a,b){
+  const xs=[],ys=[];
+  DATA.parties.forEach(p=>{
+    const va=DATA.scores[p.kurz]?.[a],vb=DATA.scores[p.kurz]?.[b];
+    if(va&&vb){xs.push(va.pct);ys.push(vb.pct);}
+  });
+  const n=xs.length;
+  let mad=null;
+  if(n){let s=0;for(let i=0;i<n;i++)s+=Math.abs(xs[i]-ys[i]);mad=s/n;}
+  return {corr:pearson(xs,ys),n:n,mad:mad};
+}
+function fmtCorr(r){return r===null?"—":(r>=0?" ":"−")+Math.abs(r).toFixed(2);}
+
+function renderSimilarity(){
+  const grid=$("#sim-grid");
+  const models=DATA.models;
+  grid.style.gridTemplateColumns="140px repeat("+models.length+",minmax(64px,1fr))";
+  grid.innerHTML="";
+
+  // header row
+  const corner=document.createElement("div");
+  corner.className="s-cell s-corner";corner.textContent="Modell";
+  grid.appendChild(corner);
+  models.forEach(m=>{
+    const h=document.createElement("div");
+    h.className="s-head";h.textContent=m.split("-").slice(0,3).join("-");h.title=m;
+    grid.appendChild(h);
+  });
+
+  // precompute matrix + find extreme pairs
+  const stats={};
+  let bestPair=null,worstPair=null,bestV=-2,worstV=2;
+  models.forEach(a=>{
+    models.forEach(b=>{
+      const key=a+"\u0001"+b;
+      const st=modelPairStats(a,b);
+      stats[key]=st;
+      if(a!==b){
+        if(st.corr!==null){
+          if(st.corr>bestV){bestV=st.corr;bestPair=[a,b];}
+          if(st.corr<worstV){worstV=st.corr;worstPair=[a,b];}
+        }
+      }
+    });
+  });
+
+  // summary chips
+  const sum=$("#sim-summary");
+  const chips=[];
+  if(bestPair&&bestV>-2){
+    chips.push({k:"Ähnlichstes Paar",v:escapeHtml(shortModel(bestPair[0]))+" ↔ "+escapeHtml(shortModel(bestPair[1])),
+      r:"r = "+fmtCorr(bestV).trim(),col:simColor((bestV+1)/2)});
+  }
+  if(worstPair&&worstV<2){
+    chips.push({k:"Unterschiedlichstes Paar",v:escapeHtml(shortModel(worstPair[0]))+" ↔ "+escapeHtml(shortModel(worstPair[1])),
+      r:"r = "+fmtCorr(worstV).trim(),col:simColor((worstV+1)/2)});
+  }
+  // average off-diagonal correlation
+  let acc=0,cnt=0;
+  for(let i=0;i<models.length;i++)for(let j=0;j<models.length;j++){
+    if(i===j)continue;
+    const r=stats[models[i]+"\u0001"+models[j]].corr;
+    if(r!==null){acc+=r;cnt++;}
+  }
+  if(cnt) chips.push({k:"Ø Korrelation",v:"über alle Modellpaare",r:"r = "+(acc/cnt).toFixed(2),col:simColor(((acc/cnt)+1)/2)});
+  sum.innerHTML=chips.map(c=>
+    `<div class="sim-chip"><span class="sim-sw" style="background:${rgbStr(c.col)}"></span>
+     <div><div class="sk">${c.k}</div><div class="sv">${c.v} <b>${c.r}</b></div></div></div>`
+  ).join("");
+
+  // rows
+  models.forEach(a=>{
+    const lab=document.createElement("div");
+    lab.className="s-lab";
+    lab.innerHTML=`<span class="dot" style="background:${DATA.modelColors[a]}"></span><span class="nm" title="${escapeHtml(a)}">${escapeHtml(shortModel(a))}</span>`;
+    grid.appendChild(lab);
+    models.forEach(b=>{
+      const cell=document.createElement("div");
+      const st=stats[a+"\u0001"+b];
+      if(a===b){
+        const c=simColor(1.0);
+        cell.className="s-cell diag";
+        cell.style.background=rgbStr(c);cell.style.color=textFor(c);
+        cell.textContent="1.00";
+      }else if(!st.corr && st.corr!==0){
+        cell.className="s-cell";cell.textContent="–";cell.style.color="var(--txt3)";
+      }else{
+        const t=(st.corr+1)/2;
+        const c=simColor(t);
+        cell.className="s-cell";
+        cell.style.background=rgbStr(c);cell.style.color=textFor(c);
+        cell.textContent=fmtCorr(st.corr).trim();
+        cell.onmouseenter=(e)=>showTip(
+          `<div class="t-t">${escapeHtml(shortModel(a))} ↔ ${escapeHtml(shortModel(b))}</div>`+
+          `<div class="t-r">Korrelation r = <b>${st.corr.toFixed(3)}</b></div>`+
+          `<div class="t-r">gemeinsame Parteien: ${st.n}</div>`+
+          (st.mad!==null?`<div class="t-r">Ø Abstand: ${st.mad.toFixed(1)} Prozentpunkte</div>`:""),e);
+        cell.onmouseleave=hideTip;
+      }
+      grid.appendChild(cell);
+    });
+  });
+}
+
+function shortModel(m){return m.split("-").slice(0,3).join("-");}
+
+(function simLegend(){
+  const stops=[];
+  for(let i=0;i<=10;i++){const t=i/10;stops.push(rgbStr(simColor(t))+" "+Math.round(t*100)+"%");}
+  $("#sim-legend-bar").style.background="linear-gradient(90deg,"+stops.join(",")+")";
+})();
+
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 
-function renderAll(){renderHeatmap();renderSpread();}
+function renderAll(){renderHeatmap();renderSpread();renderSimilarity();}
 
 /* ---- tabs ---- */
 document.querySelectorAll(".tab").forEach(t=>{

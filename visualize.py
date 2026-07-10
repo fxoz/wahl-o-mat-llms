@@ -140,7 +140,7 @@ def aggregate(models: list[dict], election: str) -> dict:
     }
 
 
-HTML_TEMPLATE = open("assets/index.html", "r", encoding="utf-8").read()
+HTML_TEMPLATE = open("assets/template.html", "r", encoding="utf-8").read()
 
 
 def build_html(payload: dict) -> str:
