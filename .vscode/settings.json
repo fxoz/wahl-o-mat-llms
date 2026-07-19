@@ -5,6 +5,8 @@
     "**/.hg": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
+    "**/CVS": true,
+    ".vscode": true,
     "**/flutter/ephemeral": true,
     "**/Flutter/ephemeral": true,
     "**/.symlinks": true,

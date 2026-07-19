@@ -1,6 +1,7 @@
 import json
 import glob
 import os
+import re
 from html import escape
 
 # Which election should be visualized? The part after the ``--`` in the result
@@ -143,12 +144,74 @@ def aggregate(models: list[dict], election: str) -> dict:
 HTML_TEMPLATE = open("assets/template.html", "r", encoding="utf-8").read()
 
 
+def render_inline(text: str) -> str:
+    """Render inline markdown (bold, italic, inline code) to HTML.
+
+    Escapes HTML first, then applies ``**bold**``, ``*italic*`` and ```code```.
+    """
+    escaped = escape(text)
+    escaped = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", escaped)
+    escaped = re.sub(r"\*(.+?)\*", r"<em>\1</em>", escaped)
+    escaped = re.sub(r"`(.+?)`", r"<code>\1</code>", escaped)
+    return escaped
+
+
+def render_markdown(md: str) -> str:
+    """Render a small subset of Markdown to HTML.
+
+    Supports paragraphs, horizontal rules (``***`` / ``---``), blockquotes
+    (``>``) and inline ``**bold**`` / ``*italic*`` / ``code``.
+    """
+    lines = md.replace("\r\n", "\n").split("\n")
+    html: list[str] = []
+    paragraph: list[str] = []
+    blockquote: list[str] = []
+
+    def flush_paragraph() -> None:
+        if paragraph:
+            html.append("<p>" + render_inline(" ".join(paragraph)) + "</p>")
+            paragraph.clear()
+
+    def flush_blockquote() -> None:
+        if blockquote:
+            html.append("<blockquote><p>" +
+                        render_inline(" ".join(blockquote)) +
+                        "</p></blockquote>")
+            blockquote.clear()
+
+    for raw in lines:
+        line = raw.strip()
+        if not line:
+            flush_paragraph()
+            flush_blockquote()
+            continue
+        if re.fullmatch(r"\*{3,}|-{3,}|_{3,}", line):
+            flush_paragraph()
+            flush_blockquote()
+            html.append("<hr>")
+            continue
+        if line.startswith(">"):
+            flush_paragraph()
+            blockquote.append(line.lstrip("> ").rstrip())
+            continue
+        flush_blockquote()
+        paragraph.append(line)
+
+    flush_paragraph()
+    flush_blockquote()
+    return "\n".join(html)
+
+
 def build_html(payload: dict) -> str:
     """Render the results into a single self-contained HTML document."""
     data_json = json.dumps(payload, ensure_ascii=False)
     election = escape(payload["election"])
-    return HTML_TEMPLATE.replace("__ELECTION__", election).replace(
-        "__DATA__", data_json
+    notes_md = open("assets/notes.md", "r", encoding="utf-8").read()
+    notes_html = render_markdown(notes_md)
+    return (
+        HTML_TEMPLATE.replace("__ELECTION__", election)
+        .replace("__DATA__", data_json)
+        .replace("__NOTES_HTML__", notes_html)
     )
 
 

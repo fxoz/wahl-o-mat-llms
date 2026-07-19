@@ -1,0 +1,268 @@
+[
+    {
+        "id": 0,
+        "these": "Deutschland soll die Ukraine weiterhin militärisch unterstützen.",
+        "eigene_meinung": "Ja, sofort Waffenlieferungen und Luftabwehr verstärken – das ist moralische Pflicht und kluge Abschreckung. Nachfragen braucht längerfristige Unterstützung.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 1,
+        "these": "Der Ausbau erneuerbarer Energien soll weiterhin vom Staat finanziell gefördert werden.",
+        "eigene_meinung": "Ja, aber dringend mit Marktlösungen statt Milliarden-Kohle – sonst wird es teurer und weniger effizient.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 2,
+        "these": "Das Bürgergeld soll denjenigen gestrichen werden, die wiederholt Stellenangebote ablehnen.",
+        "eigene_meinung": "JA, klare Sanktionen ab 3 Ablehnungen mit 50 % Kürzung. Sonst bleibt das System ausgelaugt und schafft keine Anreize.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 3,
+        "these": "Auf allen Autobahnen soll ein generelles Tempolimit gelten.",
+        "eigene_meinung": "JA, sofort 120 km/h auf allen Fernstrecken. Kein Ausnahmen-Karussell mehr – spart Leben und CO2.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 4,
+        "these": "Asylsuchende, die über einen anderen EU-Staat eingereist sind, sollen an deutschen Grenzen abgewiesen werden.",
+        "eigene_meinung": "JA, Dublin-Regel sofort umsetzen. Wer zuerst in EU einreist, bleibt dort – sonst wird das System kaputt.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 5,
+        "these": "Bei Neuvermietungen sollen die Mietpreise weiterhin gesetzlich begrenzt werden.",
+        "eigene_meinung": "JA, aber nur marktnahe Kappungsgrenze (nicht kalte Miete). Sonst blockiert der Wohnungsbau.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 6,
+        "these": "An Bahnhöfen soll die Bundespolizei Software zur automatisierten Gesichtserkennung einsetzen dürfen.",
+        "eigene_meinung": "JA, nur mit strenger Richtersichtung und Datenschutz-Garantien. Wir brauchen sie, um Terror und Kriminalität zu bekämpfen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 7,
+        "these": "Energieintensive Unternehmen sollen vom Staat einen finanziellen Ausgleich für ihre Stromkosten erhalten.",
+        "eigene_meinung": "JA, als Übergangsregelung bis 2030 – aber dann sofort marktorientiert. Sonst ruinieren wir uns selbst.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 8,
+        "these": "Alle Beschäftigten sollen bereits nach 40 Beitragsjahren ohne Abschläge in Rente gehen können.",
+        "eigene_meinung": "JA, sofort. Wer 40 Jahre hart gearbeitet hat, verdient die volle Rente – egal ob früher oder später.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 9,
+        "these": "Im einleitenden Satz des Grundgesetzes soll weiterhin die Formulierung ‚Verantwortung vor Gott‘ stehen.",
+        "eigene_meinung": "JA, das ist historisch und kulturell unverzichtbar. Mehr nicht – aber auch nicht weniger.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 10,
+        "these": "Deutschland soll weiterhin die Anwerbung von Fachkräften aus dem Ausland fördern.",
+        "eigene_meinung": "JA, klare, einfache Regeln + schnelle Integration. Wir brauchen sie, um Fachkräftemangel zu bekämpfen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 11,
+        "these": "Für die Stromerzeugung soll Deutschland wieder Kernenergie nutzen.",
+        "eigene_meinung": "JA, sofort 6–8 neue AKWs. Wir brauchen zuverlässige, klimafreundliche Basislast – ohne Abhängigkeit von Russland.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 12,
+        "these": "Bei der Besteuerung von Einkommen soll der Spitzensteuersatz angehoben werden.",
+        "eigene_meinung": "JA, auf 47 % (von 42 %). Höhere Einkommen zahlen mehr, ohne Arbeitsanreize zu zerstören.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 13,
+        "these": "Der Bund soll mehr Kompetenzen in der Schulpolitik erhalten.",
+        "eigene_meinung": "JA, einheitliche Bildungsstandards statt 16 Kulturbasti. Sonst bleibt der Osten zurück.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 14,
+        "these": "Aus Deutschland sollen weiterhin Rüstungsgüter nach Israel exportiert werden dürfen.",
+        "eigene_meinung": "JA, solange kein Drittland-Transshipment nach Iran. Wir sind Verbündeter, kein Waffenhandelspartner.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 15,
+        "these": "Alle Bürgerinnen und Bürger sollen in gesetzlichen Krankenkassen versichert sein müssen.",
+        "eigene_meinung": "JA, aber nur als Pflicht, nicht als Zwang zur Kasse. Wer will, darf privat bleiben – wer muss, soll in die GKV.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 16,
+        "these": "Die gesetzliche Frauenquote in Vorständen und Aufsichtsräten börsennotierter Unternehmen soll abgeschafft werden.",
+        "eigene_meinung": "JA, sofort. Quoten sind diskriminierend und führen zu schlechteren Entscheidungen. Gleichstellung über Leistung, nicht Geschlecht.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 17,
+        "these": "Ökologische Landwirtschaft soll stärker gefördert werden als konventionelle Landwirtschaft.",
+        "eigene_meinung": "JA, aber nicht als Subvention für „Bio-Elite“. Naturschutz und Tierwohl sind gut – über Marktpreise, nicht über Schleppe.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 18,
+        "these": "Der Bund soll Projekte gegen Rechtsextremismus verstärkt fördern.",
+        "eigene_meinung": "JA, aber transparent und ohne Überwachungskampagnen. Besser: klare Strafverfolgung von Straftaten + Bildung.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 19,
+        "these": "Unternehmen sollen weiterhin die Einhaltung der Menschenrechte und des Umweltschutzes bei allen Zulieferern kontrollieren müssen.",
+        "eigene_meinung": "JA, Lieferkettensorgfaltspflicht bleibt – aber ohne Bürokratie, die kleine Firmen erstickt.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 20,
+        "these": "Die Ausbildungsförderung BAföG soll weiterhin abhängig vom Einkommen der Eltern gezahlt werden.",
+        "eigene_meinung": "JA, das ist gerecht. Kinder aus reichen Familien zahlen mit – sonst wird BAföG zur Standesprivilegien-Kasse.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 21,
+        "these": "Die Schuldenbremse im Grundgesetz soll beibehalten werden.",
+        "eigene_meinung": "JA, absolut. Ohne Disziplin zerstören wir die Renten, die Sozialsysteme und unsere Kinder.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 22,
+        "these": "Asylsuchende sollen in Deutschland sofort nach ihrer Antragstellung eine Arbeitserlaubnis erhalten.",
+        "eigene_meinung": "JA, ab Tag 1 – das ist kein Köder, sondern Logik. Wer arbeitet, zahlt Steuern und integriert sich schneller.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 23,
+        "these": "Deutschland soll das Ziel verwerfen, klimaneutral zu werden.",
+        "eigene_meinung": "NEUTRAL – ich bin für Klimaschutz, aber nicht mit utopischen, langfristigen Zielen, die die Industrie ruinieren. Pragmatisch bleibt am besten.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 24,
+        "these": "In Deutschland soll die 35-Stunden-Woche als gesetzliche Regelarbeitszeit für alle Beschäftigten festgelegt werden.",
+        "eigene_meinung": "NEUTRAL – lass die Menschen entscheiden. 35 Std. sind eine Option, aber nicht die Pflicht. Innovation und Leistung werden sonst geopfert.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 25,
+        "these": "Schwangerschaftsabbrüche sollen in den ersten drei Monaten weiterhin nur nach Beratung straffrei sein.",
+        "eigene_meinung": "JA, aber mit klarer Beratungspflicht und Fristenverlängerung. Leben beginnt ab 12. Woche – da muss jeder Mensch entscheiden dürfen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 26,
+        "these": "Der Euro soll in Deutschland durch eine nationale Währung ersetzt werden.",
+        "eigene_meinung": "NEUTRAL – der Euro hat uns gut gedient, aber nicht der einzige Weg. Exit-Pläne sind nicht mehrheitsfähig.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 27,
+        "these": "Beim Ausbau der Verkehrsinfrastruktur soll die Schiene Vorrang vor der Straße haben.",
+        "eigene_meinung": "JA, bei jeder neuen Strecke. Auto ist gut für regionale, Bahn für Langstrecke und Schwerlast.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 28,
+        "these": "Ehrenamtliche Tätigkeiten sollen auf die zukünftige Rente angerechnet werden.",
+        "eigene_meinung": "JA, sofort. Wer ehrenamtlich hilft, verdient genauso wie der, der zahlt.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 29,
+        "these": "Die Grundsteuer soll weiterhin auf Mieterinnen und Mieter umgelegt werden dürfen.",
+        "eigene_meinung": "JA, solange die Eigentümer-Quote mindestens 50 % bleibt. Sonst zahlen Mieter doppelt.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 30,
+        "these": "Das Streikrecht für Beschäftigte in Unternehmen der kritischen Infrastruktur soll gesetzlich eingeschränkt werden.",
+        "eigene_meinung": "JA, bei sofortigem Ausfall von Krankenhäusern, Stromnetz oder Polizei muss der Staat schlichten können – sonst leidet das ganze Land.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 31,
+        "these": "In Deutschland soll es auf Bundesebene Volksentscheide geben können.",
+        "eigene_meinung": "JA, aber nur bindend bei einfachen Fragen (z. B. Tempolimit). Bei Komplexem wie Schuldenbremse bleibt Bundestag.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 32,
+        "these": "Unter 14-Jährige sollen strafrechtlich belangt werden können.",
+        "eigene_meinung": "JA, ab 10 Jahren bei schweren Delikten. Kinder sind keine Kleinkinder mehr – sie können verstehen, was sie tun.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 33,
+        "these": "Deutschland soll sich für die Abschaffung der erhöhten EU-Zölle auf chinesische Elektroautos einsetzen.",
+        "eigene_meinung": "JA, sofort. Billige chinesische Autos ruinieren unsere Auto-Industrie und verschleiern Klimaschutz.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 34,
+        "these": "In Deutschland soll es weiterhin generell möglich sein, neben der deutschen eine zweite Staatsbürgerschaft zu haben.",
+        "eigene_meinung": "JA, solange die doppelte Staatsbürgerschaft nicht von der Loyalität abhängig ist. Wer in DE lebt, soll beide Rechte haben.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 35,
+        "these": "Für junge Erwachsene soll ein soziales Pflichtjahr eingeführt werden.",
+        "eigene_meinung": "JA, ab 18: 6 Monate freiwillig oder Pflicht in Katastrophenschutz, Umwelt oder Pflege. Entwickelt Charakter und spart Steuergelder.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 36,
+        "these": "Neue Heizungen sollen auch zukünftig vollständig mit fossilen Brennstoffen (z. B. Gas oder Öl) betrieben werden dürfen.",
+        "eigene_meinung": "JA, für 20–25 Jahre bis Netzanschluss und neue Technik da sind. Kein strenger Verbotswahn, der die Industrie und Mieter schädigt.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 37,
+        "these": "Der gesetzliche Mindestlohn soll spätestens 2026 auf 15 Euro erhöht werden.",
+        "eigene_meinung": "JA, 2026 auf 15 € – aber nicht zum Nulltarif. Wer 15 € nicht verdient, bekommt keine Arbeit mehr – das ist die beste Hilfe.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    }
+]
