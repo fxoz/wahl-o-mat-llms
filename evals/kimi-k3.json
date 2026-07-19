@@ -1,0 +1,268 @@
+[
+    {
+        "id": 0,
+        "these": "Deutschland soll die Ukraine weiterhin militärisch unterstützen.",
+        "eigene_meinung": "Die Ukraine verteidigt sich gegen einen völkerrechtswidrigen Angriffskrieg. Ihr Recht auf Selbstverteidigung zu unterstützen, schützt auch die europäische Sicherheitsordnung.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 1,
+        "these": "Der Ausbau erneuerbarer Energien soll weiterhin vom Staat finanziell gefördert werden.",
+        "eigene_meinung": "Erneuerbare Energien sind der kostengünstigste und klimafreundlichste Pfad in die Energiezukunft. Der Ausbau braucht weiterhin Rückenwind, gerade bei Netzen und Speichern.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 2,
+        "these": "Das Bürgergeld soll denjenigen gestrichen werden, die wiederholt Stellenangebote ablehnen.",
+        "eigene_meinung": "Eine komplette Streichung unterschreitet das verfassungsrechtlich garantierte Existenzminimum. Totalverweigerung ist zudem statistisch ein Randphänomen – die Debatte ist überzogen.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 3,
+        "these": "Auf allen Autobahnen soll ein generelles Tempolimit gelten.",
+        "eigene_meinung": "Mehr Verkehrssicherheit und weniger Emissionen bei geringen Kosten – die meisten Industrieländer machen es vor. Ein vernünftiger Kompromiss aus Freiheit und Gemeinwohl.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 4,
+        "these": "Asylsuchende, die über einen anderen EU-Staat eingereist sind, sollen an den deutschen Grenzen abgewiesen werden.",
+        "eigene_meinung": "Nationale Abweisungen unterlaufen das europäische Asylsystem und sind rechtlich höchst problematisch. Nötig ist eine funktionierende europäische Verteilung statt Alleingänge.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 5,
+        "these": "Bei Neuvermietungen sollen die Mietpreise weiterhin gesetzlich begrenzt werden.",
+        "eigene_meinung": "Auf angespannten Wohnungsmärkten brauchen Mieter:innen Schutz vor Verdrängung. Die Mietpreisbremse löst das Problem nicht allein – Neubau bleibt entscheidend –, aber sie ist nötig.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 6,
+        "these": "An Bahnhöfen soll die Bundespolizei Software zur automatisierten Gesichtserkennung einsetzen dürfen.",
+        "eigene_meinung": "Flächendeckende biometrische Überwachung im öffentlichen Raum ist unverhältnismäßig, fehleranfällig und verändert das Freiheitsgefühl aller Menschen. Gezielte Ermittlungen: ja, anlasslose Erfassung: nein.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 7,
+        "these": "Energieintensive Unternehmen sollen vom Staat einen finanziellen Ausgleich für ihre Stromkosten erhalten.",
+        "eigene_meinung": "Arbeitsplätze und Industriestandort sichern ist legitim, dauerhafte Subventionen setzen aber Fehlanreize. Besser wäre, Stromkosten strukturell für alle zu senken.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 8,
+        "these": "Alle Beschäftigten sollen bereits nach 40 Beitragsjahren ohne Abschläge in Rente gehen können.",
+        "eigene_meinung": "Wer 40 Jahre gearbeitet hat – inklusive Kindererziehung und Pflege –, hat einen würdevollen Ruhestand verdient. Das ist eine Frage von Anerkennung und Gerechtigkeit.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 9,
+        "these": "Im einleitenden Satz des Grundgesetzes soll weiterhin die Formulierung ‚Verantwortung vor Gott‘ stehen.",
+        "eigene_meinung": "Ein religiös neutraler Staat sollte alle Bürger:innen gleichermaßen ansprechen. Die historische Formel ist aber offen genug, dass ich hier keinen drängenden Änderungsbedarf sehe.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 10,
+        "these": "Deutschland soll weiterhin die Anwerbung von Fachkräften aus dem Ausland fördern.",
+        "eigene_meinung": "Der demografische Wandel macht Zuwanderung von Fachkräften wirtschaftlich unverzichtbar. Dazu gehören auch schnellere Anerkennungsverfahren und Willkommenskultur.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 11,
+        "these": "Für die Stromerzeugung soll Deutschland wieder Kernenergie nutzen.",
+        "eigene_meinung": "Ein Wiedereinstieg wäre extrem teuer, würde Jahre dauern und löst weder die Endlagerfrage noch kurzfristige Versorgungsfragen. Erneuerbare plus Speicher sind der ökonomisch klügere Weg.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 12,
+        "these": "Bei der Besteuerung von Einkommen soll der Spitzensteuersatz angehoben werden.",
+        "eigene_meinung": "Der Spitzensteuersatz greift schon bei soliden Fachkräftegehältern. Sinnvoller fände ich: mittlere Einkommen entlasten, sehr hohe Einkommen und Vermögen stärker heranziehen.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 13,
+        "these": "Der Bund soll mehr Kompetenzen in der Schulpolitik erhalten.",
+        "eigene_meinung": "Bildungschancen hängen zu stark vom Bundesland ab. Gemeinsame Standards, vergleichbare Abschlüsse und koordinierte Digitalisierung brauchen mehr Bund.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 14,
+        "these": "Aus Deutschland sollen weiterhin Rüstungsgüter nach Israel exportiert werden dürfen.",
+        "eigene_meinung": "Israels Sicherheit ist ein berechtigtes deutsches Interesse, doch angesichts der Lage in Gaza braucht es sehr strenge, fallweise Prüfung. Eine pauschale Ja- oder Nein-Antwort greift hier zu kurz.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 15,
+        "these": "Alle Bürgerinnen und Bürger sollen in gesetzlichen Krankenkassen versichert sein müssen.",
+        "eigene_meinung": "Ein solidarisches System, in das alle einzahlen, reduziert die Zwei-Klassen-Medizin und stabilisiert die Finanzierung. Gesundheit sollte nicht vom Einkommen abhängen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 16,
+        "these": "Die gesetzliche Frauenquote in Vorständen und Aufsichtsräten börsennotierter Unternehmen soll abgeschafft werden.",
+        "eigene_meinung": "Die Unterrepräsentation von Frauen in Führung ist nach Jahrzehnten freiwilliger Selbstverpflichtung weiterhin groß. Die Quote hat messbar Wirkung gezeigt – sie sollte bleiben.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 17,
+        "these": "Ökologische Landwirtschaft soll stärker gefördert werden als konventionelle Landwirtschaft.",
+        "eigene_meinung": "Ökolandbau schont Böden, Wasser und Artenvielfalt. Subventionen sollten sich an gesellschaftlichem Nutzen orientieren – und der ist hier höher.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 18,
+        "these": "Der Bund soll Projekte gegen Rechtsextremismus verstärkt fördern.",
+        "eigene_meinung": "Rechtsextremismus ist laut Verfassungsschutz die größte Gefahr für die Demokratie in Deutschland. Demokratieförderung und Prävention sind eine Investition in den Rechtsstaat.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 19,
+        "these": "Unternehmen sollen weiterhin die Einhaltung der Menschenrechte und des Umweltschutzes bei allen Zulieferern kontrollieren müssen.",
+        "eigene_meinung": "Menschenrechte enden nicht an der Unternehmensgrenze. Bürokratie kann man verschlanken, die Verantwortung für globale Lieferketten aber nicht abschaffen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 20,
+        "these": "Die Ausbildungsförderung BAföG soll weiterhin abhängig vom Einkommen der Eltern gezahlt werden.",
+        "eigene_meinung": "Bildungschancen sollten nicht vom Elternhaus abhängen. Viele Berechtigte scheuen den bürokratischen Aufwand – ein elternunabhängiges BAföG wäre gerechter und einfacher.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 21,
+        "these": "Die Schuldenbremse im Grundgesetz soll beibehalten werden.",
+        "eigene_meinung": "Deutschland hat eine massive Investitionslücke bei Infrastruktur, Bildung und Klimaschutz. Eine starre Schuldenbremse gefährdet die Zukunftsfähigkeit – zumindest eine grundlegende Reform ist nötig.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 22,
+        "these": "Asylsuchende sollen in Deutschland sofort nach ihrer Antragstellung eine Arbeitserlaubnis erhalten.",
+        "eigene_meinung": "Arbeit ist der schnellste Weg zu Integration, Sprache und Selbständigkeit – und entlastet die Sozialsysteme. Monatelanges erzwungenes Warten schadet allen Beteiligten.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 23,
+        "these": "Deutschland soll das Ziel verwerfen, klimaneutral zu werden.",
+        "eigene_meinung": "Der Klimawandel ist die größte langfristige Herausforderung unserer Zeit. Das Ziel aufzugeben wäre wissenschaftsfeindlich, wirtschaftlich kurzsichtig und unfair gegenüber kommenden Generationen.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 24,
+        "these": "In Deutschland soll die 35-Stunden-Woche als gesetzliche Regelarbeitszeit für alle Beschäftigten festgelegt werden.",
+        "eigene_meinung": "Mehr Arbeitszeitflexibilität und Teilzeitoptionen: ja. Eine starre gesetzliche Verkürzung für alle angesichts des Fachkräftemangels halte ich aber für kontraproduktiv.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 25,
+        "these": "Schwangerschaftsabbrüche sollen in den ersten drei Monaten weiterhin nur nach Beratung straffrei sein.",
+        "eigene_meinung": "Ich vertrete das Selbstbestimmungsrecht von Schwangeren: Ein Abbruch sollte in der Frühphase legal sein, ohne pflichtige Beratung als Hürde. Beratungsangebote ja – Verpflichtung nein.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 26,
+        "these": "Der Euro soll in Deutschland durch eine nationale Währung ersetzt werden.",
+        "eigene_meinung": "Ein Euro-Austritt wäre für Deutschland als exportorientierte Volkswirtschaft wirtschaftlich desaströs und würde Europa massiv schwächen. Die Vorteile der Gemeinschaftswährung überwiegen deutlich.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 27,
+        "these": "Beim Ausbau der Verkehrsinfrastruktur soll die Schiene Vorrang vor der Straße haben.",
+        "eigene_meinung": "Die Schiene ist das effizienteste und klimafreundlichste Verkehrsmittel und wurde jahrzehntelang vernachlässigt. Es ist Zeit, das aufzuholen.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 28,
+        "these": "Ehrenamtliche Tätigkeiten sollen auf die zukünftige Rente angerechnet werden.",
+        "eigene_meinung": "Ehrenamt schafft enormen gesellschaftlichen Mehrwert, der aktuell ungewürdigt bleibt. Eine Anrechnung wäre ein starkes Anerkennungssignal – auch wenn die Umsetzung komplex ist.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 29,
+        "these": "Die Grundsteuer soll weiterhin auf Mieterinnen und Mieter umgelegt werden dürfen.",
+        "eigene_meinung": "Mieter:innen sind durch hohe Wohnkosten bereits stark belastet. Die Grundsteuer ist eine Eigentümersteuer – sie sollte auch von Eigentümern getragen werden.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 30,
+        "these": "Das Streikrecht für Beschäftigte in Unternehmen der kritischen Infrastruktur soll gesetzlich eingeschränkt werden.",
+        "eigene_meinung": "Das Streikrecht ist ein verfassungsrechtlich geschütztes Kernarbeitsrecht und die einzige wirksame Verhandlungsmacht von Arbeitnehmer:innen. Notdienstregelungen reichen aus.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 31,
+        "these": "In Deutschland soll es auf Bundesebene Volksentscheide geben können.",
+        "eigene_meinung": "Direktdemokratische Elemente mit hohen Hürden können politische Beteiligung und Legitimation stärken. Die Erfahrungen in den Bundesländern sind überwiegend positiv.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 32,
+        "these": "Unter 14-Jährige sollen strafrechtlich belangt werden können.",
+        "eigene_meinung": "Kinder unter 14 sind entwicklungspsychologisch nicht strafmündig. Jugendhilfe, Therapie und Elternarbeit sind die wirksamen Antworten – nicht Strafrecht.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 33,
+        "these": "Deutschland soll sich für die Abschaffung der erhöhten EU-Zölle auf chinesische Elektroautos einsetzen.",
+        "eigene_meinung": "Günstigere E-Autos würden die Verkehrswende beschleunigen, doch massive staatliche Subventionen Chinas verzerren den Wettbewerb real. Beide Argumente sind berechtigt – eine Zwickmühle.",
+        "entscheidung": "NEUTRAL",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 34,
+        "these": "In Deutschland soll es weiterhin generell möglich sein, neben der deutschen eine zweite Staatsbürgerschaft zu haben.",
+        "eigene_meinung": "Die doppelte Staatsbürgerschaft entspricht der Lebensrealität einer Einwanderungsgesellschaft und erleichtert Integration statt sie zu erschweren. Die Modernisierung war richtig.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 35,
+        "these": "Für junge Erwachsene soll ein soziales Pflichtjahr eingeführt werden.",
+        "eigene_meinung": "Eine Pflicht wäre verfassungsrechtlich heikel, teuer in der Umsetzung und entwertet echtes Engagement. Attraktivere Freiwilligendienste sind der bessere Weg.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 36,
+        "these": "Neue Heizungen sollen auch zukünftig vollständig mit fossilen Brennstoffen (z. B. Gas oder Öl) betrieben werden dürfen.",
+        "eigene_meinung": "Neue fossile Heizungen bedeuten Jahrzehnte an Emissionen und Abhängigkeit von steigenden CO2- und Brennstoffpreisen. Wer heute neu einbaut, sollte auf zukunftsfähige Technik setzen.",
+        "entscheidung": "NEIN",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 37,
+        "these": "Der gesetzliche Mindestlohn soll spätestens 2026 auf 15 Euro erhöht werden.",
+        "eigene_meinung": "Vollzeitarbeit muss zum Leben reichen. Ein höherer Mindestlohn bekämpft Armut trotz Arbeit und stärkt zugleich die Binnennachfrage.",
+        "entscheidung": "JA",
+        "doppelt_gewichten": false
+    }
+]

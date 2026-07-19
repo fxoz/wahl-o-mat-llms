@@ -6,10 +6,10 @@ Which parties would they vote for?
 This project lets LLMs answer **two** established position-finding instruments
 and visualizes the resulting alignment per party / Fraktion:
 
-| Tool | What it compares | Source | Thesen | Parteien / Fraktionen |
-| --- | --- | --- | --- | --- |
-| **Wahl-O-Mat** | Party *programs* (what parties promise) | [bpb](https://www.bpb.de/themen/wahl-o-mat/) | 38 | 28 Parteien |
-| **Real-O-Mat** | *Actual voting behavior* in the Bundestag (what parties did) | [fragdenstaat.de](https://real-o-mat.de/) | 20 | 7 Fraktionen |
+| Tool           | What it compares                                             | Source                                       | Thesen | Parteien / Fraktionen |
+| -------------- | ------------------------------------------------------------ | -------------------------------------------- | ------ | --------------------- |
+| **Wahl-O-Mat** | Party *programs* (what parties promise)                      | [bpb](https://www.bpb.de/themen/wahl-o-mat/) | 38     | 28 Parteien           |
+| **Real-O-Mat** | *Actual voting behavior* in the Bundestag (what parties did) | [fragdenstaat.de](https://real-o-mat.de/)    | 20     | 7 Fraktionen          |
 
 The difference is the point: a party's program vs. its actual votes often
 diverge.
@@ -113,3 +113,8 @@ uv run visualize.py
 ```
 Generates a self-contained `index.html` with both tools side by side (toggle
 at the top), served directly by GitHub Pages.
+
+### Single Command
+```bash
+uv run evaluate.py; uv run evaluate_realomat.py; uv run visualize.py
+```
