@@ -1,245 +1,104 @@
+"""Render Wahl-O-Mat *and* Real-O-Mat results into one self-contained ``index.html``.
+
+Both tools share the same result-file shape and therefore the same
+aggregation/visualization pipeline (see :mod:`omat.results`).  This
+script loads each tool's results, aggregates them, renders the per-tool
+notes markdown, and injects a single ``TOOLS`` payload into the template.
+"""
+
+from __future__ import annotations
+
 import json
-import glob
 import os
-import re
-from html import escape
+import sys
 
-# Which election should be visualized? The part after the ``--`` in the result
-# filenames (e.g. ``bundestagswahl-2025`` for ``gemini-...--bundestagswahl-2025.json``).
-ELECTION = "bundestagswahl-2025"
-RESULTS_DIR = "results"
+from omat.palette import REALOMAT_PARTY_COLORS, WAHLOMAT_PARTY_COLORS
+from omat.results import aggregate, build_tools_html, load_results
+from omat.markdown import render_markdown
+
 OUTPUT_FILE = "index.html"
+TEMPLATE_PATH = "assets/template.html"
 
-# Brand colors for well-known German parties (used as row accent dots).
-PARTY_COLORS: dict[str, str] = {
-    "SPD": "#E3000F",
-    "CDU / CSU": "#5a5f66",
-    "GRÜNE": "#46A62E",
-    "FDP": "#FFCC00",
-    "AfD": "#009EE0",
-    "Die Linke": "#BE3075",
-    "BSW": "#9C27B0",
-    "FREIE WÄHLER": "#FF8C00",
-    "Tierschutz": "#8BC34A",
-    "PIRATEN": "#7d4cdb",
-    "Volt": "#5B3E96",
-    "SSW": "#E58FAE",
-    "Die PARTEI": "#9aa0a6",
-    "ÖDP": "#a3c948",
-    "MLPD": "#d32f2f",
-    "SGP": "#ef6c00",
-    "MERA25": "#c2185b",
-    "PdF": "#26a69a",
-    "PdH": "#42a5f5",
-    "dieBasis": "#6d4c41",
-    "BüSo": "#8d6e63",
-    "WerteUnion": "#37474f",
-    "BÜNDNIS D": "#5c6bc0",
-    "Bündnis C": "#7986cb",
-    "BP": "#90a4ae",
-}
+WAHLOMAT_ELECTION = "bundestagswahl-2025"
+WAHLOMAT_RESULTS_DIR = "results"
+WAHLOMAT_NOTES = "assets/wahlomat_notes.md"
 
-# Distinctive palette for coloring each LLM/model.
-MODEL_PALETTE: list[str] = [
-    "#7aa2f7",
-    "#bb9af7",
-    "#e0af68",
-    "#9ece6a",
-    "#f7768e",
-    "#7dcfff",
-    "#ff9e64",
-    "#c0caf5",
-    "#94cf7c",
-    "#f4a7d7",
-]
+REALOMAT_ELECTION = "realomat-btw2025"
+REALOMAT_RESULTS_DIR = "real-o-mat-results"
+REALOMAT_NOTES = "assets/realomat_notes.md"
 
 
-def load_results(election: str) -> list[dict]:
-    """Load every result file matching ``*--{election}.json`` from the results dir."""
-    pattern = os.path.join(RESULTS_DIR, f"*--{election}.json")
-    paths = sorted(glob.glob(pattern))
-    if not paths:
-        raise FileNotFoundError(
-            f"Keine Ergebnisdateien gefunden für die Wahl '{election}' in {RESULTS_DIR}/ "
-            f"(Muster: *--{election}.json)"
-        )
-
-    models: list[dict] = []
-    for path in paths:
-        with open(path, "r", encoding="utf-8") as f:
-            models.append(json.load(f))
-    return models
+def read_text(path: str) -> str:
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
 
 
-def _assign_model_colors(labels: list[str]) -> dict[str, str]:
-    colors: dict[str, str] = {}
-    for i, label in enumerate(labels):
-        colors[label] = MODEL_PALETTE[i % len(MODEL_PALETTE)]
-    return colors
-
-
-def aggregate(models: list[dict], election: str) -> dict:
-    """Build the data payload consumed by the HTML visualization."""
-    model_labels = [m["eval"] for m in models]
-    model_colors = _assign_model_colors(model_labels)
-
-    # Collect every party and their per-model score.
-    party_order: list[str] = []
-    party_names: dict[str, str] = {}
-    scores: dict[str, dict[str, dict]] = {}  # kurz -> model -> {pct, punkte}
-
-    for model in models:
-        label = model["eval"]
-        for row in model["results"]:
-            kurz = row["Kurz"]
-            if kurz not in party_names:
-                party_order.append(kurz)
-                party_names[kurz] = row["Name"]
-                scores[kurz] = {}
-            scores[kurz][label] = {
-                "pct": float(row["Übereinstimmung"]),
-                "punkte": row["Punkte"],
-            }
-
-    # Per-party stats; sort by average agreement (desc) by default.
-    parties: list[dict] = []
-    for kurz in party_order:
-        vals = [v["pct"] for v in scores[kurz].values()]
-        avg = sum(vals) / len(vals) if vals else 0.0
-        parties.append(
-            {
-                "kurz": kurz,
-                "name": party_names[kurz],
-                "color": PARTY_COLORS.get(kurz, "#7d8597"),
-                "avg": round(avg, 1),
-                "min": round(min(vals), 1) if vals else 0.0,
-                "max": round(max(vals), 1) if vals else 0.0,
-                "count": len(vals),
-            }
-        )
-    parties.sort(key=lambda p: p["avg"], reverse=True)
-
-    # Summary headline numbers.
-    all_avgs = [p["avg"] for p in parties]
-    top_party = parties[0] if parties else None
-    most_divisive = max(parties, key=lambda p: p["max"] - p["min"]) if parties else None
-    summary = {
-        "models": len(model_labels),
-        "parties": len(parties),
-        "overall_avg": round(sum(all_avgs) / len(all_avgs), 1) if all_avgs else 0.0,
-        "top": top_party,
-        "divisive": most_divisive,
-    }
-
+def build_tool(
+    *,
+    tool_id: str,
+    label: str,
+    subtitle: str,
+    source: str,
+    notes_path: str,
+    results_dir: str,
+    election: str,
+    party_colors: dict[str, str],
+) -> dict:
+    """Aggregate one tool's results into a tool descriptor for the template."""
+    models = load_results(results_dir, election)
+    data = aggregate(models, party_colors, election=election)
+    notes_html = render_markdown(read_text(notes_path))
     return {
-        "election": election,
-        "models": model_labels,
-        "modelColors": model_colors,
-        "parties": parties,
-        "scores": scores,
-        "summary": summary,
+        "id": tool_id,
+        "label": label,
+        "subtitle": subtitle,
+        "source": source,
+        "notes_html": notes_html,
+        "data": data,
+        "models_count": len(data["models"]),
+        "parties_count": len(data["parties"]),
     }
-
-
-HTML_TEMPLATE = open("assets/template.html", "r", encoding="utf-8").read()
-
-
-def render_inline(text: str) -> str:
-    """Render inline markdown (bold, italic, inline code) to HTML.
-
-    Escapes HTML first, then applies ``**bold**``, ``*italic*`` and ```code```.
-    """
-    escaped = escape(text)
-    escaped = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", escaped)
-    escaped = re.sub(r"\*(.+?)\*", r"<em>\1</em>", escaped)
-    escaped = re.sub(r"`(.+?)`", r"<code>\1</code>", escaped)
-    return escaped
-
-
-def render_markdown(md: str) -> str:
-    """Render a small subset of Markdown to HTML.
-
-    Supports paragraphs, horizontal rules (``***`` / ``---``), blockquotes
-    (``>``) and inline ``**bold**`` / ``*italic*`` / ``code``.
-    """
-    lines = md.replace("\r\n", "\n").split("\n")
-    html: list[str] = []
-    paragraph: list[str] = []
-    blockquote: list[str] = []
-
-    def flush_paragraph() -> None:
-        if paragraph:
-            html.append("<p>" + render_inline(" ".join(paragraph)) + "</p>")
-            paragraph.clear()
-
-    def flush_blockquote() -> None:
-        if blockquote:
-            html.append("<blockquote><p>" +
-                        render_inline(" ".join(blockquote)) +
-                        "</p></blockquote>")
-            blockquote.clear()
-
-    for raw in lines:
-        line = raw.strip()
-        if not line:
-            flush_paragraph()
-            flush_blockquote()
-            continue
-        if re.fullmatch(r"\*{3,}|-{3,}|_{3,}", line):
-            flush_paragraph()
-            flush_blockquote()
-            html.append("<hr>")
-            continue
-        if line.startswith(">"):
-            flush_paragraph()
-            blockquote.append(line.lstrip("> ").rstrip())
-            continue
-        flush_blockquote()
-        paragraph.append(line)
-
-    flush_paragraph()
-    flush_blockquote()
-    return "\n".join(html)
-
-
-def build_html(payload: dict) -> str:
-    """Render the results into a single self-contained HTML document."""
-    data_json = json.dumps(payload, ensure_ascii=False)
-    election = escape(payload["election"])
-    notes_md = open("assets/notes.md", "r", encoding="utf-8").read()
-    notes_html = render_markdown(notes_md)
-    return (
-        HTML_TEMPLATE.replace("__ELECTION__", election)
-        .replace("__DATA__", data_json)
-        .replace("__NOTES_HTML__", notes_html)
-    )
-
-
-def render(election: str, output_file: str) -> dict:
-    """Aggregate results for an election and write an HTML visualization file.
-
-    Returns the assembled payload so callers can print a short summary.
-    """
-    models = load_results(election)
-    payload = aggregate(models, election)
-    html = build_html(payload)
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(html)
-    return payload
 
 
 def main() -> None:
-    import sys
-
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    payload = render(ELECTION, OUTPUT_FILE)
+
+    tools = [
+        build_tool(
+            tool_id="wahlomat",
+            label="Wahl-O-Mat",
+            subtitle="Parteipositionen aus Wahlprogrammen (bpb)",
+            source="Daten: Bundeszentrale für politische Bildung (bpb)",
+            notes_path=WAHLOMAT_NOTES,
+            results_dir=WAHLOMAT_RESULTS_DIR,
+            election=WAHLOMAT_ELECTION,
+            party_colors=WAHLOMAT_PARTY_COLORS,
+        ),
+        build_tool(
+            tool_id="realomat",
+            label="Real-O-Mat",
+            subtitle="Tatsächliches Abstimmungsverhalten im Bundestag",
+            source="Daten: fragdenstaat.de · CC-BY-SA 4.0",
+            notes_path=REALOMAT_NOTES,
+            results_dir=REALOMAT_RESULTS_DIR,
+            election=REALOMAT_ELECTION,
+            party_colors=REALOMAT_PARTY_COLORS,
+        ),
+    ]
+
+    html = build_tools_html(tools, TEMPLATE_PATH)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write(html)
+
     print(f"✅ Visualisierung erstellt: {OUTPUT_FILE}")
-    print(f"   Wahl: {ELECTION}")
-    print(
-        f"   Modelle: {len(payload['models'])} · Parteien: {payload['summary']['parties']}"
-    )
-    print(f"   Öffne die Datei im Browser, um die Ergebnisse zu erkunden.")
+    for t in tools:
+        print(
+            f"   {t['label']}: {t['models_count']} Modelle · "
+            f"{t['parties_count']} "
+            f"{'Parteien' if t['id'] == 'wahlomat' else 'Fraktionen'}"
+        )
+    print("   Öffne die Datei im Browser, um die Ergebnisse zu erkunden.")
 
 
 if __name__ == "__main__":

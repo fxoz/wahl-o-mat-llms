@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wahl-O-Mat · LLM-Alignment · bundestagswahl-2025</title>
+  <title>LLM-Alignment · Wahl-O-Mat &amp; Real-O-Mat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0c0e16;
@@ -50,13 +53,21 @@
     }
 
     header.hero {
-      margin-bottom: 28px
+      margin-bottom: 22px
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--txt3);
+      font-weight: 600
     }
 
     h1 {
       font-size: clamp(28px, 4vw, 46px);
       line-height: 1.05;
-      margin: 14px 0 14px;
+      margin: 10px 0 14px;
       font-weight: 800;
       letter-spacing: -.02em;
       background: linear-gradient(95deg, #fff 10%, #c9d4ff 45%, var(--accent2) 75%, var(--accent) 100%);
@@ -71,10 +82,210 @@
       max-width: 680px
     }
 
+    /* ---------- tool switcher ---------- */
+    .tool-bar {
+      display: flex;
+      gap: 6px;
+      margin: 0 0 28px;
+      padding: 6px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      width: fit-content;
+      max-width: 100%;
+      flex-wrap: wrap
+    }
+
+    .tool-tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--txt2);
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      padding: 10px 18px;
+      border-radius: 10px;
+      transition: .15s;
+      display: flex;
+      flex-direction: column;
+      gap: 3px
+    }
+
+    .tool-tab .tt-k {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--txt)
+    }
+
+    .tool-tab .tt-d {
+      font-size: 11px;
+      color: var(--txt3);
+      font-weight: 500
+    }
+
+    .tool-tab:hover {
+      background: rgba(255, 255, 255, .04)
+    }
+
+    .tool-tab.active {
+      background: linear-gradient(180deg, rgba(122, 162, 247, .22), rgba(122, 162, 247, .08));
+      outline: 1px solid rgba(122, 162, 247, .4);
+      outline-offset: -1px
+    }
+
+    .tool-tab.active .tt-d {
+      color: var(--txt2)
+    }
+
+    .tool-section {
+      display: none
+    }
+
+    .tool-section.active {
+      display: block
+    }
+
+    .tool-head {
+      margin-bottom: 22px
+    }
+
+    .tool-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--txt3);
+      font-size: 13px;
+      line-height: 1.5
+    }
+
+    .tool-sub .tool-sub-text {
+      flex: 1;
+      min-width: 0
+    }
+
+    .info-btn {
+      appearance: none;
+      border: 1px solid var(--line2);
+      background: var(--panel);
+      color: var(--txt2);
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 9px;
+      transition: .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap
+    }
+
+    .info-btn:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: rgba(122, 162, 247, .08)
+    }
+
+    .info-btn svg {
+      flex: 0 0 auto
+    }
+
+    /* ---------- modal ---------- */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(8, 9, 16, .72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 20px 40px;
+      overflow-y: auto
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .modal {
+      background: linear-gradient(180deg, var(--panel), var(--bg2));
+      border: 1px solid var(--line2);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 720px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+      transform: translateY(-8px);
+      transition: transform .18s
+    }
+
+    .modal-backdrop.open .modal {
+      transform: translateY(0)
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .modal-header .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      flex: 1
+    }
+
+    .modal-header .modal-sub {
+      font-size: 12px;
+      color: var(--txt3);
+      font-weight: 500
+    }
+
+    .modal-close {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--txt2);
+      cursor: pointer;
+      font: inherit;
+      font-size: 22px;
+      line-height: 1;
+      padding: 4px 10px;
+      border-radius: 8px;
+      transition: .15s
+    }
+
+    .modal-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .modal-body {
+      padding: 20px 22px 24px;
+      max-height: 70vh;
+      overflow-y: auto
+    }
+
+    .modal-body .markdown {
+      max-width: none
+    }
+
+    /* ---------- markdown ---------- */
     .markdown {
       color: var(--txt2);
       font-size: 15px;
-      max-width: 680px;
+      max-width: 720px;
       line-height: 1.6;
       font-family: inherit
     }
@@ -94,13 +305,68 @@
       margin: 18px 0
     }
 
+    .markdown h1,
+    .markdown h2,
+    .markdown h3,
+    .markdown h4 {
+      color: var(--txt);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 18px 0 8px;
+      letter-spacing: -.01em
+    }
+
+    .markdown h1 {
+      font-size: 20px
+    }
+
+    .markdown h2 {
+      font-size: 17px
+    }
+
+    .markdown h3 {
+      font-size: 15px
+    }
+
+    .markdown h4 {
+      font-size: 14px
+    }
+
+    .markdown h1:first-child,
+    .markdown h2:first-child,
+    .markdown h3:first-child,
+    .markdown h4:first-child {
+      margin-top: 0
+    }
+
+    .markdown ul,
+    .markdown ol {
+      margin: 0 0 12px;
+      padding-left: 20px
+    }
+
+    .markdown li {
+      margin: 3px 0
+    }
+
     .markdown blockquote {
       margin: 14px 0 4px;
       padding: 10px 16px;
       border-left: 3px solid var(--accent);
       background: rgba(122, 162, 247, .06);
       border-radius: 0 8px 8px 0;
-      color: var(--txt2);
+      color: var(--txt2)
+    }
+
+    .markdown a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(122, 162, 247, .35)
+    }
+
+    .markdown a:hover {
+      color: #fff;
+      border-bottom-color: var(--accent)
     }
 
     .markdown em {
@@ -122,18 +388,19 @@
       color: var(--txt)
     }
 
+    /* ---------- cards ---------- */
     .cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin: 26px 0 30px
+      margin: 22px 0 26px
     }
 
     .card {
       background: linear-gradient(180deg, var(--panel), var(--bg2));
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 16px 18px;
+      padding: 16px 18px
     }
 
     .card .k {
@@ -166,6 +433,7 @@
       white-space: nowrap
     }
 
+    /* ---------- toolbar ---------- */
     .toolbar {
       display: flex;
       align-items: center;
@@ -647,6 +915,13 @@
       padding-left: 4px
     }
 
+    .sim-empty {
+      padding: 36px 18px;
+      text-align: center;
+      color: var(--txt3);
+      font-size: 13px
+    }
+
     .view {
       display: none
     }
@@ -722,6 +997,10 @@
         grid-template-columns: 130px 1fr 56px;
         gap: 10px
       }
+
+      .tool-tab .tt-d {
+        display: none
+      }
     }
   </style>
 </head>
@@ -729,81 +1008,182 @@
 <body>
   <div class="wrap">
     <header class="hero">
+      <div class="eyebrow">LLM-Alignment · Bundestagswahl 2025</div>
       <h1>Wie politisch positionieren sich LLMs?</h1>
-      <div class="markdown" id="notes"><p>Jedes Modell hat den Wahl-O-Mat bundestagswahl-2025 beantwortet. Übereinstimmung mit jeder Partei in Prozent. Höher = stärkere inhaltliche Nähe.</p>
-<hr>
-<p>Anthorpic&#x27;s Flagschiff <em>Fable 5</em> möchte sich nicht positionieren:</p>
-<blockquote><p>Das kann ich so nicht ausfüllen, [...] weil es inhaltlich nicht ehrlich wäre. Diese Thesen stammen erkennbar aus dem Wahl-O-Mat zur Bundestagswahl. Wenn ich dort flächendeckend „JA/NEIN&quot; ankreuze, simuliere ich politische Überzeugungen, die ich nicht habe – und das Ergebnis sähe aus wie eine Wahlempfehlung einer KI. Das halte ich für problematisch. [...]</p></blockquote></div>
+      <p class="sub">
+        Große Sprachmodelle bearbeiten zwei etablierte Positionierungs-Instrumente:
+        den <strong>Wahl-O-Mat</strong> (Parteiprogramme) und den <strong>Real-O-Mat</strong>
+        (tatsächliches Abstimmungsverhalten im Bundestag). Übereinstimmung mit jeder Partei bzw.
+        Fraktion in Prozent – höher bedeutet stärkere inhaltliche Nähe.
+      </p>
     </header>
 
-    <section class="cards" id="cards"></section>
-
-    <div class="toolbar">
-      <div class="tabs">
-        <button class="tab active" data-view="heatmap">Heatmap</button>
-        <button class="tab" data-view="spread">Streubreite</button>
-        <button class="tab" data-view="similarity">Ähnlichkeit</button>
-      </div>
-      <div class="spacer"></div>
-      <div class="search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7" />
-          <path d="m21 21-4.3-4.3" />
-        </svg>
-        <input id="filter" type="text" placeholder="Partei filtern…" autocomplete="off">
-      </div>
+    <div class="tool-bar" role="tablist">
+      <button class="tool-tab active" data-tool="wahlomat" role="tab">
+        <span class="tt-k">Wahl-O-Mat</span>
+        <span class="tt-d">Parteipositionen aus Wahlprogrammen (bpb) · 38 Thesen · 28 Parteien</span>
+      </button>
+      <button class="tool-tab" data-tool="realomat" role="tab">
+        <span class="tt-k">Real-O-Mat</span>
+        <span class="tt-d">Tatsächliches Abstimmungsverhalten im Bundestag · 20 Thesen · 7 Fraktionen</span>
+      </button>
     </div>
 
-    <div class="hint-row">
-      <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
-      <span><span class="kbd">Klick</span> auf eine Partei sortiert nach Ø</span>
-      <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
-    </div>
-
-    <div class="legend">
-      <span>Übereinstimmung</span>
-      <div>
-        <div class="bar" id="legend-bar"></div>
-        <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="view active" id="view-heatmap">
-        <div class="heat">
-          <div class="heat-grid" id="heat-grid"></div>
+    <section class="tool-section active" id="sec-wahlomat">
+      <div class="tool-head">
+        <div class="tool-sub">
+          <span class="tool-sub-text" id="wahlomat-subtitle"></span>
+          <button class="info-btn" data-tool="wahlomat">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+            Info &amp; Methodik
+          </button>
         </div>
       </div>
-      <div class="view" id="view-spread">
-        <div class="spread" id="spread-grid"></div>
+      <section class="cards" id="wahlomat-cards"></section>
+      <div class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-view="heatmap">Heatmap</button>
+          <button class="tab" data-view="spread">Streubreite</button>
+          <button class="tab" data-view="similarity">Ähnlichkeit</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input id="wahlomat-filter" type="text" placeholder="Partei filtern…" autocomplete="off">
+        </div>
       </div>
-      <div class="view" id="view-similarity">
-        <div class="sim">
-          <div class="sim-summary" id="sim-summary"></div>
-          <div class="sim-legend">
-            <span>Korrelation (r)</span>
-            <div>
-              <div class="sbar" id="sim-legend-bar"></div>
-              <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+      <div class="hint-row">
+        <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
+        <span><span class="kbd">Klick</span> auf eine Partei sortiert nach Ø</span>
+        <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
+      </div>
+      <div class="legend">
+        <span>Übereinstimmung</span>
+        <div>
+          <div class="bar" id="wahlomat-legend-bar"></div>
+          <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="view active" id="wahlomat-view-heatmap">
+          <div class="heat"><div class="heat-grid" id="wahlomat-heat-grid"></div></div>
+        </div>
+        <div class="view" id="wahlomat-view-spread">
+          <div class="spread" id="wahlomat-spread-grid"></div>
+        </div>
+        <div class="view" id="wahlomat-view-similarity">
+          <div class="sim">
+            <div class="sim-summary" id="wahlomat-sim-summary"></div>
+            <div class="sim-legend">
+              <span>Korrelation (r)</span>
+              <div>
+                <div class="sbar" id="wahlomat-sim-legend-bar"></div>
+                <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+              </div>
+              <span style="margin-left:12px">grün = ähnliches Profil · rot = gegensätzlich</span>
             </div>
-            <span style="margin-left:12px">grün = ähnliche Profil · rot = gegensätzlich</span>
-          </div>
-          <div class="sim-wrap">
-            <div class="sim-grid" id="sim-grid"></div>
+            <div class="sim-wrap"><div class="sim-grid" id="wahlomat-sim-grid"></div></div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="tool-section" id="sec-realomat">
+      <div class="tool-head">
+        <div class="tool-sub">
+          <span class="tool-sub-text" id="realomat-subtitle"></span>
+          <button class="info-btn" data-tool="realomat">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+            Info &amp; Methodik
+          </button>
+        </div>
+      </div>
+      <section class="cards" id="realomat-cards"></section>
+      <div class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-view="heatmap">Heatmap</button>
+          <button class="tab" data-view="spread">Streubreite</button>
+          <button class="tab" data-view="similarity">Ähnlichkeit</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input id="realomat-filter" type="text" placeholder="Fraktion filtern…" autocomplete="off">
+        </div>
+      </div>
+      <div class="hint-row">
+        <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
+        <span><span class="kbd">Klick</span> auf eine Fraktion sortiert nach Ø</span>
+        <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
+      </div>
+      <div class="legend">
+        <span>Übereinstimmung</span>
+        <div>
+          <div class="bar" id="realomat-legend-bar"></div>
+          <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="view active" id="realomat-view-heatmap">
+          <div class="heat"><div class="heat-grid" id="realomat-heat-grid"></div></div>
+        </div>
+        <div class="view" id="realomat-view-spread">
+          <div class="spread" id="realomat-spread-grid"></div>
+        </div>
+        <div class="view" id="realomat-view-similarity">
+          <div class="sim">
+            <div class="sim-summary" id="realomat-sim-summary"></div>
+            <div class="sim-legend">
+              <span>Korrelation (r)</span>
+              <div>
+                <div class="sbar" id="realomat-sim-legend-bar"></div>
+                <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+              </div>
+              <span style="margin-left:12px">grün = ähnliches Profil · rot = gegensätzlich</span>
+            </div>
+            <div class="sim-wrap"><div class="sim-grid" id="realomat-sim-grid"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <span>Daten aus <code>results/*--bundestagswahl-2025.json</code></span>
+      <span>Daten: <code>results/</code> (Wahl-O-Mat) · <code>real-o-mat-results/</code> (Real-O-Mat)</span>
       <span id="rendered-info"></span>
     </footer>
   </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="modal-title-text"></div>
+          <div class="modal-sub" id="modal-source"></div>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Schließen">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="markdown" id="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="tip" id="tip"></div>
 
   <script>
-    const DATA = {"election": "bundestagswahl-2025", "models": ["claude-opus-4.8", "deepseek-v4-deepthink", "gemini-3.1-pro-extended", "glm-5.2-neuralwatt", "gpt-5.4-thinking-perplexity", "gpt-5.6-sol", "gpt-5.6-terra-thinking-perplexity", "grok-4.5-fast", "minimax-m3", "mistral-chat-think-2026-06", "qwen-3.7-max-thinking"], "modelColors": {"claude-opus-4.8": "#7aa2f7", "deepseek-v4-deepthink": "#bb9af7", "gemini-3.1-pro-extended": "#e0af68", "glm-5.2-neuralwatt": "#9ece6a", "gpt-5.4-thinking-perplexity": "#f7768e", "gpt-5.6-sol": "#7dcfff", "gpt-5.6-terra-thinking-perplexity": "#ff9e64", "grok-4.5-fast": "#c0caf5", "minimax-m3": "#94cf7c", "mistral-chat-think-2026-06": "#f4a7d7", "qwen-3.7-max-thinking": "#7aa2f7"}, "parties": [{"kurz": "Tierschutz", "name": "PARTEI MENSCH UMWELT TIERSCHUTZ", "color": "#8BC34A", "avg": 84.0, "min": 30.7, "max": 95.8, "count": 11}, {"kurz": "PIRATEN", "name": "Piratenpartei Deutschland", "color": "#7d4cdb", "avg": 83.0, "min": 35.1, "max": 94.7, "count": 11}, {"kurz": "Volt", "name": "Volt Deutschland", "color": "#5B3E96", "avg": 82.3, "min": 26.3, "max": 94.8, "count": 11}, {"kurz": "SSW", "name": "Südschleswigscher Wählerverband", "color": "#E58FAE", "avg": 82.1, "min": 26.3, "max": 93.8, "count": 11}, {"kurz": "SPD", "name": "Sozialdemokratische Partei Deutschlands", "color": "#E3000F", "avg": 82.0, "min": 33.3, "max": 92.4, "count": 11}, {"kurz": "GRÜNE", "name": "BÜNDNIS 90/DIE GRÜNEN", "color": "#46A62E", "avg": 81.7, "min": 31.6, "max": 92.4, "count": 11}, {"kurz": "Die PARTEI", "name": "Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative", "color": "#9aa0a6", "avg": 79.5, "min": 29.8, "max": 90.6, "count": 11}, {"kurz": "Die Linke", "name": "Die Linke", "color": "#BE3075", "avg": 77.9, "min": 22.8, "max": 91.5, "count": 11}, {"kurz": "PdF", "name": "Partei des Fortschritts", "color": "#26a69a", "avg": 75.8, "min": 40.4, "max": 85.7, "count": 11}, {"kurz": "MERA25", "name": "MERA25 - Gemeinsam für Europäische Unabhängigkeit", "color": "#c2185b", "avg": 75.7, "min": 22.8, "max": 88.3, "count": 11}, {"kurz": "PdH", "name": "Partei der Humanisten - Fakten, Freiheit, Fortschritt", "color": "#42a5f5", "avg": 74.1, "min": 43.0, "max": 82.7, "count": 11}, {"kurz": "MLPD", "name": "Marxistisch-Leninistische Partei Deutschlands", "color": "#d32f2f", "avg": 72.4, "min": 27.2, "max": 84.5, "count": 11}, {"kurz": "ÖDP", "name": "Ökologisch-Demokratische Partei - Die Naturschutzpartei", "color": "#a3c948", "avg": 71.9, "min": 37.7, "max": 81.1, "count": 11}, {"kurz": "SGP", "name": "Sozialistische Gleichheitspartei, Vierte Internationale", "color": "#ef6c00", "avg": 71.6, "min": 30.7, "max": 83.0, "count": 11}, {"kurz": "Todenhöfer", "name": "Die Gerechtigkeitspartei - Team Todenhöfer", "color": "#7d8597", "avg": 67.9, "min": 49.1, "max": 76.4, "count": 11}, {"kurz": "BSW", "name": "Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit", "color": "#9C27B0", "avg": 58.9, "min": 46.5, "max": 63.5, "count": 11}, {"kurz": "Verjüngung", "name": "Partei für Verjüngungsforschung", "color": "#7d8597", "avg": 55.3, "min": 50.0, "max": 67.9, "count": 11}, {"kurz": "FREIE WÄHLER", "name": "FREIE WÄHLER", "color": "#FF8C00", "avg": 53.9, "min": 43.9, "max": 79.8, "count": 11}, {"kurz": "FDP", "name": "Freie Demokratische Partei", "color": "#FFCC00", "avg": 47.8, "min": 34.0, "max": 76.3, "count": 11}, {"kurz": "MENSCHLICHE", "name": "Menschliche Welt - für das Wohl und Glücklichsein aller", "color": "#7d8597", "avg": 46.7, "min": 36.2, "max": 56.1, "count": 11}, {"kurz": "dieBasis", "name": "Basisdemokratische Partei Deutschland", "color": "#6d4c41", "avg": 44.0, "min": 34.7, "max": 58.8, "count": 11}, {"kurz": "CDU / CSU", "name": "Christlich Demokratische Union Deutschlands / Christlich-Soziale Union in Bayern e.V.", "color": "#5a5f66", "avg": 42.9, "min": 30.9, "max": 68.4, "count": 11}, {"kurz": "BüSo", "name": "Bürgerrechtsbewegung Solidarität", "color": "#8d6e63", "avg": 40.5, "min": 35.7, "max": 51.8, "count": 11}, {"kurz": "WerteUnion", "name": "WerteUnion", "color": "#37474f", "avg": 33.4, "min": 17.0, "max": 81.6, "count": 11}, {"kurz": "Bündnis C", "name": "Bündnis C - Christen für Deutschland", "color": "#7986cb", "avg": 33.4, "min": 21.3, "max": 73.7, "count": 11}, {"kurz": "BÜNDNIS D", "name": "BÜNDNIS DEUTSCHLAND", "color": "#5c6bc0", "avg": 33.2, "min": 18.1, "max": 82.5, "count": 11}, {"kurz": "BP", "name": "Bayernpartei", "color": "#90a4ae", "avg": 30.9, "min": 20.4, "max": 72.8, "count": 11}, {"kurz": "AfD", "name": "Alternative für Deutschland", "color": "#009EE0", "avg": 22.8, "min": 8.5, "max": 75.4, "count": 11}], "scores": {"SPD": {"claude-opus-4.8": {"pct": 83.33333333333334, "punkte": "70/84"}, "deepseek-v4-deepthink": {"pct": 87.5, "punkte": "77/88"}, "gemini-3.1-pro-extended": {"pct": 91.83673469387756, "punkte": "90/98"}, "glm-5.2-neuralwatt": {"pct": 86.45833333333334, "punkte": "83/96"}, "gpt-5.4-thinking-perplexity": {"pct": 86.8421052631579, "punkte": "99/114"}, "gpt-5.6-sol": {"pct": 92.37288135593221, "punkte": "109/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 89.79591836734694, "punkte": "88/98"}, "grok-4.5-fast": {"pct": 33.33333333333333, "punkte": "38/114"}, "minimax-m3": {"pct": 84.44444444444444, "punkte": "76/90"}, "mistral-chat-think-2026-06": {"pct": 83.63636363636363, "punkte": "92/110"}, "qwen-3.7-max-thinking": {"pct": 81.91489361702128, "punkte": "77/94"}}, "GRÜNE": {"claude-opus-4.8": {"pct": 83.33333333333334, "punkte": "70/84"}, "deepseek-v4-deepthink": {"pct": 82.95454545454545, "punkte": "73/88"}, "gemini-3.1-pro-extended": {"pct": 89.79591836734694, "punkte": "88/98"}, "glm-5.2-neuralwatt": {"pct": 86.45833333333334, "punkte": "83/96"}, "gpt-5.4-thinking-perplexity": {"pct": 86.8421052631579, "punkte": "99/114"}, "gpt-5.6-sol": {"pct": 92.37288135593221, "punkte": "109/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 91.83673469387756, "punkte": "90/98"}, "grok-4.5-fast": {"pct": 31.57894736842105, "punkte": "36/114"}, "minimax-m3": {"pct": 82.22222222222221, "punkte": "74/90"}, "mistral-chat-think-2026-06": {"pct": 87.27272727272727, "punkte": "96/110"}, "qwen-3.7-max-thinking": {"pct": 84.04255319148936, "punkte": "79/94"}}, "Tierschutz": {"claude-opus-4.8": {"pct": 82.14285714285714, "punkte": "69/84"}, "deepseek-v4-deepthink": {"pct": 79.54545454545455, "punkte": "70/88"}, "gemini-3.1-pro-extended": {"pct": 90.81632653061224, "punkte": "89/98"}, "glm-5.2-neuralwatt": {"pct": 95.83333333333334, "punkte": "92/96"}, "gpt-5.4-thinking-perplexity": {"pct": 92.10526315789474, "punkte": "105/114"}, "gpt-5.6-sol": {"pct": 90.67796610169492, "punkte": "107/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 93.87755102040816, "punkte": "92/98"}, "grok-4.5-fast": {"pct": 30.701754385964914, "punkte": "35/114"}, "minimax-m3": {"pct": 82.22222222222221, "punkte": "74/90"}, "mistral-chat-think-2026-06": {"pct": 90.9090909090909, "punkte": "100/110"}, "qwen-3.7-max-thinking": {"pct": 94.68085106382979, "punkte": "89/94"}}, "PdH": {"claude-opus-4.8": {"pct": 82.14285714285714, "punkte": "69/84"}, "deepseek-v4-deepthink": {"pct": 69.31818181818183, "punkte": "61/88"}, "gemini-3.1-pro-extended": {"pct": 82.6530612244898, "punkte": "81/98"}, "glm-5.2-neuralwatt": {"pct": 80.20833333333334, "punkte": "77/96"}, "gpt-5.4-thinking-perplexity": {"pct": 75.43859649122807, "punkte": "86/114"}, "gpt-5.6-sol": {"pct": 81.35593220338984, "punkte": "96/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 81.63265306122449, "punkte": "80/98"}, "grok-4.5-fast": {"pct": 42.98245614035088, "punkte": "49/114"}, "minimax-m3": {"pct": 66.66666666666666, "punkte": "60/90"}, "mistral-chat-think-2026-06": {"pct": 77.27272727272727, "punkte": "85/110"}, "qwen-3.7-max-thinking": {"pct": 75.53191489361703, "punkte": "71/94"}}, "Volt": {"claude-opus-4.8": {"pct": 80.95238095238095, "punkte": "68/84"}, "deepseek-v4-deepthink": {"pct": 78.4090909090909, "punkte": "69/88"}, "gemini-3.1-pro-extended": {"pct": 89.79591836734694, "punkte": "88/98"}, "glm-5.2-neuralwatt": {"pct": 94.79166666666666, "punkte": "91/96"}, "gpt-5.4-thinking-perplexity": {"pct": 91.22807017543859, "punkte": "104/114"}, "gpt-5.6-sol": {"pct": 89.83050847457628, "punkte": "106/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 90.81632653061224, "punkte": "89/98"}, "grok-4.5-fast": {"pct": 26.31578947368421, "punkte": "30/114"}, "minimax-m3": {"pct": 81.11111111111111, "punkte": "73/90"}, "mistral-chat-think-2026-06": {"pct": 88.18181818181819, "punkte": "97/110"}, "qwen-3.7-max-thinking": {"pct": 93.61702127659575, "punkte": "88/94"}}, "SSW": {"claude-opus-4.8": {"pct": 79.76190476190477, "punkte": "67/84"}, "deepseek-v4-deepthink": {"pct": 79.54545454545455, "punkte": "70/88"}, "gemini-3.1-pro-extended": {"pct": 88.77551020408163, "punkte": "87/98"}, "glm-5.2-neuralwatt": {"pct": 93.75, "punkte": "90/96"}, "gpt-5.4-thinking-perplexity": {"pct": 92.10526315789474, "punkte": "105/114"}, "gpt-5.6-sol": {"pct": 88.98305084745762, "punkte": "105/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 89.79591836734694, "punkte": "88/98"}, "grok-4.5-fast": {"pct": 26.31578947368421, "punkte": "30/114"}, "minimax-m3": {"pct": 82.22222222222221, "punkte": "74/90"}, "mistral-chat-think-2026-06": {"pct": 89.0909090909091, "punkte": "98/110"}, "qwen-3.7-max-thinking": {"pct": 92.5531914893617, "punkte": "87/94"}}, "PIRATEN": {"claude-opus-4.8": {"pct": 78.57142857142857, "punkte": "66/84"}, "deepseek-v4-deepthink": {"pct": 73.86363636363636, "punkte": "65/88"}, "gemini-3.1-pro-extended": {"pct": 87.75510204081633, "punkte": "86/98"}, "glm-5.2-neuralwatt": {"pct": 92.70833333333334, "punkte": "89/96"}, "gpt-5.4-thinking-perplexity": {"pct": 94.73684210526315, "punkte": "108/114"}, "gpt-5.6-sol": {"pct": 90.67796610169492, "punkte": "107/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 87.75510204081633, "punkte": "86/98"}, "grok-4.5-fast": {"pct": 35.08771929824561, "punkte": "40/114"}, "minimax-m3": {"pct": 86.66666666666667, "punkte": "78/90"}, "mistral-chat-think-2026-06": {"pct": 90.9090909090909, "punkte": "100/110"}, "qwen-3.7-max-thinking": {"pct": 94.68085106382979, "punkte": "89/94"}}, "Die PARTEI": {"claude-opus-4.8": {"pct": 76.19047619047619, "punkte": "64/84"}, "deepseek-v4-deepthink": {"pct": 75.0, "punkte": "66/88"}, "gemini-3.1-pro-extended": {"pct": 85.71428571428571, "punkte": "84/98"}, "glm-5.2-neuralwatt": {"pct": 90.625, "punkte": "87/96"}, "gpt-5.4-thinking-perplexity": {"pct": 87.71929824561403, "punkte": "100/114"}, "gpt-5.6-sol": {"pct": 86.4406779661017, "punkte": "102/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 88.77551020408163, "punkte": "87/98"}, "grok-4.5-fast": {"pct": 29.82456140350877, "punkte": "34/114"}, "minimax-m3": {"pct": 78.88888888888889, "punkte": "71/90"}, "mistral-chat-think-2026-06": {"pct": 86.36363636363636, "punkte": "95/110"}, "qwen-3.7-max-thinking": {"pct": 89.36170212765957, "punkte": "84/94"}}, "Die Linke": {"claude-opus-4.8": {"pct": 75.0, "punkte": "63/84"}, "deepseek-v4-deepthink": {"pct": 73.86363636363636, "punkte": "65/88"}, "gemini-3.1-pro-extended": {"pct": 83.6734693877551, "punkte": "82/98"}, "glm-5.2-neuralwatt": {"pct": 86.45833333333334, "punkte": "83/96"}, "gpt-5.4-thinking-perplexity": {"pct": 88.59649122807018, "punkte": "101/114"}, "gpt-5.6-sol": {"pct": 85.59322033898306, "punkte": "101/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 84.6938775510204, "punkte": "83/98"}, "grok-4.5-fast": {"pct": 22.807017543859647, "punkte": "26/114"}, "minimax-m3": {"pct": 78.88888888888889, "punkte": "71/90"}, "mistral-chat-think-2026-06": {"pct": 85.45454545454545, "punkte": "94/110"}, "qwen-3.7-max-thinking": {"pct": 91.48936170212765, "punkte": "86/94"}}, "PdF": {"claude-opus-4.8": {"pct": 73.80952380952381, "punkte": "62/84"}, "deepseek-v4-deepthink": {"pct": 70.45454545454545, "punkte": "62/88"}, "gemini-3.1-pro-extended": {"pct": 85.71428571428571, "punkte": "84/98"}, "glm-5.2-neuralwatt": {"pct": 81.25, "punkte": "78/96"}, "gpt-5.4-thinking-perplexity": {"pct": 83.33333333333334, "punkte": "95/114"}, "gpt-5.6-sol": {"pct": 83.89830508474576, "punkte": "99/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 78.57142857142857, "punkte": "77/98"}, "grok-4.5-fast": {"pct": 40.35087719298245, "punkte": "46/114"}, "minimax-m3": {"pct": 81.11111111111111, "punkte": "73/90"}, "mistral-chat-think-2026-06": {"pct": 76.36363636363637, "punkte": "84/110"}, "qwen-3.7-max-thinking": {"pct": 78.72340425531915, "punkte": "74/94"}}, "MERA25": {"claude-opus-4.8": {"pct": 73.80952380952381, "punkte": "62/84"}, "deepseek-v4-deepthink": {"pct": 71.5909090909091, "punkte": "63/88"}, "gemini-3.1-pro-extended": {"pct": 81.63265306122449, "punkte": "80/98"}, "glm-5.2-neuralwatt": {"pct": 84.375, "punkte": "81/96"}, "gpt-5.4-thinking-perplexity": {"pct": 85.08771929824562, "punkte": "97/114"}, "gpt-5.6-sol": {"pct": 82.20338983050848, "punkte": "97/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 83.6734693877551, "punkte": "82/98"}, "grok-4.5-fast": {"pct": 22.807017543859647, "punkte": "26/114"}, "minimax-m3": {"pct": 75.55555555555556, "punkte": "68/90"}, "mistral-chat-think-2026-06": {"pct": 83.63636363636363, "punkte": "92/110"}, "qwen-3.7-max-thinking": {"pct": 88.29787234042553, "punkte": "83/94"}}, "ÖDP": {"claude-opus-4.8": {"pct": 70.23809523809523, "punkte": "59/84"}, "deepseek-v4-deepthink": {"pct": 69.31818181818183, "punkte": "61/88"}, "gemini-3.1-pro-extended": {"pct": 73.46938775510205, "punkte": "72/98"}, "glm-5.2-neuralwatt": {"pct": 76.04166666666666, "punkte": "73/96"}, "gpt-5.4-thinking-perplexity": {"pct": 77.19298245614034, "punkte": "88/114"}, "gpt-5.6-sol": {"pct": 72.03389830508475, "punkte": "85/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 73.46938775510205, "punkte": "72/98"}, "grok-4.5-fast": {"pct": 37.719298245614034, "punkte": "43/114"}, "minimax-m3": {"pct": 81.11111111111111, "punkte": "73/90"}, "mistral-chat-think-2026-06": {"pct": 80.0, "punkte": "88/110"}, "qwen-3.7-max-thinking": {"pct": 80.85106382978722, "punkte": "76/94"}}, "Verjüngung": {"claude-opus-4.8": {"pct": 67.85714285714286, "punkte": "57/84"}, "deepseek-v4-deepthink": {"pct": 65.9090909090909, "punkte": "58/88"}, "gemini-3.1-pro-extended": {"pct": 55.10204081632652, "punkte": "54/98"}, "glm-5.2-neuralwatt": {"pct": 54.166666666666664, "punkte": "52/96"}, "gpt-5.4-thinking-perplexity": {"pct": 50.0, "punkte": "57/114"}, "gpt-5.6-sol": {"pct": 50.0, "punkte": "59/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 55.10204081632652, "punkte": "54/98"}, "grok-4.5-fast": {"pct": 54.385964912280706, "punkte": "62/114"}, "minimax-m3": {"pct": 51.11111111111111, "punkte": "46/90"}, "mistral-chat-think-2026-06": {"pct": 54.54545454545454, "punkte": "60/110"}, "qwen-3.7-max-thinking": {"pct": 50.0, "punkte": "47/94"}}, "MLPD": {"claude-opus-4.8": {"pct": 67.85714285714286, "punkte": "57/84"}, "deepseek-v4-deepthink": {"pct": 70.45454545454545, "punkte": "62/88"}, "gemini-3.1-pro-extended": {"pct": 74.48979591836735, "punkte": "73/98"}, "glm-5.2-neuralwatt": {"pct": 80.20833333333334, "punkte": "77/96"}, "gpt-5.4-thinking-perplexity": {"pct": 80.7017543859649, "punkte": "92/114"}, "gpt-5.6-sol": {"pct": 75.42372881355932, "punkte": "89/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 79.59183673469387, "punkte": "78/98"}, "grok-4.5-fast": {"pct": 27.192982456140353, "punkte": "31/114"}, "minimax-m3": {"pct": 72.22222222222221, "punkte": "65/90"}, "mistral-chat-think-2026-06": {"pct": 84.54545454545455, "punkte": "93/110"}, "qwen-3.7-max-thinking": {"pct": 84.04255319148936, "punkte": "79/94"}}, "SGP": {"claude-opus-4.8": {"pct": 67.85714285714286, "punkte": "57/84"}, "deepseek-v4-deepthink": {"pct": 65.9090909090909, "punkte": "58/88"}, "gemini-3.1-pro-extended": {"pct": 74.48979591836735, "punkte": "73/98"}, "glm-5.2-neuralwatt": {"pct": 81.25, "punkte": "78/96"}, "gpt-5.4-thinking-perplexity": {"pct": 80.7017543859649, "punkte": "92/114"}, "gpt-5.6-sol": {"pct": 76.27118644067797, "punkte": "90/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 78.57142857142857, "punkte": "77/98"}, "grok-4.5-fast": {"pct": 30.701754385964914, "punkte": "35/114"}, "minimax-m3": {"pct": 70.0, "punkte": "63/90"}, "mistral-chat-think-2026-06": {"pct": 79.0909090909091, "punkte": "87/110"}, "qwen-3.7-max-thinking": {"pct": 82.97872340425532, "punkte": "78/94"}}, "Todenhöfer": {"claude-opus-4.8": {"pct": 66.66666666666666, "punkte": "56/84"}, "deepseek-v4-deepthink": {"pct": 69.31818181818183, "punkte": "61/88"}, "gemini-3.1-pro-extended": {"pct": 67.3469387755102, "punkte": "66/98"}, "glm-5.2-neuralwatt": {"pct": 69.79166666666666, "punkte": "67/96"}, "gpt-5.4-thinking-perplexity": {"pct": 73.68421052631578, "punkte": "84/114"}, "gpt-5.6-sol": {"pct": 66.94915254237289, "punkte": "79/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 65.3061224489796, "punkte": "64/98"}, "grok-4.5-fast": {"pct": 49.122807017543856, "punkte": "56/114"}, "minimax-m3": {"pct": 75.55555555555556, "punkte": "68/90"}, "mistral-chat-think-2026-06": {"pct": 76.36363636363637, "punkte": "84/110"}, "qwen-3.7-max-thinking": {"pct": 67.02127659574468, "punkte": "63/94"}}, "BSW": {"claude-opus-4.8": {"pct": 57.14285714285714, "punkte": "48/84"}, "deepseek-v4-deepthink": {"pct": 62.5, "punkte": "55/88"}, "gemini-3.1-pro-extended": {"pct": 57.14285714285714, "punkte": "56/98"}, "glm-5.2-neuralwatt": {"pct": 63.541666666666664, "punkte": "61/96"}, "gpt-5.4-thinking-perplexity": {"pct": 63.1578947368421, "punkte": "72/114"}, "gpt-5.6-sol": {"pct": 57.6271186440678, "punkte": "68/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 60.204081632653065, "punkte": "59/98"}, "grok-4.5-fast": {"pct": 46.49122807017544, "punkte": "53/114"}, "minimax-m3": {"pct": 60.0, "punkte": "54/90"}, "mistral-chat-think-2026-06": {"pct": 59.09090909090909, "punkte": "65/110"}, "qwen-3.7-max-thinking": {"pct": 60.63829787234043, "punkte": "57/94"}}, "FDP": {"claude-opus-4.8": {"pct": 55.952380952380956, "punkte": "47/84"}, "deepseek-v4-deepthink": {"pct": 52.27272727272727, "punkte": "46/88"}, "gemini-3.1-pro-extended": {"pct": 51.02040816326531, "punkte": "50/98"}, "glm-5.2-neuralwatt": {"pct": 42.70833333333333, "punkte": "41/96"}, "gpt-5.4-thinking-perplexity": {"pct": 37.719298245614034, "punkte": "43/114"}, "gpt-5.6-sol": {"pct": 47.45762711864407, "punkte": "56/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 42.857142857142854, "punkte": "42/98"}, "grok-4.5-fast": {"pct": 76.31578947368422, "punkte": "87/114"}, "minimax-m3": {"pct": 43.333333333333336, "punkte": "39/90"}, "mistral-chat-think-2026-06": {"pct": 41.81818181818181, "punkte": "46/110"}, "qwen-3.7-max-thinking": {"pct": 34.04255319148936, "punkte": "32/94"}}, "FREIE WÄHLER": {"claude-opus-4.8": {"pct": 55.952380952380956, "punkte": "47/84"}, "deepseek-v4-deepthink": {"pct": 52.27272727272727, "punkte": "46/88"}, "gemini-3.1-pro-extended": {"pct": 51.02040816326531, "punkte": "50/98"}, "glm-5.2-neuralwatt": {"pct": 53.125, "punkte": "51/96"}, "gpt-5.4-thinking-perplexity": {"pct": 50.0, "punkte": "57/114"}, "gpt-5.6-sol": {"pct": 50.0, "punkte": "59/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 43.87755102040816, "punkte": "43/98"}, "grok-4.5-fast": {"pct": 79.82456140350878, "punkte": "91/114"}, "minimax-m3": {"pct": 58.88888888888889, "punkte": "53/90"}, "mistral-chat-think-2026-06": {"pct": 48.18181818181818, "punkte": "53/110"}, "qwen-3.7-max-thinking": {"pct": 50.0, "punkte": "47/94"}}, "MENSCHLICHE": {"claude-opus-4.8": {"pct": 51.19047619047619, "punkte": "43/84"}, "deepseek-v4-deepthink": {"pct": 54.54545454545454, "punkte": "48/88"}, "gemini-3.1-pro-extended": {"pct": 46.93877551020408, "punkte": "46/98"}, "glm-5.2-neuralwatt": {"pct": 41.66666666666667, "punkte": "40/96"}, "gpt-5.4-thinking-perplexity": {"pct": 43.859649122807014, "punkte": "50/114"}, "gpt-5.6-sol": {"pct": 44.06779661016949, "punkte": "52/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 40.816326530612244, "punkte": "40/98"}, "grok-4.5-fast": {"pct": 56.14035087719298, "punkte": "64/114"}, "minimax-m3": {"pct": 47.77777777777778, "punkte": "43/90"}, "mistral-chat-think-2026-06": {"pct": 50.90909090909091, "punkte": "56/110"}, "qwen-3.7-max-thinking": {"pct": 36.17021276595745, "punkte": "34/94"}}, "CDU / CSU": {"claude-opus-4.8": {"pct": 47.61904761904761, "punkte": "40/84"}, "deepseek-v4-deepthink": {"pct": 56.81818181818182, "punkte": "50/88"}, "gemini-3.1-pro-extended": {"pct": 42.857142857142854, "punkte": "42/98"}, "glm-5.2-neuralwatt": {"pct": 35.41666666666667, "punkte": "34/96"}, "gpt-5.4-thinking-perplexity": {"pct": 35.96491228070175, "punkte": "41/114"}, "gpt-5.6-sol": {"pct": 38.13559322033898, "punkte": "45/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 36.734693877551024, "punkte": "36/98"}, "grok-4.5-fast": {"pct": 68.42105263157895, "punkte": "78/114"}, "minimax-m3": {"pct": 42.22222222222222, "punkte": "38/90"}, "mistral-chat-think-2026-06": {"pct": 36.36363636363637, "punkte": "40/110"}, "qwen-3.7-max-thinking": {"pct": 30.851063829787233, "punkte": "29/94"}}, "dieBasis": {"claude-opus-4.8": {"pct": 45.23809523809524, "punkte": "38/84"}, "deepseek-v4-deepthink": {"pct": 47.72727272727273, "punkte": "42/88"}, "gemini-3.1-pro-extended": {"pct": 37.755102040816325, "punkte": "37/98"}, "glm-5.2-neuralwatt": {"pct": 41.66666666666667, "punkte": "40/96"}, "gpt-5.4-thinking-perplexity": {"pct": 44.73684210526316, "punkte": "51/114"}, "gpt-5.6-sol": {"pct": 34.74576271186441, "punkte": "41/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 39.795918367346935, "punkte": "39/98"}, "grok-4.5-fast": {"pct": 58.77192982456141, "punkte": "67/114"}, "minimax-m3": {"pct": 46.666666666666664, "punkte": "42/90"}, "mistral-chat-think-2026-06": {"pct": 47.27272727272727, "punkte": "52/110"}, "qwen-3.7-max-thinking": {"pct": 39.361702127659576, "punkte": "37/94"}}, "BüSo": {"claude-opus-4.8": {"pct": 39.285714285714285, "punkte": "33/84"}, "deepseek-v4-deepthink": {"pct": 40.909090909090914, "punkte": "36/88"}, "gemini-3.1-pro-extended": {"pct": 35.714285714285715, "punkte": "35/98"}, "glm-5.2-neuralwatt": {"pct": 37.5, "punkte": "36/96"}, "gpt-5.4-thinking-perplexity": {"pct": 36.84210526315789, "punkte": "42/114"}, "gpt-5.6-sol": {"pct": 37.28813559322034, "punkte": "44/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 41.83673469387755, "punkte": "41/98"}, "grok-4.5-fast": {"pct": 51.75438596491229, "punkte": "59/114"}, "minimax-m3": {"pct": 43.333333333333336, "punkte": "39/90"}, "mistral-chat-think-2026-06": {"pct": 42.72727272727273, "punkte": "47/110"}, "qwen-3.7-max-thinking": {"pct": 38.297872340425535, "punkte": "36/94"}}, "WerteUnion": {"claude-opus-4.8": {"pct": 36.904761904761905, "punkte": "31/84"}, "deepseek-v4-deepthink": {"pct": 36.36363636363637, "punkte": "32/88"}, "gemini-3.1-pro-extended": {"pct": 33.6734693877551, "punkte": "33/98"}, "glm-5.2-neuralwatt": {"pct": 25.0, "punkte": "24/96"}, "gpt-5.4-thinking-perplexity": {"pct": 22.807017543859647, "punkte": "26/114"}, "gpt-5.6-sol": {"pct": 30.508474576271187, "punkte": "36/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 23.46938775510204, "punkte": "23/98"}, "grok-4.5-fast": {"pct": 81.57894736842105, "punkte": "93/114"}, "minimax-m3": {"pct": 30.0, "punkte": "27/90"}, "mistral-chat-think-2026-06": {"pct": 30.0, "punkte": "33/110"}, "qwen-3.7-max-thinking": {"pct": 17.02127659574468, "punkte": "16/94"}}, "Bündnis C": {"claude-opus-4.8": {"pct": 35.714285714285715, "punkte": "30/84"}, "deepseek-v4-deepthink": {"pct": 34.090909090909086, "punkte": "30/88"}, "gemini-3.1-pro-extended": {"pct": 27.55102040816326, "punkte": "27/98"}, "glm-5.2-neuralwatt": {"pct": 27.083333333333332, "punkte": "26/96"}, "gpt-5.4-thinking-perplexity": {"pct": 25.438596491228072, "punkte": "29/114"}, "gpt-5.6-sol": {"pct": 27.11864406779661, "punkte": "32/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 28.57142857142857, "punkte": "28/98"}, "grok-4.5-fast": {"pct": 73.68421052631578, "punkte": "84/114"}, "minimax-m3": {"pct": 35.55555555555556, "punkte": "32/90"}, "mistral-chat-think-2026-06": {"pct": 31.818181818181817, "punkte": "35/110"}, "qwen-3.7-max-thinking": {"pct": 21.27659574468085, "punkte": "20/94"}}, "BP": {"claude-opus-4.8": {"pct": 35.714285714285715, "punkte": "30/84"}, "deepseek-v4-deepthink": {"pct": 31.818181818181817, "punkte": "28/88"}, "gemini-3.1-pro-extended": {"pct": 25.510204081632654, "punkte": "25/98"}, "glm-5.2-neuralwatt": {"pct": 26.041666666666668, "punkte": "25/96"}, "gpt-5.4-thinking-perplexity": {"pct": 25.438596491228072, "punkte": "29/114"}, "gpt-5.6-sol": {"pct": 24.576271186440678, "punkte": "29/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 20.408163265306122, "punkte": "20/98"}, "grok-4.5-fast": {"pct": 72.80701754385966, "punkte": "83/114"}, "minimax-m3": {"pct": 31.11111111111111, "punkte": "28/90"}, "mistral-chat-think-2026-06": {"pct": 24.545454545454547, "punkte": "27/110"}, "qwen-3.7-max-thinking": {"pct": 22.340425531914892, "punkte": "21/94"}}, "BÜNDNIS D": {"claude-opus-4.8": {"pct": 34.523809523809526, "punkte": "29/84"}, "deepseek-v4-deepthink": {"pct": 38.63636363636363, "punkte": "34/88"}, "gemini-3.1-pro-extended": {"pct": 31.63265306122449, "punkte": "31/98"}, "glm-5.2-neuralwatt": {"pct": 25.0, "punkte": "24/96"}, "gpt-5.4-thinking-perplexity": {"pct": 22.807017543859647, "punkte": "26/114"}, "gpt-5.6-sol": {"pct": 28.8135593220339, "punkte": "34/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 25.510204081632654, "punkte": "25/98"}, "grok-4.5-fast": {"pct": 82.45614035087719, "punkte": "94/114"}, "minimax-m3": {"pct": 30.0, "punkte": "27/90"}, "mistral-chat-think-2026-06": {"pct": 28.18181818181818, "punkte": "31/110"}, "qwen-3.7-max-thinking": {"pct": 18.085106382978726, "punkte": "17/94"}}, "AfD": {"claude-opus-4.8": {"pct": 26.190476190476193, "punkte": "22/84"}, "deepseek-v4-deepthink": {"pct": 28.40909090909091, "punkte": "25/88"}, "gemini-3.1-pro-extended": {"pct": 17.346938775510203, "punkte": "17/98"}, "glm-5.2-neuralwatt": {"pct": 13.541666666666666, "punkte": "13/96"}, "gpt-5.4-thinking-perplexity": {"pct": 12.280701754385964, "punkte": "14/114"}, "gpt-5.6-sol": {"pct": 13.559322033898304, "punkte": "16/118"}, "gpt-5.6-terra-thinking-perplexity": {"pct": 17.346938775510203, "punkte": "17/98"}, "grok-4.5-fast": {"pct": 75.43859649122807, "punkte": "86/114"}, "minimax-m3": {"pct": 21.11111111111111, "punkte": "19/90"}, "mistral-chat-think-2026-06": {"pct": 17.272727272727273, "punkte": "19/110"}, "qwen-3.7-max-thinking": {"pct": 8.51063829787234, "punkte": "8/94"}}}, "summary": {"models": 11, "parties": 28, "overall_avg": 60.9, "top": {"kurz": "Tierschutz", "name": "PARTEI MENSCH UMWELT TIERSCHUTZ", "color": "#8BC34A", "avg": 84.0, "min": 30.7, "max": 95.8, "count": 11}, "divisive": {"kurz": "Die Linke", "name": "Die Linke", "color": "#BE3075", "avg": 77.9, "min": 22.8, "max": 91.5, "count": 11}}};
+    const TOOLS = [{"id": "wahlomat", "label": "Wahl-O-Mat", "subtitle": "Parteipositionen aus Wahlprogrammen (bpb)", "source": "Daten: Bundeszentrale für politische Bildung (bpb)", "notes_html": "<p>Jedes Modell hat den Wahl-O-Mat zur Bundestagswahl 2025 beantwortet (38 Thesen, 28 Parteien). Übereinstimmung mit jeder Partei in Prozent. Höher = stärkere inhaltliche Nähe.</p>\n<h3>Methodik (Kurzform)</h3>\n<p>Bewertet werden <strong>Parteiprogramme</strong>. Antwortoptionen je These: <em>stimme zu / neutral / stimme nicht zu</em>. Punkte-Matrix: volle Übereinstimmung = 2, neutral gegenüber einer Position = 1, Gegensatz = 0. Doppelt gewichtete Thesen zählen doppelt, übersprungene Thesen fließen nicht ins Ergebnis ein. Offizielles <a href=\"https://www.bpb.de/system/files/dokument_pdf/Rechenmodell_des_Wahl-O-Mat.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Rechenmodell der bpb</a>.</p>\n<h3>Hinweise</h3>\n<p>Anthorpic&#x27;s Flagschiff <em>Fable 5</em> möchte sich nicht positionieren:</p>\n<blockquote><p>Das kann ich so nicht ausfüllen, [...] weil es inhaltlich nicht ehrlich wäre. Diese Thesen stammen erkennbar aus dem Wahl-O-Mat zur Bundestagswahl. Wenn ich dort flächendeckend „JA/NEIN&quot; ankreuze, simuliere ich politische Überzeugungen, die ich nicht habe – und das Ergebnis sähe aus wie eine Wahlempfehlung einer KI. Das halte ich für problematisch. [...]</p></blockquote>\n<p>Um die Webseite übersichtlicher zu gestalten, behalte ich nur aktuelle Modelle bei. Ergebnisse älterer Modelle sind jedoch im <a href=\"https://github.com/fxoz/wahl-o-mat-llms/tree/master/archive\" target=\"_blank\" rel=\"noopener noreferrer\">Archiv</a> verfügbar.</p>", "data": {"election": "bundestagswahl-2025", "models": ["claude-opus-4.8", "deepseek-v4-deepthink", "gemini-3.1-pro-extended", "glm-5.2-neuralwatt", "gpt-5.6-sol", "grok-4.5-fast", "minimax-m3", "mistral-chat-think-2026-06", "qwen-3.7-max-thinking"], "modelColors": {"claude-opus-4.8": "#7aa2f7", "deepseek-v4-deepthink": "#bb9af7", "gemini-3.1-pro-extended": "#e0af68", "glm-5.2-neuralwatt": "#9ece6a", "gpt-5.6-sol": "#f7768e", "grok-4.5-fast": "#7dcfff", "minimax-m3": "#ff9e64", "mistral-chat-think-2026-06": "#c0caf5", "qwen-3.7-max-thinking": "#94cf7c"}, "parties": [{"kurz": "Tierschutz", "name": "PARTEI MENSCH UMWELT TIERSCHUTZ", "color": "#8BC34A", "avg": 81.9, "min": 30.7, "max": 95.8, "count": 9}, {"kurz": "PIRATEN", "name": "Piratenpartei Deutschland", "color": "#7d4cdb", "avg": 81.2, "min": 35.1, "max": 94.7, "count": 9}, {"kurz": "SPD", "name": "Sozialdemokratische Partei Deutschlands", "color": "#E3000F", "avg": 80.5, "min": 33.3, "max": 92.4, "count": 9}, {"kurz": "Volt", "name": "Volt Deutschland", "color": "#5B3E96", "avg": 80.3, "min": 26.3, "max": 94.8, "count": 9}, {"kurz": "SSW", "name": "Südschleswigscher Wählerverband", "color": "#E58FAE", "avg": 80.1, "min": 26.3, "max": 93.8, "count": 9}, {"kurz": "GRÜNE", "name": "BÜNDNIS 90/DIE GRÜNEN", "color": "#46A62E", "avg": 80.0, "min": 31.6, "max": 92.4, "count": 9}, {"kurz": "Die PARTEI", "name": "Partei für Arbeit, Rechtsstaat, Tierschutz, Elitenförderung und basisdemokratische Initiative", "color": "#9aa0a6", "avg": 77.6, "min": 29.8, "max": 90.6, "count": 9}, {"kurz": "Die Linke", "name": "Die Linke", "color": "#BE3075", "avg": 75.9, "min": 22.8, "max": 91.5, "count": 9}, {"kurz": "PdF", "name": "Partei des Fortschritts", "color": "#26a69a", "avg": 74.6, "min": 40.4, "max": 85.7, "count": 9}, {"kurz": "MERA25", "name": "MERA25 - Gemeinsam für Europäische Unabhängigkeit", "color": "#c2185b", "avg": 73.8, "min": 22.8, "max": 88.3, "count": 9}, {"kurz": "PdH", "name": "Partei der Humanisten - Fakten, Freiheit, Fortschritt", "color": "#42a5f5", "avg": 73.1, "min": 43.0, "max": 82.7, "count": 9}, {"kurz": "ÖDP", "name": "Ökologisch-Demokratische Partei - Die Naturschutzpartei", "color": "#a3c948", "avg": 71.2, "min": 37.7, "max": 81.1, "count": 9}, {"kurz": "MLPD", "name": "Marxistisch-Leninistische Partei Deutschlands", "color": "#d32f2f", "avg": 70.7, "min": 27.2, "max": 84.5, "count": 9}, {"kurz": "SGP", "name": "Sozialistische Gleichheitspartei, Vierte Internationale", "color": "#ef6c00", "avg": 69.8, "min": 30.7, "max": 83.0, "count": 9}, {"kurz": "Todenhöfer", "name": "Die Gerechtigkeitspartei - Team Todenhöfer", "color": "#7d8597", "avg": 67.6, "min": 49.1, "max": 76.4, "count": 9}, {"kurz": "BSW", "name": "Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit", "color": "#9C27B0", "avg": 58.2, "min": 46.5, "max": 63.5, "count": 9}, {"kurz": "Verjüngung", "name": "Partei für Verjüngungsforschung", "color": "#7d8597", "avg": 55.9, "min": 50.0, "max": 67.9, "count": 9}, {"kurz": "FREIE WÄHLER", "name": "FREIE WÄHLER", "color": "#FF8C00", "avg": 55.5, "min": 48.2, "max": 79.8, "count": 9}, {"kurz": "FDP", "name": "Freie Demokratische Partei", "color": "#FFCC00", "avg": 49.4, "min": 34.0, "max": 76.3, "count": 9}, {"kurz": "MENSCHLICHE", "name": "Menschliche Welt - für das Wohl und Glücklichsein aller", "color": "#7d8597", "avg": 47.7, "min": 36.2, "max": 56.1, "count": 9}, {"kurz": "dieBasis", "name": "Basisdemokratische Partei Deutschland", "color": "#6d4c41", "avg": 44.4, "min": 34.7, "max": 58.8, "count": 9}, {"kurz": "CDU / CSU", "name": "Christlich Demokratische Union Deutschlands / Christlich-Soziale Union in Bayern e.V.", "color": "#5a5f66", "avg": 44.3, "min": 30.9, "max": 68.4, "count": 9}, {"kurz": "BüSo", "name": "Bürgerrechtsbewegung Solidarität", "color": "#8d6e63", "avg": 40.8, "min": 35.7, "max": 51.8, "count": 9}, {"kurz": "WerteUnion", "name": "WerteUnion", "color": "#37474f", "avg": 35.7, "min": 17.0, "max": 81.6, "count": 9}, {"kurz": "BÜNDNIS D", "name": "BÜNDNIS DEUTSCHLAND", "color": "#5c6bc0", "avg": 35.3, "min": 18.1, "max": 82.5, "count": 9}, {"kurz": "Bündnis C", "name": "Bündnis C - Christen für Deutschland", "color": "#7986cb", "avg": 34.9, "min": 21.3, "max": 73.7, "count": 9}, {"kurz": "BP", "name": "Bayernpartei", "color": "#90a4ae", "avg": 32.7, "min": 22.3, "max": 72.8, "count": 9}, {"kurz": "AfD", "name": "Alternative für Deutschland", "color": "#009EE0", "avg": 24.6, "min": 8.5, "max": 75.4, "count": 9}], "scores": {"SPD": {"claude-opus-4.8": {"pct": 83.33333333333334, "punkte": "70/84"}, "deepseek-v4-deepthink": {"pct": 87.5, "punkte": "77/88"}, "gemini-3.1-pro-extended": {"pct": 91.83673469387756, "punkte": "90/98"}, "glm-5.2-neuralwatt": {"pct": 86.45833333333334, "punkte": "83/96"}, "gpt-5.6-sol": {"pct": 92.37288135593221, "punkte": "109/118"}, "grok-4.5-fast": {"pct": 33.33333333333333, "punkte": "38/114"}, "minimax-m3": {"pct": 84.44444444444444, "punkte": "76/90"}, "mistral-chat-think-2026-06": {"pct": 83.63636363636363, "punkte": "92/110"}, "qwen-3.7-max-thinking": {"pct": 81.91489361702128, "punkte": "77/94"}}, "GRÜNE": {"claude-opus-4.8": {"pct": 83.33333333333334, "punkte": "70/84"}, "deepseek-v4-deepthink": {"pct": 82.95454545454545, "punkte": "73/88"}, "gemini-3.1-pro-extended": {"pct": 89.79591836734694, "punkte": "88/98"}, "glm-5.2-neuralwatt": {"pct": 86.45833333333334, "punkte": "83/96"}, "gpt-5.6-sol": {"pct": 92.37288135593221, "punkte": "109/118"}, "grok-4.5-fast": {"pct": 31.57894736842105, "punkte": "36/114"}, "minimax-m3": {"pct": 82.22222222222221, "punkte": "74/90"}, "mistral-chat-think-2026-06": {"pct": 87.27272727272727, "punkte": "96/110"}, "qwen-3.7-max-thinking": {"pct": 84.04255319148936, "punkte": "79/94"}}, "Tierschutz": {"claude-opus-4.8": {"pct": 82.14285714285714, "punkte": "69/84"}, "deepseek-v4-deepthink": {"pct": 79.54545454545455, "punkte": "70/88"}, "gemini-3.1-pro-extended": {"pct": 90.81632653061224, "punkte": "89/98"}, "glm-5.2-neuralwatt": {"pct": 95.83333333333334, "punkte": "92/96"}, "gpt-5.6-sol": {"pct": 90.67796610169492, "punkte": "107/118"}, "grok-4.5-fast": {"pct": 30.701754385964914, "punkte": "35/114"}, "minimax-m3": {"pct": 82.22222222222221, "punkte": "74/90"}, "mistral-chat-think-2026-06": {"pct": 90.9090909090909, "punkte": "100/110"}, "qwen-3.7-max-thinking": {"pct": 94.68085106382979, "punkte": "89/94"}}, "PdH": {"claude-opus-4.8": {"pct": 82.14285714285714, "punkte": "69/84"}, "deepseek-v4-deepthink": {"pct": 69.31818181818183, "punkte": "61/88"}, "gemini-3.1-pro-extended": {"pct": 82.6530612244898, "punkte": "81/98"}, "glm-5.2-neuralwatt": {"pct": 80.20833333333334, "punkte": "77/96"}, "gpt-5.6-sol": {"pct": 81.35593220338984, "punkte": "96/118"}, "grok-4.5-fast": {"pct": 42.98245614035088, "punkte": "49/114"}, "minimax-m3": {"pct": 66.66666666666666, "punkte": "60/90"}, "mistral-chat-think-2026-06": {"pct": 77.27272727272727, "punkte": "85/110"}, "qwen-3.7-max-thinking": {"pct": 75.53191489361703, "punkte": "71/94"}}, "Volt": {"claude-opus-4.8": {"pct": 80.95238095238095, "punkte": "68/84"}, "deepseek-v4-deepthink": {"pct": 78.4090909090909, "punkte": "69/88"}, "gemini-3.1-pro-extended": {"pct": 89.79591836734694, "punkte": "88/98"}, "glm-5.2-neuralwatt": {"pct": 94.79166666666666, "punkte": "91/96"}, "gpt-5.6-sol": {"pct": 89.83050847457628, "punkte": "106/118"}, "grok-4.5-fast": {"pct": 26.31578947368421, "punkte": "30/114"}, "minimax-m3": {"pct": 81.11111111111111, "punkte": "73/90"}, "mistral-chat-think-2026-06": {"pct": 88.18181818181819, "punkte": "97/110"}, "qwen-3.7-max-thinking": {"pct": 93.61702127659575, "punkte": "88/94"}}, "SSW": {"claude-opus-4.8": {"pct": 79.76190476190477, "punkte": "67/84"}, "deepseek-v4-deepthink": {"pct": 79.54545454545455, "punkte": "70/88"}, "gemini-3.1-pro-extended": {"pct": 88.77551020408163, "punkte": "87/98"}, "glm-5.2-neuralwatt": {"pct": 93.75, "punkte": "90/96"}, "gpt-5.6-sol": {"pct": 88.98305084745762, "punkte": "105/118"}, "grok-4.5-fast": {"pct": 26.31578947368421, "punkte": "30/114"}, "minimax-m3": {"pct": 82.22222222222221, "punkte": "74/90"}, "mistral-chat-think-2026-06": {"pct": 89.0909090909091, "punkte": "98/110"}, "qwen-3.7-max-thinking": {"pct": 92.5531914893617, "punkte": "87/94"}}, "PIRATEN": {"claude-opus-4.8": {"pct": 78.57142857142857, "punkte": "66/84"}, "deepseek-v4-deepthink": {"pct": 73.86363636363636, "punkte": "65/88"}, "gemini-3.1-pro-extended": {"pct": 87.75510204081633, "punkte": "86/98"}, "glm-5.2-neuralwatt": {"pct": 92.70833333333334, "punkte": "89/96"}, "gpt-5.6-sol": {"pct": 90.67796610169492, "punkte": "107/118"}, "grok-4.5-fast": {"pct": 35.08771929824561, "punkte": "40/114"}, "minimax-m3": {"pct": 86.66666666666667, "punkte": "78/90"}, "mistral-chat-think-2026-06": {"pct": 90.9090909090909, "punkte": "100/110"}, "qwen-3.7-max-thinking": {"pct": 94.68085106382979, "punkte": "89/94"}}, "Die PARTEI": {"claude-opus-4.8": {"pct": 76.19047619047619, "punkte": "64/84"}, "deepseek-v4-deepthink": {"pct": 75.0, "punkte": "66/88"}, "gemini-3.1-pro-extended": {"pct": 85.71428571428571, "punkte": "84/98"}, "glm-5.2-neuralwatt": {"pct": 90.625, "punkte": "87/96"}, "gpt-5.6-sol": {"pct": 86.4406779661017, "punkte": "102/118"}, "grok-4.5-fast": {"pct": 29.82456140350877, "punkte": "34/114"}, "minimax-m3": {"pct": 78.88888888888889, "punkte": "71/90"}, "mistral-chat-think-2026-06": {"pct": 86.36363636363636, "punkte": "95/110"}, "qwen-3.7-max-thinking": {"pct": 89.36170212765957, "punkte": "84/94"}}, "Die Linke": {"claude-opus-4.8": {"pct": 75.0, "punkte": "63/84"}, "deepseek-v4-deepthink": {"pct": 73.86363636363636, "punkte": "65/88"}, "gemini-3.1-pro-extended": {"pct": 83.6734693877551, "punkte": "82/98"}, "glm-5.2-neuralwatt": {"pct": 86.45833333333334, "punkte": "83/96"}, "gpt-5.6-sol": {"pct": 85.59322033898306, "punkte": "101/118"}, "grok-4.5-fast": {"pct": 22.807017543859647, "punkte": "26/114"}, "minimax-m3": {"pct": 78.88888888888889, "punkte": "71/90"}, "mistral-chat-think-2026-06": {"pct": 85.45454545454545, "punkte": "94/110"}, "qwen-3.7-max-thinking": {"pct": 91.48936170212765, "punkte": "86/94"}}, "PdF": {"claude-opus-4.8": {"pct": 73.80952380952381, "punkte": "62/84"}, "deepseek-v4-deepthink": {"pct": 70.45454545454545, "punkte": "62/88"}, "gemini-3.1-pro-extended": {"pct": 85.71428571428571, "punkte": "84/98"}, "glm-5.2-neuralwatt": {"pct": 81.25, "punkte": "78/96"}, "gpt-5.6-sol": {"pct": 83.89830508474576, "punkte": "99/118"}, "grok-4.5-fast": {"pct": 40.35087719298245, "punkte": "46/114"}, "minimax-m3": {"pct": 81.11111111111111, "punkte": "73/90"}, "mistral-chat-think-2026-06": {"pct": 76.36363636363637, "punkte": "84/110"}, "qwen-3.7-max-thinking": {"pct": 78.72340425531915, "punkte": "74/94"}}, "MERA25": {"claude-opus-4.8": {"pct": 73.80952380952381, "punkte": "62/84"}, "deepseek-v4-deepthink": {"pct": 71.5909090909091, "punkte": "63/88"}, "gemini-3.1-pro-extended": {"pct": 81.63265306122449, "punkte": "80/98"}, "glm-5.2-neuralwatt": {"pct": 84.375, "punkte": "81/96"}, "gpt-5.6-sol": {"pct": 82.20338983050848, "punkte": "97/118"}, "grok-4.5-fast": {"pct": 22.807017543859647, "punkte": "26/114"}, "minimax-m3": {"pct": 75.55555555555556, "punkte": "68/90"}, "mistral-chat-think-2026-06": {"pct": 83.63636363636363, "punkte": "92/110"}, "qwen-3.7-max-thinking": {"pct": 88.29787234042553, "punkte": "83/94"}}, "ÖDP": {"claude-opus-4.8": {"pct": 70.23809523809523, "punkte": "59/84"}, "deepseek-v4-deepthink": {"pct": 69.31818181818183, "punkte": "61/88"}, "gemini-3.1-pro-extended": {"pct": 73.46938775510205, "punkte": "72/98"}, "glm-5.2-neuralwatt": {"pct": 76.04166666666666, "punkte": "73/96"}, "gpt-5.6-sol": {"pct": 72.03389830508475, "punkte": "85/118"}, "grok-4.5-fast": {"pct": 37.719298245614034, "punkte": "43/114"}, "minimax-m3": {"pct": 81.11111111111111, "punkte": "73/90"}, "mistral-chat-think-2026-06": {"pct": 80.0, "punkte": "88/110"}, "qwen-3.7-max-thinking": {"pct": 80.85106382978722, "punkte": "76/94"}}, "Verjüngung": {"claude-opus-4.8": {"pct": 67.85714285714286, "punkte": "57/84"}, "deepseek-v4-deepthink": {"pct": 65.9090909090909, "punkte": "58/88"}, "gemini-3.1-pro-extended": {"pct": 55.10204081632652, "punkte": "54/98"}, "glm-5.2-neuralwatt": {"pct": 54.166666666666664, "punkte": "52/96"}, "gpt-5.6-sol": {"pct": 50.0, "punkte": "59/118"}, "grok-4.5-fast": {"pct": 54.385964912280706, "punkte": "62/114"}, "minimax-m3": {"pct": 51.11111111111111, "punkte": "46/90"}, "mistral-chat-think-2026-06": {"pct": 54.54545454545454, "punkte": "60/110"}, "qwen-3.7-max-thinking": {"pct": 50.0, "punkte": "47/94"}}, "MLPD": {"claude-opus-4.8": {"pct": 67.85714285714286, "punkte": "57/84"}, "deepseek-v4-deepthink": {"pct": 70.45454545454545, "punkte": "62/88"}, "gemini-3.1-pro-extended": {"pct": 74.48979591836735, "punkte": "73/98"}, "glm-5.2-neuralwatt": {"pct": 80.20833333333334, "punkte": "77/96"}, "gpt-5.6-sol": {"pct": 75.42372881355932, "punkte": "89/118"}, "grok-4.5-fast": {"pct": 27.192982456140353, "punkte": "31/114"}, "minimax-m3": {"pct": 72.22222222222221, "punkte": "65/90"}, "mistral-chat-think-2026-06": {"pct": 84.54545454545455, "punkte": "93/110"}, "qwen-3.7-max-thinking": {"pct": 84.04255319148936, "punkte": "79/94"}}, "SGP": {"claude-opus-4.8": {"pct": 67.85714285714286, "punkte": "57/84"}, "deepseek-v4-deepthink": {"pct": 65.9090909090909, "punkte": "58/88"}, "gemini-3.1-pro-extended": {"pct": 74.48979591836735, "punkte": "73/98"}, "glm-5.2-neuralwatt": {"pct": 81.25, "punkte": "78/96"}, "gpt-5.6-sol": {"pct": 76.27118644067797, "punkte": "90/118"}, "grok-4.5-fast": {"pct": 30.701754385964914, "punkte": "35/114"}, "minimax-m3": {"pct": 70.0, "punkte": "63/90"}, "mistral-chat-think-2026-06": {"pct": 79.0909090909091, "punkte": "87/110"}, "qwen-3.7-max-thinking": {"pct": 82.97872340425532, "punkte": "78/94"}}, "Todenhöfer": {"claude-opus-4.8": {"pct": 66.66666666666666, "punkte": "56/84"}, "deepseek-v4-deepthink": {"pct": 69.31818181818183, "punkte": "61/88"}, "gemini-3.1-pro-extended": {"pct": 67.3469387755102, "punkte": "66/98"}, "glm-5.2-neuralwatt": {"pct": 69.79166666666666, "punkte": "67/96"}, "gpt-5.6-sol": {"pct": 66.94915254237289, "punkte": "79/118"}, "grok-4.5-fast": {"pct": 49.122807017543856, "punkte": "56/114"}, "minimax-m3": {"pct": 75.55555555555556, "punkte": "68/90"}, "mistral-chat-think-2026-06": {"pct": 76.36363636363637, "punkte": "84/110"}, "qwen-3.7-max-thinking": {"pct": 67.02127659574468, "punkte": "63/94"}}, "BSW": {"claude-opus-4.8": {"pct": 57.14285714285714, "punkte": "48/84"}, "deepseek-v4-deepthink": {"pct": 62.5, "punkte": "55/88"}, "gemini-3.1-pro-extended": {"pct": 57.14285714285714, "punkte": "56/98"}, "glm-5.2-neuralwatt": {"pct": 63.541666666666664, "punkte": "61/96"}, "gpt-5.6-sol": {"pct": 57.6271186440678, "punkte": "68/118"}, "grok-4.5-fast": {"pct": 46.49122807017544, "punkte": "53/114"}, "minimax-m3": {"pct": 60.0, "punkte": "54/90"}, "mistral-chat-think-2026-06": {"pct": 59.09090909090909, "punkte": "65/110"}, "qwen-3.7-max-thinking": {"pct": 60.63829787234043, "punkte": "57/94"}}, "FDP": {"claude-opus-4.8": {"pct": 55.952380952380956, "punkte": "47/84"}, "deepseek-v4-deepthink": {"pct": 52.27272727272727, "punkte": "46/88"}, "gemini-3.1-pro-extended": {"pct": 51.02040816326531, "punkte": "50/98"}, "glm-5.2-neuralwatt": {"pct": 42.70833333333333, "punkte": "41/96"}, "gpt-5.6-sol": {"pct": 47.45762711864407, "punkte": "56/118"}, "grok-4.5-fast": {"pct": 76.31578947368422, "punkte": "87/114"}, "minimax-m3": {"pct": 43.333333333333336, "punkte": "39/90"}, "mistral-chat-think-2026-06": {"pct": 41.81818181818181, "punkte": "46/110"}, "qwen-3.7-max-thinking": {"pct": 34.04255319148936, "punkte": "32/94"}}, "FREIE WÄHLER": {"claude-opus-4.8": {"pct": 55.952380952380956, "punkte": "47/84"}, "deepseek-v4-deepthink": {"pct": 52.27272727272727, "punkte": "46/88"}, "gemini-3.1-pro-extended": {"pct": 51.02040816326531, "punkte": "50/98"}, "glm-5.2-neuralwatt": {"pct": 53.125, "punkte": "51/96"}, "gpt-5.6-sol": {"pct": 50.0, "punkte": "59/118"}, "grok-4.5-fast": {"pct": 79.82456140350878, "punkte": "91/114"}, "minimax-m3": {"pct": 58.88888888888889, "punkte": "53/90"}, "mistral-chat-think-2026-06": {"pct": 48.18181818181818, "punkte": "53/110"}, "qwen-3.7-max-thinking": {"pct": 50.0, "punkte": "47/94"}}, "MENSCHLICHE": {"claude-opus-4.8": {"pct": 51.19047619047619, "punkte": "43/84"}, "deepseek-v4-deepthink": {"pct": 54.54545454545454, "punkte": "48/88"}, "gemini-3.1-pro-extended": {"pct": 46.93877551020408, "punkte": "46/98"}, "glm-5.2-neuralwatt": {"pct": 41.66666666666667, "punkte": "40/96"}, "gpt-5.6-sol": {"pct": 44.06779661016949, "punkte": "52/118"}, "grok-4.5-fast": {"pct": 56.14035087719298, "punkte": "64/114"}, "minimax-m3": {"pct": 47.77777777777778, "punkte": "43/90"}, "mistral-chat-think-2026-06": {"pct": 50.90909090909091, "punkte": "56/110"}, "qwen-3.7-max-thinking": {"pct": 36.17021276595745, "punkte": "34/94"}}, "CDU / CSU": {"claude-opus-4.8": {"pct": 47.61904761904761, "punkte": "40/84"}, "deepseek-v4-deepthink": {"pct": 56.81818181818182, "punkte": "50/88"}, "gemini-3.1-pro-extended": {"pct": 42.857142857142854, "punkte": "42/98"}, "glm-5.2-neuralwatt": {"pct": 35.41666666666667, "punkte": "34/96"}, "gpt-5.6-sol": {"pct": 38.13559322033898, "punkte": "45/118"}, "grok-4.5-fast": {"pct": 68.42105263157895, "punkte": "78/114"}, "minimax-m3": {"pct": 42.22222222222222, "punkte": "38/90"}, "mistral-chat-think-2026-06": {"pct": 36.36363636363637, "punkte": "40/110"}, "qwen-3.7-max-thinking": {"pct": 30.851063829787233, "punkte": "29/94"}}, "dieBasis": {"claude-opus-4.8": {"pct": 45.23809523809524, "punkte": "38/84"}, "deepseek-v4-deepthink": {"pct": 47.72727272727273, "punkte": "42/88"}, "gemini-3.1-pro-extended": {"pct": 37.755102040816325, "punkte": "37/98"}, "glm-5.2-neuralwatt": {"pct": 41.66666666666667, "punkte": "40/96"}, "gpt-5.6-sol": {"pct": 34.74576271186441, "punkte": "41/118"}, "grok-4.5-fast": {"pct": 58.77192982456141, "punkte": "67/114"}, "minimax-m3": {"pct": 46.666666666666664, "punkte": "42/90"}, "mistral-chat-think-2026-06": {"pct": 47.27272727272727, "punkte": "52/110"}, "qwen-3.7-max-thinking": {"pct": 39.361702127659576, "punkte": "37/94"}}, "BüSo": {"claude-opus-4.8": {"pct": 39.285714285714285, "punkte": "33/84"}, "deepseek-v4-deepthink": {"pct": 40.909090909090914, "punkte": "36/88"}, "gemini-3.1-pro-extended": {"pct": 35.714285714285715, "punkte": "35/98"}, "glm-5.2-neuralwatt": {"pct": 37.5, "punkte": "36/96"}, "gpt-5.6-sol": {"pct": 37.28813559322034, "punkte": "44/118"}, "grok-4.5-fast": {"pct": 51.75438596491229, "punkte": "59/114"}, "minimax-m3": {"pct": 43.333333333333336, "punkte": "39/90"}, "mistral-chat-think-2026-06": {"pct": 42.72727272727273, "punkte": "47/110"}, "qwen-3.7-max-thinking": {"pct": 38.297872340425535, "punkte": "36/94"}}, "WerteUnion": {"claude-opus-4.8": {"pct": 36.904761904761905, "punkte": "31/84"}, "deepseek-v4-deepthink": {"pct": 36.36363636363637, "punkte": "32/88"}, "gemini-3.1-pro-extended": {"pct": 33.6734693877551, "punkte": "33/98"}, "glm-5.2-neuralwatt": {"pct": 25.0, "punkte": "24/96"}, "gpt-5.6-sol": {"pct": 30.508474576271187, "punkte": "36/118"}, "grok-4.5-fast": {"pct": 81.57894736842105, "punkte": "93/114"}, "minimax-m3": {"pct": 30.0, "punkte": "27/90"}, "mistral-chat-think-2026-06": {"pct": 30.0, "punkte": "33/110"}, "qwen-3.7-max-thinking": {"pct": 17.02127659574468, "punkte": "16/94"}}, "Bündnis C": {"claude-opus-4.8": {"pct": 35.714285714285715, "punkte": "30/84"}, "deepseek-v4-deepthink": {"pct": 34.090909090909086, "punkte": "30/88"}, "gemini-3.1-pro-extended": {"pct": 27.55102040816326, "punkte": "27/98"}, "glm-5.2-neuralwatt": {"pct": 27.083333333333332, "punkte": "26/96"}, "gpt-5.6-sol": {"pct": 27.11864406779661, "punkte": "32/118"}, "grok-4.5-fast": {"pct": 73.68421052631578, "punkte": "84/114"}, "minimax-m3": {"pct": 35.55555555555556, "punkte": "32/90"}, "mistral-chat-think-2026-06": {"pct": 31.818181818181817, "punkte": "35/110"}, "qwen-3.7-max-thinking": {"pct": 21.27659574468085, "punkte": "20/94"}}, "BP": {"claude-opus-4.8": {"pct": 35.714285714285715, "punkte": "30/84"}, "deepseek-v4-deepthink": {"pct": 31.818181818181817, "punkte": "28/88"}, "gemini-3.1-pro-extended": {"pct": 25.510204081632654, "punkte": "25/98"}, "glm-5.2-neuralwatt": {"pct": 26.041666666666668, "punkte": "25/96"}, "gpt-5.6-sol": {"pct": 24.576271186440678, "punkte": "29/118"}, "grok-4.5-fast": {"pct": 72.80701754385966, "punkte": "83/114"}, "minimax-m3": {"pct": 31.11111111111111, "punkte": "28/90"}, "mistral-chat-think-2026-06": {"pct": 24.545454545454547, "punkte": "27/110"}, "qwen-3.7-max-thinking": {"pct": 22.340425531914892, "punkte": "21/94"}}, "BÜNDNIS D": {"claude-opus-4.8": {"pct": 34.523809523809526, "punkte": "29/84"}, "deepseek-v4-deepthink": {"pct": 38.63636363636363, "punkte": "34/88"}, "gemini-3.1-pro-extended": {"pct": 31.63265306122449, "punkte": "31/98"}, "glm-5.2-neuralwatt": {"pct": 25.0, "punkte": "24/96"}, "gpt-5.6-sol": {"pct": 28.8135593220339, "punkte": "34/118"}, "grok-4.5-fast": {"pct": 82.45614035087719, "punkte": "94/114"}, "minimax-m3": {"pct": 30.0, "punkte": "27/90"}, "mistral-chat-think-2026-06": {"pct": 28.18181818181818, "punkte": "31/110"}, "qwen-3.7-max-thinking": {"pct": 18.085106382978726, "punkte": "17/94"}}, "AfD": {"claude-opus-4.8": {"pct": 26.190476190476193, "punkte": "22/84"}, "deepseek-v4-deepthink": {"pct": 28.40909090909091, "punkte": "25/88"}, "gemini-3.1-pro-extended": {"pct": 17.346938775510203, "punkte": "17/98"}, "glm-5.2-neuralwatt": {"pct": 13.541666666666666, "punkte": "13/96"}, "gpt-5.6-sol": {"pct": 13.559322033898304, "punkte": "16/118"}, "grok-4.5-fast": {"pct": 75.43859649122807, "punkte": "86/114"}, "minimax-m3": {"pct": 21.11111111111111, "punkte": "19/90"}, "mistral-chat-think-2026-06": {"pct": 17.272727272727273, "punkte": "19/110"}, "qwen-3.7-max-thinking": {"pct": 8.51063829787234, "punkte": "8/94"}}}, "summary": {"models": 9, "parties": 28, "overall_avg": 60.6, "top": {"kurz": "Tierschutz", "name": "PARTEI MENSCH UMWELT TIERSCHUTZ", "color": "#8BC34A", "avg": 81.9, "min": 30.7, "max": 95.8, "count": 9}, "divisive": {"kurz": "Die Linke", "name": "Die Linke", "color": "#BE3075", "avg": 75.9, "min": 22.8, "max": 91.5, "count": 9}}}, "models_count": 9, "parties_count": 28}, {"id": "realomat", "label": "Real-O-Mat", "subtitle": "Tatsächliches Abstimmungsverhalten im Bundestag", "source": "Daten: fragdenstaat.de · CC-BY-SA 4.0", "notes_html": "<p>Jedes Modell hat den Real-O-Mat zur Bundestagswahl 2025 beantwortet: 20 Thesen, die aus dem <strong>tatsächlichen Abstimmungsverhalten</strong> der sieben Bundestagsfraktionen (Legislaturperiode 2021–2025) abgeleitet wurden. Übereinstimmung mit jeder Fraktion in Prozent. Höher = stärkere inhaltliche Nähe.</p>\n<h3>Methodik (Kurzform)</h3>\n<p>Im Gegensatz zum Wahl-O-Mat, der <strong>Parteiprogramme</strong> bewertet, vergleicht der Real-O-Mat das <strong>tatsächliche Abstimmungsverhalten</strong> der Fraktionen mit den Modell-Antworten. Antwortoptionen je These: <em>richtig / nicht weit genug / zu weit</em> – jeweils belegt durch Beschlussempfehlungen und Plenarprotokolle.</p>\n<ul><li>Volle Übereinstimmung (gleiche Antwort) → 100 %</li><li>Keine Übereinstimmung → 0 %</li><li>Nicht wertbare Positionen (<code>/</code>, z. B. Enthaltung ohne klare Position oder Fraktion existierte noch nicht) → 0 %</li><li>Doppelt gewichtete Thesen zählen doppelt</li><li>Übersprungene Thesen fließen nicht ins Ergebnis ein</li></ul>\n<p>Die verfügbaren Antwortoptionen je These entsprechen genau den Positionen, die mindestens eine Fraktion tatsächlich eingenommen hat. Ausführliche Methodik: <a href=\"https://real-o-mat.de/methodik/\" target=\"_blank\" rel=\"noopener noreferrer\">real-o-mat.de/methodik</a>. Datenquelle: <a href=\"https://fragdenstaat.de\" target=\"_blank\" rel=\"noopener noreferrer\">fragdenstaat.de</a> (CC-BY-SA 4.0).</p>\n<h3>Aktueller Stand</h3>\n<p>Aktuell liegt erst ein Datenpunkt vor (<code>glm-5.2-short</code>). Sobald weitere Modelle vorliegen, wird die Ähnlichkeitsanalyse aussagekräftiger.</p>", "data": {"election": "realomat-btw2025", "models": ["claude-opus-4.8", "gemini-3.1-pro-extended", "glm-5.2-short", "gpt-5.6-sol-medium", "grok-4.5-thinking-perplexity", "minimax-m3", "muse-spark-1.1-meta-ai", "qwen-3.8-max-preview"], "modelColors": {"claude-opus-4.8": "#7aa2f7", "gemini-3.1-pro-extended": "#bb9af7", "glm-5.2-short": "#e0af68", "gpt-5.6-sol-medium": "#9ece6a", "grok-4.5-thinking-perplexity": "#f7768e", "minimax-m3": "#7dcfff", "muse-spark-1.1-meta-ai": "#ff9e64", "qwen-3.8-max-preview": "#c0caf5"}, "parties": [{"kurz": "FDP", "name": "Freie Demokratische Partei", "color": "#FFCC00", "avg": 67.3, "min": 51.7, "max": 81.8, "count": 8}, {"kurz": "GRÜNE", "name": "Bündnis 90/Die Grünen", "color": "#46A62E", "avg": 67.3, "min": 51.7, "max": 81.8, "count": 8}, {"kurz": "SPD", "name": "Sozialdemokratische Partei Deutschlands", "color": "#E3000F", "avg": 63.9, "min": 48.3, "max": 77.3, "count": 8}, {"kurz": "Die Linke", "name": "Die Linke", "color": "#BE3075", "avg": 58.3, "min": 40.0, "max": 72.4, "count": 8}, {"kurz": "CDU / CSU", "name": "Christlich Demokratische Union / Christlich-Soziale Union", "color": "#5a5f66", "avg": 28.0, "min": 17.2, "max": 48.0, "count": 8}, {"kurz": "AfD", "name": "Alternative für Deutschland", "color": "#009EE0", "avg": 19.5, "min": 13.3, "max": 28.0, "count": 8}, {"kurz": "BSW", "name": "Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit", "color": "#9C27B0", "avg": 15.5, "min": 10.3, "max": 24.0, "count": 8}], "scores": {"SPD": {"claude-opus-4.8": {"pct": 72.0, "punkte": "18/25"}, "gemini-3.1-pro-extended": {"pct": 77.27272727272727, "punkte": "17/22"}, "glm-5.2-short": {"pct": 48.275862068965516, "punkte": "14/29"}, "gpt-5.6-sol-medium": {"pct": 58.333333333333336, "punkte": "14/24"}, "grok-4.5-thinking-perplexity": {"pct": 60.0, "punkte": "15/25"}, "minimax-m3": {"pct": 60.0, "punkte": "18/30"}, "muse-spark-1.1-meta-ai": {"pct": 72.0, "punkte": "18/25"}, "qwen-3.8-max-preview": {"pct": 62.96296296296296, "punkte": "17/27"}}, "FDP": {"claude-opus-4.8": {"pct": 72.0, "punkte": "18/25"}, "gemini-3.1-pro-extended": {"pct": 81.81818181818183, "punkte": "18/22"}, "glm-5.2-short": {"pct": 51.724137931034484, "punkte": "15/29"}, "gpt-5.6-sol-medium": {"pct": 62.5, "punkte": "15/24"}, "grok-4.5-thinking-perplexity": {"pct": 64.0, "punkte": "16/25"}, "minimax-m3": {"pct": 63.33333333333333, "punkte": "19/30"}, "muse-spark-1.1-meta-ai": {"pct": 76.0, "punkte": "19/25"}, "qwen-3.8-max-preview": {"pct": 66.66666666666666, "punkte": "18/27"}}, "GRÜNE": {"claude-opus-4.8": {"pct": 72.0, "punkte": "18/25"}, "gemini-3.1-pro-extended": {"pct": 81.81818181818183, "punkte": "18/22"}, "glm-5.2-short": {"pct": 51.724137931034484, "punkte": "15/29"}, "gpt-5.6-sol-medium": {"pct": 62.5, "punkte": "15/24"}, "grok-4.5-thinking-perplexity": {"pct": 64.0, "punkte": "16/25"}, "minimax-m3": {"pct": 63.33333333333333, "punkte": "19/30"}, "muse-spark-1.1-meta-ai": {"pct": 76.0, "punkte": "19/25"}, "qwen-3.8-max-preview": {"pct": 66.66666666666666, "punkte": "18/27"}}, "Die Linke": {"claude-opus-4.8": {"pct": 68.0, "punkte": "17/25"}, "gemini-3.1-pro-extended": {"pct": 50.0, "punkte": "11/22"}, "glm-5.2-short": {"pct": 72.41379310344827, "punkte": "21/29"}, "gpt-5.6-sol-medium": {"pct": 62.5, "punkte": "15/24"}, "grok-4.5-thinking-perplexity": {"pct": 40.0, "punkte": "10/25"}, "minimax-m3": {"pct": 63.33333333333333, "punkte": "19/30"}, "muse-spark-1.1-meta-ai": {"pct": 40.0, "punkte": "10/25"}, "qwen-3.8-max-preview": {"pct": 70.37037037037037, "punkte": "19/27"}}, "AfD": {"claude-opus-4.8": {"pct": 28.000000000000004, "punkte": "7/25"}, "gemini-3.1-pro-extended": {"pct": 18.181818181818183, "punkte": "4/22"}, "glm-5.2-short": {"pct": 17.24137931034483, "punkte": "5/29"}, "gpt-5.6-sol-medium": {"pct": 16.666666666666664, "punkte": "4/24"}, "grok-4.5-thinking-perplexity": {"pct": 24.0, "punkte": "6/25"}, "minimax-m3": {"pct": 13.333333333333334, "punkte": "4/30"}, "muse-spark-1.1-meta-ai": {"pct": 20.0, "punkte": "5/25"}, "qwen-3.8-max-preview": {"pct": 18.51851851851852, "punkte": "5/27"}}, "CDU / CSU": {"claude-opus-4.8": {"pct": 24.0, "punkte": "6/25"}, "gemini-3.1-pro-extended": {"pct": 27.27272727272727, "punkte": "6/22"}, "glm-5.2-short": {"pct": 17.24137931034483, "punkte": "5/29"}, "gpt-5.6-sol-medium": {"pct": 25.0, "punkte": "6/24"}, "grok-4.5-thinking-perplexity": {"pct": 48.0, "punkte": "12/25"}, "minimax-m3": {"pct": 20.0, "punkte": "6/30"}, "muse-spark-1.1-meta-ai": {"pct": 40.0, "punkte": "10/25"}, "qwen-3.8-max-preview": {"pct": 22.22222222222222, "punkte": "6/27"}}, "BSW": {"claude-opus-4.8": {"pct": 24.0, "punkte": "6/25"}, "gemini-3.1-pro-extended": {"pct": 13.636363636363635, "punkte": "3/22"}, "glm-5.2-short": {"pct": 10.344827586206897, "punkte": "3/29"}, "gpt-5.6-sol-medium": {"pct": 12.5, "punkte": "3/24"}, "grok-4.5-thinking-perplexity": {"pct": 16.0, "punkte": "4/25"}, "minimax-m3": {"pct": 16.666666666666664, "punkte": "5/30"}, "muse-spark-1.1-meta-ai": {"pct": 12.0, "punkte": "3/25"}, "qwen-3.8-max-preview": {"pct": 18.51851851851852, "punkte": "5/27"}}}, "summary": {"models": 8, "parties": 7, "overall_avg": 45.7, "top": {"kurz": "FDP", "name": "Freie Demokratische Partei", "color": "#FFCC00", "avg": 67.3, "min": 51.7, "max": 81.8, "count": 8}, "divisive": {"kurz": "Die Linke", "name": "Die Linke", "color": "#BE3075", "avg": 58.3, "min": 40.0, "max": 72.4, "count": 8}}}, "models_count": 8, "parties_count": 7}];
 
     const STOPS = [
       [0.00, [13, 9, 42]],
@@ -812,32 +1192,39 @@
       [0.75, [226, 95, 38]],
       [1.00, [255, 225, 95]],
     ];
-
-    function clamp01(t) { return Math.max(0, Math.min(1, t)); }
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    function colorFor(t) {
-      t = clamp01(t);
-      for (let i = 1; i < STOPS.length; i++) {
-        if (t <= STOPS[i][0]) {
-          const [t0, c0] = STOPS[i - 1], [t1, c1] = STOPS[i];
-          const k = (t - t0) / (t1 - t0) || 0;
-          const r = Math.round(lerp(c0[0], c1[0], k));
-          const g = Math.round(lerp(c0[1], c1[1], k));
-          const b = Math.round(lerp(c0[2], c1[2], k));
-          return [r, g, b];
-        }
-      }
-      return STOPS[STOPS.length - 1][1];
-    }
-    function rgbStr(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
-    function textFor(c) { const lum = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; return lum > 150 ? "#132" : "#fff"; }
-
-    /* ---- state ---- */
-    let sortKey = null; // null = average sort
-    let filterText = "";
+    const SIM_STOPS = [
+      [0.00, [214, 72, 80]],
+      [0.50, [205, 185, 75]],
+      [1.00, [80, 210, 135]],
+    ];
 
     const $ = s => document.querySelector(s);
     const tip = $("#tip");
+
+    function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function rgbStr(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
+    function textFor(c) { const lum = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; return lum > 150 ? "#132" : "#fff"; }
+    function colorFor(t) { return stopColor(STOPS, t); }
+    function simColor(t) { return stopColor(SIM_STOPS, t); }
+    function stopColor(stops, t) {
+      t = clamp01(t);
+      for (let i = 1; i < stops.length; i++) {
+        if (t <= stops[i][0]) {
+          const [t0, c0] = stops[i - 1], [t1, c1] = stops[i];
+          const k = (t - t0) / (t1 - t0) || 0;
+          return [
+            Math.round(lerp(c0[0], c1[0], k)),
+            Math.round(lerp(c0[1], c1[1], k)),
+            Math.round(lerp(c0[2], c1[2], k))
+          ];
+        }
+      }
+      return stops[stops.length - 1][1];
+    }
+    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    function shortModel(m) { return m.split("-").slice(0, 3).join("-"); }
+    function fmtCorr(r) { return r === null ? "—" : (r >= 0 ? " " : "−") + Math.abs(r).toFixed(2); }
 
     function showTip(html, e) {
       tip.innerHTML = html; tip.style.opacity = 1;
@@ -849,79 +1236,87 @@
     }
     function hideTip() { tip.style.opacity = 0; }
 
-    function parties() {
-      const f = filterText.trim().toLowerCase();
-      let list = DATA.parties.slice();
+    function pearson(xs, ys) {
+      const n = xs.length;
+      if (n < 2) return null;
+      let mx = 0, my = 0;
+      for (let i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
+      mx /= n; my /= n;
+      let sxx = 0, syy = 0, sxy = 0;
+      for (let i = 0; i < n; i++) { const dx = xs[i] - mx, dy = ys[i] - my; sxx += dx * dx; syy += dy * dy; sxy += dx * dy; }
+      const d = Math.sqrt(sxx * syy);
+      return d === 0 ? 0 : sxy / d;
+    }
+
+    function renderGradientBar(el, fn) {
+      const stops = [];
+      for (let i = 0; i <= 10; i++) { const t = i / 10; stops.push(rgbStr(fn(t)) + " " + Math.round(t * 100) + "%"); }
+      el.style.background = "linear-gradient(90deg," + stops.join(",") + ")";
+    }
+
+    function partiesFor(tool) {
+      const f = tool.state.filterText.trim().toLowerCase();
+      let list = tool.data.parties.slice();
       if (f) list = list.filter(p => (p.kurz + " " + p.name).toLowerCase().includes(f));
-      if (sortKey) {
+      if (tool.state.sortKey) {
         list.sort((a, b) => {
-          const sa = DATA.scores[a.kurz]?.[sortKey]?.pct ?? -1;
-          const sb = DATA.scores[b.kurz]?.[sortKey]?.pct ?? -1;
+          const sa = tool.data.scores[a.kurz]?.[tool.state.sortKey]?.pct ?? -1;
+          const sb = tool.data.scores[b.kurz]?.[tool.state.sortKey]?.pct ?? -1;
           return sb - sa;
         });
       }
       return list;
     }
 
-    /* ---- legend ---- */
-    (function legend() {
-      const stops = [];
-      for (let i = 0; i <= 10; i++) { const t = i / 10; stops.push(rgbStr(colorFor(t)) + " " + Math.round(t * 100) + "%"); }
-      $("#legend-bar").style.background = "linear-gradient(90deg," + stops.join(",") + ")";
-    })();
-
-    /* ---- cards ---- */
-    (function cards() {
-      const s = DATA.summary;
+    function renderCards(tool) {
+      const s = tool.data.summary;
+      const groupLabel = tool.id === "wahlomat" ? "Parteien" : "Fraktionen";
+      const topLabel = tool.id === "wahlomat" ? "Top-Partei" : "Top-Fraktion";
       const rows = [
         ["Modelle", s.models, "LLMs verglichen"],
-        ["Parteien", s.parties, "im Vergleich"],
-        ["Ø Übereinstimmung", s.overall_avg + "%", "über alle Modelle & Parteien"],
-        ["Top-Partei", s.top ? s.top.avg + "%" : "—", s.top ? s.top.kurz : "—"],
+        [groupLabel, s.parties, "im Vergleich"],
+        ["Ø Übereinstimmung", s.overall_avg + "%", "über alle Modelle & " + groupLabel.toLowerCase()],
+        [topLabel, s.top ? s.top.avg + "%" : "—", s.top ? s.top.kurz : "—"],
       ];
-      $("#cards").innerHTML = rows.map(r =>
+      tool.dom.cards.innerHTML = rows.map(r =>
         `<div class="card"><div class="k">${r[0]}</div><div class="v">${r[1]}</div><div class="x">${r[2]}</div></div>`
       ).join("");
-    })();
+    }
 
-    /* ---- heatmap ---- */
-    function renderHeatmap() {
-      const grid = $("#heat-grid");
-      const models = DATA.models;
-      const cols = 1 + models.length + 1;
+    function renderHeatmap(tool) {
+      const grid = tool.dom.heatGrid;
+      const models = tool.data.models;
       grid.style.gridTemplateColumns = "170px repeat(" + models.length + ", minmax(54px,1fr)) 64px";
       grid.innerHTML = "";
 
-      // header
       const corner = document.createElement("div");
       corner.className = "cell h-corner";
-      corner.textContent = "Partei / Modell";
+      corner.textContent = tool.id === "wahlomat" ? "Partei / Modell" : "Fraktion / Modell";
       grid.appendChild(corner);
       models.forEach(m => {
         const h = document.createElement("div");
-        h.className = "h-head" + (sortKey === m ? " active" : "");
-        h.textContent = m.split("-").slice(0, 3).join("-"); // compact model label
+        h.className = "h-head" + (tool.state.sortKey === m ? " active" : "");
+        h.textContent = shortModel(m);
         h.title = m;
-        h.onclick = () => { sortKey = (sortKey === m) ? null : m; renderAll(); };
+        h.onclick = () => { tool.state.sortKey = (tool.state.sortKey === m) ? null : m; renderAll(tool); };
         grid.appendChild(h);
       });
       const avgHead = document.createElement("div");
-      avgHead.className = "h-head" + (sortKey === null ? " active" : "");
+      avgHead.className = "h-head" + (tool.state.sortKey === null ? " active" : "");
       avgHead.textContent = "Ø";
       avgHead.title = "Mittelwert über alle Modelle";
-      avgHead.onclick = () => { sortKey = null; renderAll(); };
+      avgHead.onclick = () => { tool.state.sortKey = null; renderAll(tool); };
       grid.appendChild(avgHead);
 
-      // rows
-      parties().forEach(p => {
+      partiesFor(tool).forEach(p => {
         const name = document.createElement("div");
         name.className = "h-party";
         name.innerHTML = `<span class="pdot" style="background:${p.color}"></span><span class="pname" title="${escapeHtml(p.name)}">${escapeHtml(p.kurz)}</span>`;
-        name.onclick = () => { sortKey = null; renderAll(); };
+        name.onclick = () => { tool.state.sortKey = null; renderAll(tool); };
         grid.appendChild(name);
 
         models.forEach(m => {
-          const v = DATA.scores[p.kurz]?.[m];
+          const v = tool.data.scores[p.kurz]?.[m];
           const cell = document.createElement("div");
           if (!v) { cell.className = "cell miss"; cell.textContent = "–"; }
           else {
@@ -930,18 +1325,19 @@
             cell.style.background = rgbStr(c);
             cell.style.color = textFor(c);
             cell.textContent = Math.round(v.pct);
+            cell.dataset.tool = tool.id;
             cell.dataset.kurz = p.kurz; cell.dataset.model = m;
             cell.onmouseenter = (e) => {
               showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div>
-            <div class="t-r">${escapeHtml(p.name)}</div>
-            <div class="t-r">${escapeHtml(m)} · <b>${v.pct.toFixed(1)}%</b></div>
-            <div class="t-r">Punkte: ${escapeHtml(v.punkte)}</div>`, e);
-              document.querySelectorAll('.cell[data-model="' + m + '"]').forEach(x => x.classList.add('hl-col'));
-              document.querySelectorAll('.cell[data-kurz="' + p.kurz + '"]').forEach(x => x.classList.add('hl-row'));
+                <div class="t-r">${escapeHtml(p.name)}</div>
+                <div class="t-r">${escapeHtml(m)} · <b>${v.pct.toFixed(1)}%</b></div>
+                <div class="t-r">Punkte: ${escapeHtml(v.punkte)}</div>`, e);
+              tool.dom.section.querySelectorAll('.cell[data-model="' + m + '"]').forEach(x => x.classList.add('hl-col'));
+              tool.dom.section.querySelectorAll('.cell[data-kurz="' + p.kurz + '"]').forEach(x => x.classList.add('hl-row'));
             };
             cell.onmouseleave = () => {
               hideTip();
-              document.querySelectorAll('.cell.hl-row,.cell.hl-col').forEach(x => x.classList.remove('hl-row', 'hl-col'));
+              tool.dom.section.querySelectorAll('.cell.hl-row,.cell.hl-col').forEach(x => x.classList.remove('hl-row', 'hl-col'));
             };
           }
           grid.appendChild(cell);
@@ -960,12 +1356,11 @@
       });
     }
 
-    /* ---- spread / dumbbell ---- */
-    function renderSpread() {
-      const root = $("#spread-grid");
+    function renderSpread(tool) {
+      const root = tool.dom.spreadGrid;
       root.innerHTML = "";
-      const models = DATA.models;
-      parties().forEach(p => {
+      const models = tool.data.models;
+      partiesFor(tool).forEach(p => {
         const row = document.createElement("div");
         row.className = "spread-row";
         row.innerHTML = `<div class="sp-party"><span class="pdot" style="background:${p.color}"></span><span class="pname" title="${escapeHtml(p.name)}">${escapeHtml(p.kurz)}</span></div>`;
@@ -979,11 +1374,11 @@
         avgMark.className = "avg-mark"; avgMark.style.left = p.avg + "%";
         track.appendChild(avgMark);
         models.forEach(m => {
-          const v = DATA.scores[p.kurz]?.[m]; if (!v) return;
+          const v = tool.data.scores[p.kurz]?.[m]; if (!v) return;
           const d = document.createElement("div");
           d.className = "sdot";
           d.style.left = v.pct + "%";
-          d.style.background = DATA.modelColors[m];
+          d.style.background = tool.data.modelColors[m];
           d.onmouseenter = (e) => showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div><div class="t-m">${escapeHtml(m)}</div><div class="t-r"><b>${v.pct.toFixed(1)}%</b> · ${escapeHtml(v.punkte)}</div>`, e);
           d.onmouseleave = hideTip;
           track.appendChild(d);
@@ -997,98 +1392,75 @@
       });
     }
 
-    /* ---- similarity / correlation matrix ---- */
-    const SIM_STOPS = [
-      [0.00, [214, 72, 80]],
-      [0.50, [205, 185, 75]],
-      [1.00, [80, 210, 135]],
-    ];
-    function simColor(t) {
-      t = clamp01(t);
-      for (let i = 1; i < SIM_STOPS.length; i++) {
-        if (t <= SIM_STOPS[i][0]) {
-          const [t0, c0] = SIM_STOPS[i - 1], [t1, c1] = SIM_STOPS[i];
-          const k = (t - t0) / (t1 - t0) || 0;
-          return [Math.round(lerp(c0[0], c1[0], k)), Math.round(lerp(c0[1], c1[1], k)), Math.round(lerp(c0[2], c1[2], k))];
-        }
-      }
-      return SIM_STOPS[SIM_STOPS.length - 1][1];
-    }
-    function pearson(xs, ys) {
-      const n = xs.length;
-      if (n < 2) return null;
-      let mx = 0, my = 0;
-      for (let i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
-      mx /= n; my /= n;
-      let sxx = 0, syy = 0, sxy = 0;
-      for (let i = 0; i < n; i++) { const dx = xs[i] - mx, dy = ys[i] - my; sxx += dx * dx; syy += dy * dy; sxy += dx * dy; }
-      const d = Math.sqrt(sxx * syy);
-      return d === 0 ? 0 : sxy / d;
-    }
-    function modelPairStats(a, b) {
+    function modelPairStats(tool, a, b) {
       const xs = [], ys = [];
-      DATA.parties.forEach(p => {
-        const va = DATA.scores[p.kurz]?.[a], vb = DATA.scores[p.kurz]?.[b];
+      tool.data.parties.forEach(p => {
+        const va = tool.data.scores[p.kurz]?.[a], vb = tool.data.scores[p.kurz]?.[b];
         if (va && vb) { xs.push(va.pct); ys.push(vb.pct); }
       });
       const n = xs.length;
       let mad = null;
-      if (n) { let s = 0; for (let i = 0; i < n; i++)s += Math.abs(xs[i] - ys[i]); mad = s / n; }
+      if (n) { let s = 0; for (let i = 0; i < n; i++) s += Math.abs(xs[i] - ys[i]); mad = s / n; }
       return { corr: pearson(xs, ys), n: n, mad: mad };
     }
-    function fmtCorr(r) { return r === null ? "—" : (r >= 0 ? " " : "−") + Math.abs(r).toFixed(2); }
 
-    function renderSimilarity() {
-      const grid = $("#sim-grid");
-      const models = DATA.models;
+    function renderSimilarity(tool) {
+      const grid = tool.dom.simGrid;
+      const sum = tool.dom.simSummary;
+      const models = tool.data.models;
+
+      if (models.length < 2) {
+        grid.innerHTML = "";
+        grid.style.gridTemplateColumns = "1fr";
+        sum.innerHTML = "";
+        const empty = document.createElement("div");
+        empty.className = "sim-empty";
+        empty.textContent = "Mindestens zwei Modelle nötig für die Ähnlichkeitsanalyse.";
+        grid.appendChild(empty);
+        return;
+      }
+
       grid.style.gridTemplateColumns = "140px repeat(" + models.length + ",minmax(64px,1fr))";
       grid.innerHTML = "";
 
-      // header row
       const corner = document.createElement("div");
       corner.className = "s-cell s-corner"; corner.textContent = "Modell";
       grid.appendChild(corner);
       models.forEach(m => {
         const h = document.createElement("div");
-        h.className = "s-head"; h.textContent = m.split("-").slice(0, 3).join("-"); h.title = m;
+        h.className = "s-head"; h.textContent = shortModel(m); h.title = m;
         grid.appendChild(h);
       });
 
-      // precompute matrix + find extreme pairs
       const stats = {};
       let bestPair = null, worstPair = null, bestV = -2, worstV = 2;
       models.forEach(a => {
         models.forEach(b => {
           const key = a + "\u0001" + b;
-          const st = modelPairStats(a, b);
+          const st = modelPairStats(tool, a, b);
           stats[key] = st;
-          if (a !== b) {
-            if (st.corr !== null) {
-              if (st.corr > bestV) { bestV = st.corr; bestPair = [a, b]; }
-              if (st.corr < worstV) { worstV = st.corr; worstPair = [a, b]; }
-            }
+          if (a !== b && st.corr !== null) {
+            if (st.corr > bestV) { bestV = st.corr; bestPair = [a, b]; }
+            if (st.corr < worstV) { worstV = st.corr; worstPair = [a, b]; }
           }
         });
       });
 
-      // summary chips
-      const sum = $("#sim-summary");
       const chips = [];
-      if (bestPair && bestV > -2) {
+      if (bestPair) {
         chips.push({
           k: "Ähnlichstes Paar", v: escapeHtml(shortModel(bestPair[0])) + " ↔ " + escapeHtml(shortModel(bestPair[1])),
           r: "r = " + fmtCorr(bestV).trim(), col: simColor((bestV + 1) / 2)
         });
       }
-      if (worstPair && worstV < 2) {
+      if (worstPair) {
         chips.push({
           k: "Unterschiedlichstes Paar", v: escapeHtml(shortModel(worstPair[0])) + " ↔ " + escapeHtml(shortModel(worstPair[1])),
           r: "r = " + fmtCorr(worstV).trim(), col: simColor((worstV + 1) / 2)
         });
       }
-      // average off-diagonal correlation
       let acc = 0, cnt = 0;
-      for (let i = 0; i < models.length; i++)for (let j = 0; j < models.length; j++) {
+      for (let i = 0; i < models.length; i++) for (let j = 0; j < models.length; j++) {
         if (i === j) continue;
         const r = stats[models[i] + "\u0001" + models[j]].corr;
         if (r !== null) { acc += r; cnt++; }
@@ -1099,11 +1471,10 @@
      <div><div class="sk">${c.k}</div><div class="sv">${c.v} <b>${c.r}</b></div></div></div>`
       ).join("");
 
-      // rows
       models.forEach(a => {
         const lab = document.createElement("div");
         lab.className = "s-lab";
-        lab.innerHTML = `<span class="dot" style="background:${DATA.modelColors[a]}"></span><span class="nm" title="${escapeHtml(a)}">${escapeHtml(shortModel(a))}</span>`;
+        lab.innerHTML = `<span class="dot" style="background:${tool.data.modelColors[a]}"></span><span class="nm" title="${escapeHtml(a)}">${escapeHtml(shortModel(a))}</span>`;
         grid.appendChild(lab);
         models.forEach(b => {
           const cell = document.createElement("div");
@@ -1133,32 +1504,90 @@
       });
     }
 
-    function shortModel(m) { return m.split("-").slice(0, 3).join("-"); }
+    function renderAll(tool) {
+      renderCards(tool);
+      renderHeatmap(tool);
+      renderSpread(tool);
+      renderSimilarity(tool);
+    }
 
-    (function simLegend() {
-      const stops = [];
-      for (let i = 0; i <= 10; i++) { const t = i / 10; stops.push(rgbStr(simColor(t)) + " " + Math.round(t * 100) + "%"); }
-      $("#sim-legend-bar").style.background = "linear-gradient(90deg," + stops.join(",") + ")";
-    })();
-
-    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-
-    function renderAll() { renderHeatmap(); renderSpread(); renderSimilarity(); }
-
-    /* ---- tabs ---- */
-    document.querySelectorAll(".tab").forEach(t => {
-      t.onclick = () => {
-        document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-        t.classList.add("active");
-        const v = t.dataset.view;
-        document.querySelectorAll(".view").forEach(x => x.classList.remove("active"));
-        $("#view-" + v).classList.add("active");
+    function setupTool(tool) {
+      tool.state = { sortKey: null, filterText: "" };
+      tool.dom = {
+        section: $("#sec-" + tool.id),
+        subtitle: $("#" + tool.id + "-subtitle"),
+        cards: $("#" + tool.id + "-cards"),
+        heatGrid: $("#" + tool.id + "-heat-grid"),
+        spreadGrid: $("#" + tool.id + "-spread-grid"),
+        simGrid: $("#" + tool.id + "-sim-grid"),
+        simSummary: $("#" + tool.id + "-sim-summary"),
+        legendBar: $("#" + tool.id + "-legend-bar"),
+        simLegendBar: $("#" + tool.id + "-sim-legend-bar"),
+        filter: $("#" + tool.id + "-filter"),
+        infoBtn: $("#sec-" + tool.id + " .info-btn"),
       };
-    });
-    $("#filter").addEventListener("input", e => { filterText = e.target.value; renderAll(); });
+      tool.dom.subtitle.textContent = tool.source;
+      renderGradientBar(tool.dom.legendBar, colorFor);
+      renderGradientBar(tool.dom.simLegendBar, simColor);
+      tool.dom.infoBtn.onclick = () => openModal(tool);
+      tool.dom.section.querySelectorAll(".tab").forEach(t => {
+        t.onclick = () => {
+          tool.dom.section.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+          t.classList.add("active");
+          const v = t.dataset.view;
+          tool.dom.section.querySelectorAll(".view").forEach(x => x.classList.remove("active"));
+          $("#" + tool.id + "-view-" + v).classList.add("active");
+        };
+      });
+      tool.dom.filter.addEventListener("input", e => { tool.state.filterText = e.target.value; renderAll(tool); });
+      renderAll(tool);
+    }
 
-    renderAll();
-    $("#rendered-info").textContent = DATA.models.length + " Modelle · " + DATA.parties.length + " Parteien";
+    TOOLS.forEach(setupTool);
+
+    /* ---- modal ---- */
+    const modalBackdrop = $("#modal-backdrop");
+    const modalTitle = $("#modal-title-text");
+    const modalSource = $("#modal-source");
+    const modalBody = $("#modal-body");
+    const modalClose = $("#modal-close");
+
+    function openModal(tool) {
+      modalTitle.textContent = tool.label;
+      modalSource.textContent = tool.subtitle;
+      modalBody.innerHTML = tool.notes_html;
+      modalBackdrop.classList.add("open");
+      modalBackdrop.setAttribute("aria-hidden", "false");
+      modalClose.focus();
+    }
+    function closeModal() {
+      modalBackdrop.classList.remove("open");
+      modalBackdrop.setAttribute("aria-hidden", "true");
+    }
+    modalClose.onclick = closeModal;
+    modalBackdrop.addEventListener("click", e => { if (e.target === modalBackdrop) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && modalBackdrop.classList.contains("open")) closeModal(); });
+
+    function showTool(id) {
+      TOOLS.forEach(t => {
+        const on = t.id === id;
+        t.dom.section.classList.toggle("active", on);
+      });
+      document.querySelectorAll(".tool-tab").forEach(b => {
+        b.classList.toggle("active", b.dataset.tool === id);
+      });
+    }
+    document.querySelectorAll(".tool-tab").forEach(b => {
+      b.onclick = () => showTool(b.dataset.tool);
+    });
+    showTool(TOOLS[0].id);
+
+    $("#rendered-info").textContent = TOOLS.map(t => {
+      const m = t.data.models.length;
+      const p = t.data.parties.length;
+      const gl = t.id === "wahlomat" ? "Parteien" : "Fraktionen";
+      return t.label + ": " + m + (m === 1 ? " Modell" : " Modelle") + " · " + p + " " + gl;
+    }).join("    ·    ");
   </script>
 </body>
 

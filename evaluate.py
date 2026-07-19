@@ -1,11 +1,24 @@
 import glob
-import os
 import json
+import os
 import sys
+
 import pandas as pd
+
+from omat.results import write_result
 
 BPB_EXCEL_PATH = "bundestag-2025.xlsx"
 SHEET_POSITION = 2
+
+ELECTION = "bundestagswahl-2025"
+RESULTS_DIR = "results"
+
+RESULT_FORMAT = {
+    "Kurz": str,
+    "Name": str,
+    "Punkte": str,
+    "Übereinstimm": float,
+}
 
 
 def load_data(json_filename):
@@ -164,18 +177,8 @@ def process_single(json_input):
     results = sorted(results, key=lambda x: x["Übereinstimmung"], reverse=True)
 
     # Ergebnis als JSON speichern
-    os.makedirs("results", exist_ok=True)
-    result_path = os.path.join("results", f"{json_input}--bundestagswahl-2025.json")
-    with open(result_path, "w", encoding="utf-8") as f:
-        json.dump(
-            {
-                "eval": json_input,
-                "results": results,
-            },
-            f,
-            ensure_ascii=False,
-            indent=2,
-        )
+    result_path = os.path.join(RESULTS_DIR, f"{json_input}--{ELECTION}.json")
+    write_result(json_input, results, result_path)
     print(f"\n✅ Ergebnis gespeichert in {result_path}")
 
     # Ausgabe als schöne Tabelle
@@ -191,21 +194,21 @@ def process_single(json_input):
 
 def calculate_match():
     # CLI Abfrage des Dateinamens
-    json_input = input(
-        "Bitte den Namen der JSON-Datei eingeben (ohne 'evals/' und '.json', Enter für alle): "
-    ).strip()
+    # json_input = input(
+    #     "Bitte den Namen der JSON-Datei eingeben (ohne 'evals/' und '.json', Enter für alle): "
+    # ).strip()
 
-    if json_input:
-        process_single(json_input)
-    else:
-        eval_files = sorted(glob.glob(os.path.join("evals", "*.json")))
-        if not eval_files:
-            print("❌ Keine JSON-Dateien in evals/ gefunden.")
-            return
-        for path in eval_files:
-            name = os.path.splitext(os.path.basename(path))[0]
-            print(f"\n>>> Verarbeite {name}.json ...")
-            process_single(name)
+    # if json_input:
+    #     process_single(json_input)
+    # else:
+    eval_files = sorted(glob.glob(os.path.join("evals", "*.json")))
+    if not eval_files:
+        print("❌ Keine JSON-Dateien in evals/ gefunden.")
+        return
+    for path in eval_files:
+        name = os.path.splitext(os.path.basename(path))[0]
+        print(f"\n>>> Verarbeite {name}.json ...")
+        process_single(name)
 
 
 if __name__ == "__main__":

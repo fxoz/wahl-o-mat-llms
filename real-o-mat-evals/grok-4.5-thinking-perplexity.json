@@ -1,0 +1,247 @@
+[
+    {
+        "id": 0,
+        "these": "Bürgergeldempfänger*innen, die wiederholt eine existenzsichernde Arbeit ablehnen, soll für zwei Monate der komplette Regelsatz des Bürgergelds gestrichen werden.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Sanktionen bei wiederholter Arbeitsverweigerung sind nötig, ein kompletter Wegfall des Regelsatzes über zwei Monate ist aber unverhältnismäßig und existenzgefährdend.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 1,
+        "these": "Bei der Einwanderung von Fachkräften ohne EU-Staatsbürgerschaft sollen einige Hürden abgebaut werden.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Deutschland braucht dringend Fachkräfte; Bürokratie und Hürden müssen deutlich stärker abgebaut werden als nur 'einige'.",
+        "entscheidung": "NICHT WEIT GENUG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 2,
+        "these": "Der gesetzliche Mindestlohn soll mindestens 12 Euro betragen.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Ein existenzsichernder Mindestlohn von mindestens 12 Euro war und ist richtig; Arbeit muss sich lohnen.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 3,
+        "these": "Schwangere, die sich zu einem Schwangerschaftsabbruch beraten lassen möchten, sollen besser vor Gehsteigbelästigung geschützt werden.",
+        "kategorie": "Soziales",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Beratung muss unbehelligt möglich sein; Belästigung und Einschüchterung vor Praxen sind inakzeptabel.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 4,
+        "these": "Der Konsum und Besitz von Cannabis soll in Deutschland unter bestimmten Voraussetzungen erlaubt sein.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Kontrollierte Freigabe entlastet Justiz und Jugendschutz besser als Prohibition, solange klare Regeln gelten.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 5,
+        "these": "Eine temporäre Impfpflicht für Beschäftigte in Alten- und Pflegeheimen soll die Corona-Pandemie eindämmen.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Zum Schutz Hochbetagter war eine befristete Impfpflicht in der Pflege vertretbar und verhältnismäßig.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 6,
+        "these": "Menschen sollen ohne psychologisches Gutachten ihren Geschlechtseintrag und Vornamen beim Standesamt ändern dürfen.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Selbstbestimmung für Erwachsene ist richtig; ein komplett voraussetzungsfreies Verfahren ohne jede Prüfung geht mir zu weit.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 7,
+        "these": "Zur besseren Bekämpfung von schweren Verbrechen sollen IP-Adressen länger, nämlich für 3 Monate, gespeichert werden.",
+        "kategorie": "Innere Sicherheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Begrenzte Speicherpflicht für schwere Straftaten ist mit strengen Richtervorbehalten vertretbar.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 8,
+        "these": "Organisationen oder Projekte, die das Existenzrecht Israels in Frage stellen, sollen in Deutschland keine staatliche finanzielle Förderung erhalten.",
+        "kategorie": "Inneres",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Staatliche Mittel dürfen nicht an Akteure fließen, die Israels Existenzrecht bestreiten; das gebietet die historische Verantwortung.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 9,
+        "these": "Ein Sondervermögen von 100 Milliarden Euro für die Bundeswehr soll die Verteidigung stärken.",
+        "kategorie": "Verteidigung",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Nach der Zeitenwende war und ist die Stärkung der Bundeswehr über ein Sondervermögen notwendig und richtig.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 10,
+        "these": "Deutschland soll das weitreichende Waffensystem Taurus an die Ukraine liefern.",
+        "kategorie": "Verteidigung",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Ukraine muss sich wirksam verteidigen können; Taurus-Lieferungen sind dafür ein richtiger Beitrag.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 11,
+        "these": "Die Bundesregierung soll sich für den Erhalt des individuellen Rechts auf Asyl in der EU aussprechen.",
+        "kategorie": "Migration",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Das individuelle Asylrecht ist ein Kernbestandteil des Rechtsstaats und muss erhalten bleiben, bei gleichzeitiger Steuerung der Migration.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 12,
+        "these": "Anerkannte Schutzberechtigte sollen ihren Status verlieren, wenn sie in ihre Heimat reisen.",
+        "kategorie": "Migration",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Wer freiwillig in das Verfolgerland reist, stellt den Schutzgrund infrage; Statusverlust ist dann konsequent.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 13,
+        "these": "Das Deutschlandticket für den öffentlichen Nahverkehr soll deutlich weniger als 49 Euro im Monat kosten.",
+        "kategorie": "Mobilität",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "49 Euro war bereits stark subventioniert; eine deutliche weitere Senkung ohne tragfähige Finanzierung geht zu weit.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 14,
+        "these": "Die BAföG-Sätze für Schüler*innen und Studierende sollen um 5 Prozent beim Grundbedarf bzw. 20 Euro beim Wohngeld angehoben werden.",
+        "kategorie": "Bildung",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG"
+        ],
+        "eigene_meinung": "Die Anhebung ist ein Schritt, deckt aber Inflation und Wohnkosten bei Weitem nicht ausreichend ab.",
+        "entscheidung": "NICHT WEIT GENUG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 15,
+        "these": "In nationalen Notlagen soll die im Grundgesetz verankerte Schuldenbremse ausgesetzt werden.",
+        "kategorie": "Finanzen",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "In echten Notlagen muss handlungsfähig bleiben; die bestehende Ausnahmeregelung der Schuldenbremse ist richtig.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 16,
+        "these": "Um gesellschaftliche Herausforderungen zu bewältigen, sollen die vermögendsten Privatpersonen und Unternehmen einmalige Sonderabgaben leisten.",
+        "kategorie": "Finanzen",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Einmalige Sonderabgaben sind verfassungsrechtlich heikel, investitionsfeindlich und der falsche Weg; fairere laufende Besteuerung ist besser.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 17,
+        "these": "Das deutsche Lieferkettengesetz zum Schutz von Menschenrechten und der Umwelt in globalen Lieferketten soll ausgesetzt werden.",
+        "kategorie": "Wirtschaft",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Menschenrechte und Umweltstandards in Lieferketten dürfen nicht einfach ausgesetzt werden; das Gesetz gehört beibehalten und europäisch harmonisiert.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 18,
+        "these": "Für besseren Klimaschutz soll jede neu installierte Heizung in Neubaugebieten zu mindestens 65 Prozent mit erneuerbaren Energien betrieben werden.",
+        "kategorie": "Energie",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Im Neubau ist der Umstieg auf erneuerbare Heizungen technisch und wirtschaftlich sinnvoll und klimapolitisch geboten.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 19,
+        "these": "Mit der Subventionierung von Agrardiesel sollen Landwirtschaftsbetriebe weiter entlastet werden.",
+        "kategorie": "Landwirtschaft",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Fossile Subventionen konterkarieren Klimaziele; gezielte Entlastung der Landwirtschaft sollte über andere Instrumente laufen.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    }
+]

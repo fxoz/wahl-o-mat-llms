@@ -1,0 +1,247 @@
+[
+    {
+        "id": 0,
+        "these": "Bürgergeldempfänger*innen, die wiederholt eine existenzsichernde Arbeit ablehnen, soll für zwei Monate der komplette Regelsatz des Bürgergelds gestrichen werden.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Sanktionen sollten möglich sein, aber eine vollständige Streichung des existenzsichernden Regelsatzes ist unverhältnismäßig. Es braucht abgestufte Sanktionen und Härtefallprüfungen.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 1,
+        "these": "Bei der Einwanderung von Fachkräften ohne EU-Staatsbürgerschaft sollen einige Hürden abgebaut werden.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Deutschland sollte qualifizierte Einwanderung deutlich erleichtern und Verfahren beschleunigen, zugleich aber faire Arbeitsbedingungen und gute Integrationsangebote sicherstellen.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 2,
+        "these": "Der gesetzliche Mindestlohn soll mindestens 12 Euro betragen.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Ein Mindestlohn von mindestens 12 Euro ist angemessen, sollte aber regelmäßig an Lebenshaltungskosten und Lohnentwicklung angepasst werden.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 3,
+        "these": "Schwangere, die sich zu einem Schwangerschaftsabbruch beraten lassen möchten, sollen besser vor Gehsteigbelästigung geschützt werden.",
+        "kategorie": "Soziales",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Der Zugang zu Beratung und medizinischer Versorgung muss frei von Einschüchterung und Belästigung gewährleistet sein.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 4,
+        "these": "Der Konsum und Besitz von Cannabis soll in Deutschland unter bestimmten Voraussetzungen erlaubt sein.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine regulierte Freigabe kann den Schwarzmarkt schwächen und gesundheitliche Risiken besser kontrollierbar machen. Jugendschutz und Prävention müssen dabei Priorität haben.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 5,
+        "these": "Eine temporäre Impfpflicht für Beschäftigte in Alten- und Pflegeheimen soll die Corona-Pandemie eindämmen.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Zum Schutz besonders gefährdeter Menschen kann eine zeitlich und evidenzbasiert begrenzte Impfpflicht für eng mit ihnen arbeitendes Personal gerechtfertigt sein.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 6,
+        "these": "Menschen sollen ohne psychologisches Gutachten ihren Geschlechtseintrag und Vornamen beim Standesamt ändern dürfen.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Änderung sollte selbstbestimmt und ohne entwürdigende Begutachtung möglich sein. Für Minderjährige sind altersgerechte Schutz- und Beratungsregeln sinnvoll.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 7,
+        "these": "Zur besseren Bekämpfung von schweren Verbrechen sollen IP-Adressen länger, nämlich für 3 Monate, gespeichert werden.",
+        "kategorie": "Innere Sicherheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine pauschale dreimonatige Speicherung greift unverhältnismäßig in die Privatsphäre ein. Ermittlungsmaßnahmen sollten anlassbezogen, richterlich kontrolliert und eng begrenzt sein.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 8,
+        "these": "Organisationen oder Projekte, die das Existenzrecht Israels in Frage stellen, sollen in Deutschland keine staatliche finanzielle Förderung erhalten.",
+        "kategorie": "Inneres",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Staatliche Förderung darf nicht an Organisationen gehen, die antisemitische oder die Existenz Israels negierende Positionen vertreten. Entscheidungen müssen transparent und rechtsstaatlich überprüfbar sein.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 9,
+        "these": "Ein Sondervermögen von 100 Milliarden Euro für die Bundeswehr soll die Verteidigung stärken.",
+        "kategorie": "Verteidigung",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Angesichts der sicherheitspolitischen Lage ist eine bessere Ausstattung der Bundeswehr notwendig. Die Mittel müssen jedoch effizient, parlamentarisch kontrolliert und auf Verteidigungsfähigkeit ausgerichtet werden.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 10,
+        "these": "Deutschland soll das weitreichende Waffensystem Taurus an die Ukraine liefern.",
+        "kategorie": "Verteidigung",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Ukraine sollte zur Selbstverteidigung wirksam unterstützt werden. Eine Lieferung sollte erfolgen, wenn Risiken für eine direkte Eskalation beherrschbar sind und die Einsatzbedingungen klar geregelt werden können.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 11,
+        "these": "Die Bundesregierung soll sich für den Erhalt des individuellen Rechts auf Asyl in der EU aussprechen.",
+        "kategorie": "Migration",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Das individuelle Recht auf Asyl ist ein zentraler Bestandteil des Menschenrechtsschutzes und darf nicht durch pauschale Zurückweisungen ausgehöhlt werden.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 12,
+        "these": "Anerkannte Schutzberechtigte sollen ihren Status verlieren, wenn sie in ihre Heimat reisen.",
+        "kategorie": "Migration",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine Reise kann Anlass für eine individuelle Überprüfung sein, darf aber nicht automatisch zum Statusverlust führen. Humanitäre Gründe und die konkrete Gefährdungslage müssen berücksichtigt werden.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 13,
+        "these": "Das Deutschlandticket für den öffentlichen Nahverkehr soll deutlich weniger als 49 Euro im Monat kosten.",
+        "kategorie": "Mobilität",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Ein günstiges und verlässliches Deutschlandticket erleichtert klimafreundliche Mobilität. Dafür müssen Bund und Länder den öffentlichen Verkehr dauerhaft auskömmlich finanzieren.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 14,
+        "these": "Die BAföG-Sätze für Schüler*innen und Studierende sollen um 5 Prozent beim Grundbedarf bzw. 20 Euro beim Wohngeld angehoben werden.",
+        "kategorie": "Bildung",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG"
+        ],
+        "eigene_meinung": "Die vorgeschlagene Erhöhung ist angesichts gestiegener Wohn- und Lebenshaltungskosten zu niedrig. BAföG sollte deutlich stärker angehoben und regelmäßig automatisch angepasst werden.",
+        "entscheidung": "NICHT WEIT GENUG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 15,
+        "these": "In nationalen Notlagen soll die im Grundgesetz verankerte Schuldenbremse ausgesetzt werden.",
+        "kategorie": "Finanzen",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "In klar definierten außergewöhnlichen Notlagen sollte die Schuldenbremse ausgesetzt werden können. Die Ausnahme muss zeitlich begrenzt, transparent begründet und parlamentarisch kontrolliert sein.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 16,
+        "these": "Um gesellschaftliche Herausforderungen zu bewältigen, sollen die vermögendsten Privatpersonen und Unternehmen einmalige Sonderabgaben leisten.",
+        "kategorie": "Finanzen",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine einmalige, rechtssichere und progressiv ausgestaltete Sonderabgabe kann in außergewöhnlichen Krisen gerechtfertigt sein, wenn sie nicht pauschal, sondern zielgenau erhoben wird.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 17,
+        "these": "Das deutsche Lieferkettengesetz zum Schutz von Menschenrechten und der Umwelt in globalen Lieferketten soll ausgesetzt werden.",
+        "kategorie": "Wirtschaft",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Unternehmen sollten für Menschenrechtsverletzungen und schwere Umweltschäden in ihren Lieferketten Verantwortung übernehmen. Bürokratische Belastungen können reduziert, der Schutz aber nicht ausgesetzt werden.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 18,
+        "these": "Für besseren Klimaschutz soll jede neu installierte Heizung in Neubaugebieten zu mindestens 65 Prozent mit erneuerbaren Energien betrieben werden.",
+        "kategorie": "Energie",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Ein hoher Anteil erneuerbarer Energien bei neuen Heizungen ist für den Klimaschutz sinnvoll. Die Umsetzung sollte technologieoffen, sozial abgefedert und mit ausreichender Beratung verbunden sein.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 19,
+        "these": "Mit der Subventionierung von Agrardiesel sollen Landwirtschaftsbetriebe weiter entlastet werden.",
+        "kategorie": "Landwirtschaft",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine dauerhafte Subvention fossiler Kraftstoffe setzt klimapolitisch falsche Anreize. Landwirtschaftliche Betriebe sollten stattdessen gezielt beim Umstieg auf klimafreundliche Technik unterstützt werden.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    }
+]

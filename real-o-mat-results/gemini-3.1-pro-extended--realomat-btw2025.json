@@ -1,0 +1,47 @@
+{
+  "eval": "gemini-3.1-pro-extended",
+  "results": [
+    {
+      "Kurz": "FDP",
+      "Name": "Freie Demokratische Partei",
+      "Punkte": "18/22",
+      "Übereinstimmung": 81.81818181818183
+    },
+    {
+      "Kurz": "GRÜNE",
+      "Name": "Bündnis 90/Die Grünen",
+      "Punkte": "18/22",
+      "Übereinstimmung": 81.81818181818183
+    },
+    {
+      "Kurz": "SPD",
+      "Name": "Sozialdemokratische Partei Deutschlands",
+      "Punkte": "17/22",
+      "Übereinstimmung": 77.27272727272727
+    },
+    {
+      "Kurz": "Die Linke",
+      "Name": "Die Linke",
+      "Punkte": "11/22",
+      "Übereinstimmung": 50.0
+    },
+    {
+      "Kurz": "CDU / CSU",
+      "Name": "Christlich Demokratische Union / Christlich-Soziale Union",
+      "Punkte": "6/22",
+      "Übereinstimmung": 27.27272727272727
+    },
+    {
+      "Kurz": "AfD",
+      "Name": "Alternative für Deutschland",
+      "Punkte": "4/22",
+      "Übereinstimmung": 18.181818181818183
+    },
+    {
+      "Kurz": "BSW",
+      "Name": "Bündnis Sahra Wagenknecht – Vernunft und Gerechtigkeit",
+      "Punkte": "3/22",
+      "Übereinstimmung": 13.636363636363635
+    }
+  ]
+}

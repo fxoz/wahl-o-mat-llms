@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wahl-O-Mat · LLM-Alignment · __ELECTION__</title>
+  <title>LLM-Alignment · Wahl-O-Mat &amp; Real-O-Mat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0c0e16;
@@ -50,13 +53,21 @@
     }
 
     header.hero {
-      margin-bottom: 28px
+      margin-bottom: 22px
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--txt3);
+      font-weight: 600
     }
 
     h1 {
       font-size: clamp(28px, 4vw, 46px);
       line-height: 1.05;
-      margin: 14px 0 14px;
+      margin: 10px 0 14px;
       font-weight: 800;
       letter-spacing: -.02em;
       background: linear-gradient(95deg, #fff 10%, #c9d4ff 45%, var(--accent2) 75%, var(--accent) 100%);
@@ -71,10 +82,210 @@
       max-width: 680px
     }
 
+    /* ---------- tool switcher ---------- */
+    .tool-bar {
+      display: flex;
+      gap: 6px;
+      margin: 0 0 28px;
+      padding: 6px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      width: fit-content;
+      max-width: 100%;
+      flex-wrap: wrap
+    }
+
+    .tool-tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--txt2);
+      cursor: pointer;
+      font: inherit;
+      text-align: left;
+      padding: 10px 18px;
+      border-radius: 10px;
+      transition: .15s;
+      display: flex;
+      flex-direction: column;
+      gap: 3px
+    }
+
+    .tool-tab .tt-k {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--txt)
+    }
+
+    .tool-tab .tt-d {
+      font-size: 11px;
+      color: var(--txt3);
+      font-weight: 500
+    }
+
+    .tool-tab:hover {
+      background: rgba(255, 255, 255, .04)
+    }
+
+    .tool-tab.active {
+      background: linear-gradient(180deg, rgba(122, 162, 247, .22), rgba(122, 162, 247, .08));
+      outline: 1px solid rgba(122, 162, 247, .4);
+      outline-offset: -1px
+    }
+
+    .tool-tab.active .tt-d {
+      color: var(--txt2)
+    }
+
+    .tool-section {
+      display: none
+    }
+
+    .tool-section.active {
+      display: block
+    }
+
+    .tool-head {
+      margin-bottom: 22px
+    }
+
+    .tool-sub {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--txt3);
+      font-size: 13px;
+      line-height: 1.5
+    }
+
+    .tool-sub .tool-sub-text {
+      flex: 1;
+      min-width: 0
+    }
+
+    .info-btn {
+      appearance: none;
+      border: 1px solid var(--line2);
+      background: var(--panel);
+      color: var(--txt2);
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 9px;
+      transition: .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap
+    }
+
+    .info-btn:hover {
+      color: #fff;
+      border-color: var(--accent);
+      background: rgba(122, 162, 247, .08)
+    }
+
+    .info-btn svg {
+      flex: 0 0 auto
+    }
+
+    /* ---------- modal ---------- */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(8, 9, 16, .72);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 20px 40px;
+      overflow-y: auto
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .modal {
+      background: linear-gradient(180deg, var(--panel), var(--bg2));
+      border: 1px solid var(--line2);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 720px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .5);
+      transform: translateY(-8px);
+      transition: transform .18s
+    }
+
+    .modal-backdrop.open .modal {
+      transform: translateY(0)
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .modal-header .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      flex: 1
+    }
+
+    .modal-header .modal-sub {
+      font-size: 12px;
+      color: var(--txt3);
+      font-weight: 500
+    }
+
+    .modal-close {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--txt2);
+      cursor: pointer;
+      font: inherit;
+      font-size: 22px;
+      line-height: 1;
+      padding: 4px 10px;
+      border-radius: 8px;
+      transition: .15s
+    }
+
+    .modal-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .modal-body {
+      padding: 20px 22px 24px;
+      max-height: 70vh;
+      overflow-y: auto
+    }
+
+    .modal-body .markdown {
+      max-width: none
+    }
+
+    /* ---------- markdown ---------- */
     .markdown {
       color: var(--txt2);
       font-size: 15px;
-      max-width: 680px;
+      max-width: 720px;
       line-height: 1.6;
       font-family: inherit
     }
@@ -94,13 +305,68 @@
       margin: 18px 0
     }
 
+    .markdown h1,
+    .markdown h2,
+    .markdown h3,
+    .markdown h4 {
+      color: var(--txt);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 18px 0 8px;
+      letter-spacing: -.01em
+    }
+
+    .markdown h1 {
+      font-size: 20px
+    }
+
+    .markdown h2 {
+      font-size: 17px
+    }
+
+    .markdown h3 {
+      font-size: 15px
+    }
+
+    .markdown h4 {
+      font-size: 14px
+    }
+
+    .markdown h1:first-child,
+    .markdown h2:first-child,
+    .markdown h3:first-child,
+    .markdown h4:first-child {
+      margin-top: 0
+    }
+
+    .markdown ul,
+    .markdown ol {
+      margin: 0 0 12px;
+      padding-left: 20px
+    }
+
+    .markdown li {
+      margin: 3px 0
+    }
+
     .markdown blockquote {
       margin: 14px 0 4px;
       padding: 10px 16px;
       border-left: 3px solid var(--accent);
       background: rgba(122, 162, 247, .06);
       border-radius: 0 8px 8px 0;
-      color: var(--txt2);
+      color: var(--txt2)
+    }
+
+    .markdown a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(122, 162, 247, .35)
+    }
+
+    .markdown a:hover {
+      color: #fff;
+      border-bottom-color: var(--accent)
     }
 
     .markdown em {
@@ -122,18 +388,19 @@
       color: var(--txt)
     }
 
+    /* ---------- cards ---------- */
     .cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin: 26px 0 30px
+      margin: 22px 0 26px
     }
 
     .card {
       background: linear-gradient(180deg, var(--panel), var(--bg2));
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 16px 18px;
+      padding: 16px 18px
     }
 
     .card .k {
@@ -166,6 +433,7 @@
       white-space: nowrap
     }
 
+    /* ---------- toolbar ---------- */
     .toolbar {
       display: flex;
       align-items: center;
@@ -647,6 +915,13 @@
       padding-left: 4px
     }
 
+    .sim-empty {
+      padding: 36px 18px;
+      text-align: center;
+      color: var(--txt3);
+      font-size: 13px
+    }
+
     .view {
       display: none
     }
@@ -722,6 +997,10 @@
         grid-template-columns: 130px 1fr 56px;
         gap: 10px
       }
+
+      .tool-tab .tt-d {
+        display: none
+      }
     }
   </style>
 </head>
@@ -729,78 +1008,182 @@
 <body>
   <div class="wrap">
     <header class="hero">
+      <div class="eyebrow">LLM-Alignment · Bundestagswahl 2025</div>
       <h1>Wie politisch positionieren sich LLMs?</h1>
-      <div class="markdown" id="notes">__NOTES_HTML__</div>
+      <p class="sub">
+        Große Sprachmodelle bearbeiten zwei etablierte Positionierungs-Instrumente:
+        den <strong>Wahl-O-Mat</strong> (Parteiprogramme) und den <strong>Real-O-Mat</strong>
+        (tatsächliches Abstimmungsverhalten im Bundestag). Übereinstimmung mit jeder Partei bzw.
+        Fraktion in Prozent – höher bedeutet stärkere inhaltliche Nähe.
+      </p>
     </header>
 
-    <section class="cards" id="cards"></section>
-
-    <div class="toolbar">
-      <div class="tabs">
-        <button class="tab active" data-view="heatmap">Heatmap</button>
-        <button class="tab" data-view="spread">Streubreite</button>
-        <button class="tab" data-view="similarity">Ähnlichkeit</button>
-      </div>
-      <div class="spacer"></div>
-      <div class="search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7" />
-          <path d="m21 21-4.3-4.3" />
-        </svg>
-        <input id="filter" type="text" placeholder="Partei filtern…" autocomplete="off">
-      </div>
+    <div class="tool-bar" role="tablist">
+      <button class="tool-tab active" data-tool="wahlomat" role="tab">
+        <span class="tt-k">Wahl-O-Mat</span>
+        <span class="tt-d">Parteipositionen aus Wahlprogrammen (bpb) · 38 Thesen · 28 Parteien</span>
+      </button>
+      <button class="tool-tab" data-tool="realomat" role="tab">
+        <span class="tt-k">Real-O-Mat</span>
+        <span class="tt-d">Tatsächliches Abstimmungsverhalten im Bundestag · 20 Thesen · 7 Fraktionen</span>
+      </button>
     </div>
 
-    <div class="hint-row">
-      <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
-      <span><span class="kbd">Klick</span> auf eine Partei sortiert nach Ø</span>
-      <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
-    </div>
-
-    <div class="legend">
-      <span>Übereinstimmung</span>
-      <div>
-        <div class="bar" id="legend-bar"></div>
-        <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="view active" id="view-heatmap">
-        <div class="heat">
-          <div class="heat-grid" id="heat-grid"></div>
+    <section class="tool-section active" id="sec-wahlomat">
+      <div class="tool-head">
+        <div class="tool-sub">
+          <span class="tool-sub-text" id="wahlomat-subtitle"></span>
+          <button class="info-btn" data-tool="wahlomat">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+            Info &amp; Methodik
+          </button>
         </div>
       </div>
-      <div class="view" id="view-spread">
-        <div class="spread" id="spread-grid"></div>
+      <section class="cards" id="wahlomat-cards"></section>
+      <div class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-view="heatmap">Heatmap</button>
+          <button class="tab" data-view="spread">Streubreite</button>
+          <button class="tab" data-view="similarity">Ähnlichkeit</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input id="wahlomat-filter" type="text" placeholder="Partei filtern…" autocomplete="off">
+        </div>
       </div>
-      <div class="view" id="view-similarity">
-        <div class="sim">
-          <div class="sim-summary" id="sim-summary"></div>
-          <div class="sim-legend">
-            <span>Korrelation (r)</span>
-            <div>
-              <div class="sbar" id="sim-legend-bar"></div>
-              <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+      <div class="hint-row">
+        <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
+        <span><span class="kbd">Klick</span> auf eine Partei sortiert nach Ø</span>
+        <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
+      </div>
+      <div class="legend">
+        <span>Übereinstimmung</span>
+        <div>
+          <div class="bar" id="wahlomat-legend-bar"></div>
+          <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="view active" id="wahlomat-view-heatmap">
+          <div class="heat"><div class="heat-grid" id="wahlomat-heat-grid"></div></div>
+        </div>
+        <div class="view" id="wahlomat-view-spread">
+          <div class="spread" id="wahlomat-spread-grid"></div>
+        </div>
+        <div class="view" id="wahlomat-view-similarity">
+          <div class="sim">
+            <div class="sim-summary" id="wahlomat-sim-summary"></div>
+            <div class="sim-legend">
+              <span>Korrelation (r)</span>
+              <div>
+                <div class="sbar" id="wahlomat-sim-legend-bar"></div>
+                <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+              </div>
+              <span style="margin-left:12px">grün = ähnliches Profil · rot = gegensätzlich</span>
             </div>
-            <span style="margin-left:12px">grün = ähnliche Profil · rot = gegensätzlich</span>
-          </div>
-          <div class="sim-wrap">
-            <div class="sim-grid" id="sim-grid"></div>
+            <div class="sim-wrap"><div class="sim-grid" id="wahlomat-sim-grid"></div></div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="tool-section" id="sec-realomat">
+      <div class="tool-head">
+        <div class="tool-sub">
+          <span class="tool-sub-text" id="realomat-subtitle"></span>
+          <button class="info-btn" data-tool="realomat">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+            Info &amp; Methodik
+          </button>
+        </div>
+      </div>
+      <section class="cards" id="realomat-cards"></section>
+      <div class="toolbar">
+        <div class="tabs">
+          <button class="tab active" data-view="heatmap">Heatmap</button>
+          <button class="tab" data-view="spread">Streubreite</button>
+          <button class="tab" data-view="similarity">Ähnlichkeit</button>
+        </div>
+        <div class="spacer"></div>
+        <div class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input id="realomat-filter" type="text" placeholder="Fraktion filtern…" autocomplete="off">
+        </div>
+      </div>
+      <div class="hint-row">
+        <span><span class="kbd">Klick</span> auf einen Modellnamen sortiert danach</span>
+        <span><span class="kbd">Klick</span> auf eine Fraktion sortiert nach Ø</span>
+        <span>Zellen farblich = Übereinstimmung · weißer Strich = Mittelwert</span>
+      </div>
+      <div class="legend">
+        <span>Übereinstimmung</span>
+        <div>
+          <div class="bar" id="realomat-legend-bar"></div>
+          <div class="ends"><span>0%</span><span>50%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="view active" id="realomat-view-heatmap">
+          <div class="heat"><div class="heat-grid" id="realomat-heat-grid"></div></div>
+        </div>
+        <div class="view" id="realomat-view-spread">
+          <div class="spread" id="realomat-spread-grid"></div>
+        </div>
+        <div class="view" id="realomat-view-similarity">
+          <div class="sim">
+            <div class="sim-summary" id="realomat-sim-summary"></div>
+            <div class="sim-legend">
+              <span>Korrelation (r)</span>
+              <div>
+                <div class="sbar" id="realomat-sim-legend-bar"></div>
+                <div class="sends"><span>−1.0</span><span>0</span><span>+1.0</span></div>
+              </div>
+              <span style="margin-left:12px">grün = ähnliches Profil · rot = gegensätzlich</span>
+            </div>
+            <div class="sim-wrap"><div class="sim-grid" id="realomat-sim-grid"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <span>Daten aus <code>results/*--__ELECTION__.json</code></span>
+      <span>Daten: <code>results/</code> (Wahl-O-Mat) · <code>real-o-mat-results/</code> (Real-O-Mat)</span>
       <span id="rendered-info"></span>
     </footer>
   </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="modal-title-text"></div>
+          <div class="modal-sub" id="modal-source"></div>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Schließen">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="markdown" id="modal-body"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="tip" id="tip"></div>
 
   <script>
-    const DATA = __DATA__;
+    const TOOLS = __TOOLS__;
 
     const STOPS = [
       [0.00, [13, 9, 42]],
@@ -809,32 +1192,39 @@
       [0.75, [226, 95, 38]],
       [1.00, [255, 225, 95]],
     ];
-
-    function clamp01(t) { return Math.max(0, Math.min(1, t)); }
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    function colorFor(t) {
-      t = clamp01(t);
-      for (let i = 1; i < STOPS.length; i++) {
-        if (t <= STOPS[i][0]) {
-          const [t0, c0] = STOPS[i - 1], [t1, c1] = STOPS[i];
-          const k = (t - t0) / (t1 - t0) || 0;
-          const r = Math.round(lerp(c0[0], c1[0], k));
-          const g = Math.round(lerp(c0[1], c1[1], k));
-          const b = Math.round(lerp(c0[2], c1[2], k));
-          return [r, g, b];
-        }
-      }
-      return STOPS[STOPS.length - 1][1];
-    }
-    function rgbStr(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
-    function textFor(c) { const lum = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; return lum > 150 ? "#132" : "#fff"; }
-
-    /* ---- state ---- */
-    let sortKey = null; // null = average sort
-    let filterText = "";
+    const SIM_STOPS = [
+      [0.00, [214, 72, 80]],
+      [0.50, [205, 185, 75]],
+      [1.00, [80, 210, 135]],
+    ];
 
     const $ = s => document.querySelector(s);
     const tip = $("#tip");
+
+    function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function rgbStr(c) { return "rgb(" + c[0] + "," + c[1] + "," + c[2] + ")"; }
+    function textFor(c) { const lum = 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]; return lum > 150 ? "#132" : "#fff"; }
+    function colorFor(t) { return stopColor(STOPS, t); }
+    function simColor(t) { return stopColor(SIM_STOPS, t); }
+    function stopColor(stops, t) {
+      t = clamp01(t);
+      for (let i = 1; i < stops.length; i++) {
+        if (t <= stops[i][0]) {
+          const [t0, c0] = stops[i - 1], [t1, c1] = stops[i];
+          const k = (t - t0) / (t1 - t0) || 0;
+          return [
+            Math.round(lerp(c0[0], c1[0], k)),
+            Math.round(lerp(c0[1], c1[1], k)),
+            Math.round(lerp(c0[2], c1[2], k))
+          ];
+        }
+      }
+      return stops[stops.length - 1][1];
+    }
+    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+    function shortModel(m) { return m.split("-").slice(0, 3).join("-"); }
+    function fmtCorr(r) { return r === null ? "—" : (r >= 0 ? " " : "−") + Math.abs(r).toFixed(2); }
 
     function showTip(html, e) {
       tip.innerHTML = html; tip.style.opacity = 1;
@@ -846,79 +1236,87 @@
     }
     function hideTip() { tip.style.opacity = 0; }
 
-    function parties() {
-      const f = filterText.trim().toLowerCase();
-      let list = DATA.parties.slice();
+    function pearson(xs, ys) {
+      const n = xs.length;
+      if (n < 2) return null;
+      let mx = 0, my = 0;
+      for (let i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
+      mx /= n; my /= n;
+      let sxx = 0, syy = 0, sxy = 0;
+      for (let i = 0; i < n; i++) { const dx = xs[i] - mx, dy = ys[i] - my; sxx += dx * dx; syy += dy * dy; sxy += dx * dy; }
+      const d = Math.sqrt(sxx * syy);
+      return d === 0 ? 0 : sxy / d;
+    }
+
+    function renderGradientBar(el, fn) {
+      const stops = [];
+      for (let i = 0; i <= 10; i++) { const t = i / 10; stops.push(rgbStr(fn(t)) + " " + Math.round(t * 100) + "%"); }
+      el.style.background = "linear-gradient(90deg," + stops.join(",") + ")";
+    }
+
+    function partiesFor(tool) {
+      const f = tool.state.filterText.trim().toLowerCase();
+      let list = tool.data.parties.slice();
       if (f) list = list.filter(p => (p.kurz + " " + p.name).toLowerCase().includes(f));
-      if (sortKey) {
+      if (tool.state.sortKey) {
         list.sort((a, b) => {
-          const sa = DATA.scores[a.kurz]?.[sortKey]?.pct ?? -1;
-          const sb = DATA.scores[b.kurz]?.[sortKey]?.pct ?? -1;
+          const sa = tool.data.scores[a.kurz]?.[tool.state.sortKey]?.pct ?? -1;
+          const sb = tool.data.scores[b.kurz]?.[tool.state.sortKey]?.pct ?? -1;
           return sb - sa;
         });
       }
       return list;
     }
 
-    /* ---- legend ---- */
-    (function legend() {
-      const stops = [];
-      for (let i = 0; i <= 10; i++) { const t = i / 10; stops.push(rgbStr(colorFor(t)) + " " + Math.round(t * 100) + "%"); }
-      $("#legend-bar").style.background = "linear-gradient(90deg," + stops.join(",") + ")";
-    })();
-
-    /* ---- cards ---- */
-    (function cards() {
-      const s = DATA.summary;
+    function renderCards(tool) {
+      const s = tool.data.summary;
+      const groupLabel = tool.id === "wahlomat" ? "Parteien" : "Fraktionen";
+      const topLabel = tool.id === "wahlomat" ? "Top-Partei" : "Top-Fraktion";
       const rows = [
         ["Modelle", s.models, "LLMs verglichen"],
-        ["Parteien", s.parties, "im Vergleich"],
-        ["Ø Übereinstimmung", s.overall_avg + "%", "über alle Modelle & Parteien"],
-        ["Top-Partei", s.top ? s.top.avg + "%" : "—", s.top ? s.top.kurz : "—"],
+        [groupLabel, s.parties, "im Vergleich"],
+        ["Ø Übereinstimmung", s.overall_avg + "%", "über alle Modelle & " + groupLabel.toLowerCase()],
+        [topLabel, s.top ? s.top.avg + "%" : "—", s.top ? s.top.kurz : "—"],
       ];
-      $("#cards").innerHTML = rows.map(r =>
+      tool.dom.cards.innerHTML = rows.map(r =>
         `<div class="card"><div class="k">${r[0]}</div><div class="v">${r[1]}</div><div class="x">${r[2]}</div></div>`
       ).join("");
-    })();
+    }
 
-    /* ---- heatmap ---- */
-    function renderHeatmap() {
-      const grid = $("#heat-grid");
-      const models = DATA.models;
-      const cols = 1 + models.length + 1;
+    function renderHeatmap(tool) {
+      const grid = tool.dom.heatGrid;
+      const models = tool.data.models;
       grid.style.gridTemplateColumns = "170px repeat(" + models.length + ", minmax(54px,1fr)) 64px";
       grid.innerHTML = "";
 
-      // header
       const corner = document.createElement("div");
       corner.className = "cell h-corner";
-      corner.textContent = "Partei / Modell";
+      corner.textContent = tool.id === "wahlomat" ? "Partei / Modell" : "Fraktion / Modell";
       grid.appendChild(corner);
       models.forEach(m => {
         const h = document.createElement("div");
-        h.className = "h-head" + (sortKey === m ? " active" : "");
-        h.textContent = m.split("-").slice(0, 3).join("-"); // compact model label
+        h.className = "h-head" + (tool.state.sortKey === m ? " active" : "");
+        h.textContent = shortModel(m);
         h.title = m;
-        h.onclick = () => { sortKey = (sortKey === m) ? null : m; renderAll(); };
+        h.onclick = () => { tool.state.sortKey = (tool.state.sortKey === m) ? null : m; renderAll(tool); };
         grid.appendChild(h);
       });
       const avgHead = document.createElement("div");
-      avgHead.className = "h-head" + (sortKey === null ? " active" : "");
+      avgHead.className = "h-head" + (tool.state.sortKey === null ? " active" : "");
       avgHead.textContent = "Ø";
       avgHead.title = "Mittelwert über alle Modelle";
-      avgHead.onclick = () => { sortKey = null; renderAll(); };
+      avgHead.onclick = () => { tool.state.sortKey = null; renderAll(tool); };
       grid.appendChild(avgHead);
 
-      // rows
-      parties().forEach(p => {
+      partiesFor(tool).forEach(p => {
         const name = document.createElement("div");
         name.className = "h-party";
         name.innerHTML = `<span class="pdot" style="background:${p.color}"></span><span class="pname" title="${escapeHtml(p.name)}">${escapeHtml(p.kurz)}</span>`;
-        name.onclick = () => { sortKey = null; renderAll(); };
+        name.onclick = () => { tool.state.sortKey = null; renderAll(tool); };
         grid.appendChild(name);
 
         models.forEach(m => {
-          const v = DATA.scores[p.kurz]?.[m];
+          const v = tool.data.scores[p.kurz]?.[m];
           const cell = document.createElement("div");
           if (!v) { cell.className = "cell miss"; cell.textContent = "–"; }
           else {
@@ -927,18 +1325,19 @@
             cell.style.background = rgbStr(c);
             cell.style.color = textFor(c);
             cell.textContent = Math.round(v.pct);
+            cell.dataset.tool = tool.id;
             cell.dataset.kurz = p.kurz; cell.dataset.model = m;
             cell.onmouseenter = (e) => {
               showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div>
-            <div class="t-r">${escapeHtml(p.name)}</div>
-            <div class="t-r">${escapeHtml(m)} · <b>${v.pct.toFixed(1)}%</b></div>
-            <div class="t-r">Punkte: ${escapeHtml(v.punkte)}</div>`, e);
-              document.querySelectorAll('.cell[data-model="' + m + '"]').forEach(x => x.classList.add('hl-col'));
-              document.querySelectorAll('.cell[data-kurz="' + p.kurz + '"]').forEach(x => x.classList.add('hl-row'));
+                <div class="t-r">${escapeHtml(p.name)}</div>
+                <div class="t-r">${escapeHtml(m)} · <b>${v.pct.toFixed(1)}%</b></div>
+                <div class="t-r">Punkte: ${escapeHtml(v.punkte)}</div>`, e);
+              tool.dom.section.querySelectorAll('.cell[data-model="' + m + '"]').forEach(x => x.classList.add('hl-col'));
+              tool.dom.section.querySelectorAll('.cell[data-kurz="' + p.kurz + '"]').forEach(x => x.classList.add('hl-row'));
             };
             cell.onmouseleave = () => {
               hideTip();
-              document.querySelectorAll('.cell.hl-row,.cell.hl-col').forEach(x => x.classList.remove('hl-row', 'hl-col'));
+              tool.dom.section.querySelectorAll('.cell.hl-row,.cell.hl-col').forEach(x => x.classList.remove('hl-row', 'hl-col'));
             };
           }
           grid.appendChild(cell);
@@ -957,12 +1356,11 @@
       });
     }
 
-    /* ---- spread / dumbbell ---- */
-    function renderSpread() {
-      const root = $("#spread-grid");
+    function renderSpread(tool) {
+      const root = tool.dom.spreadGrid;
       root.innerHTML = "";
-      const models = DATA.models;
-      parties().forEach(p => {
+      const models = tool.data.models;
+      partiesFor(tool).forEach(p => {
         const row = document.createElement("div");
         row.className = "spread-row";
         row.innerHTML = `<div class="sp-party"><span class="pdot" style="background:${p.color}"></span><span class="pname" title="${escapeHtml(p.name)}">${escapeHtml(p.kurz)}</span></div>`;
@@ -976,11 +1374,11 @@
         avgMark.className = "avg-mark"; avgMark.style.left = p.avg + "%";
         track.appendChild(avgMark);
         models.forEach(m => {
-          const v = DATA.scores[p.kurz]?.[m]; if (!v) return;
+          const v = tool.data.scores[p.kurz]?.[m]; if (!v) return;
           const d = document.createElement("div");
           d.className = "sdot";
           d.style.left = v.pct + "%";
-          d.style.background = DATA.modelColors[m];
+          d.style.background = tool.data.modelColors[m];
           d.onmouseenter = (e) => showTip(`<div class="t-t">${escapeHtml(p.kurz)}</div><div class="t-m">${escapeHtml(m)}</div><div class="t-r"><b>${v.pct.toFixed(1)}%</b> · ${escapeHtml(v.punkte)}</div>`, e);
           d.onmouseleave = hideTip;
           track.appendChild(d);
@@ -994,98 +1392,75 @@
       });
     }
 
-    /* ---- similarity / correlation matrix ---- */
-    const SIM_STOPS = [
-      [0.00, [214, 72, 80]],
-      [0.50, [205, 185, 75]],
-      [1.00, [80, 210, 135]],
-    ];
-    function simColor(t) {
-      t = clamp01(t);
-      for (let i = 1; i < SIM_STOPS.length; i++) {
-        if (t <= SIM_STOPS[i][0]) {
-          const [t0, c0] = SIM_STOPS[i - 1], [t1, c1] = SIM_STOPS[i];
-          const k = (t - t0) / (t1 - t0) || 0;
-          return [Math.round(lerp(c0[0], c1[0], k)), Math.round(lerp(c0[1], c1[1], k)), Math.round(lerp(c0[2], c1[2], k))];
-        }
-      }
-      return SIM_STOPS[SIM_STOPS.length - 1][1];
-    }
-    function pearson(xs, ys) {
-      const n = xs.length;
-      if (n < 2) return null;
-      let mx = 0, my = 0;
-      for (let i = 0; i < n; i++) { mx += xs[i]; my += ys[i]; }
-      mx /= n; my /= n;
-      let sxx = 0, syy = 0, sxy = 0;
-      for (let i = 0; i < n; i++) { const dx = xs[i] - mx, dy = ys[i] - my; sxx += dx * dx; syy += dy * dy; sxy += dx * dy; }
-      const d = Math.sqrt(sxx * syy);
-      return d === 0 ? 0 : sxy / d;
-    }
-    function modelPairStats(a, b) {
+    function modelPairStats(tool, a, b) {
       const xs = [], ys = [];
-      DATA.parties.forEach(p => {
-        const va = DATA.scores[p.kurz]?.[a], vb = DATA.scores[p.kurz]?.[b];
+      tool.data.parties.forEach(p => {
+        const va = tool.data.scores[p.kurz]?.[a], vb = tool.data.scores[p.kurz]?.[b];
         if (va && vb) { xs.push(va.pct); ys.push(vb.pct); }
       });
       const n = xs.length;
       let mad = null;
-      if (n) { let s = 0; for (let i = 0; i < n; i++)s += Math.abs(xs[i] - ys[i]); mad = s / n; }
+      if (n) { let s = 0; for (let i = 0; i < n; i++) s += Math.abs(xs[i] - ys[i]); mad = s / n; }
       return { corr: pearson(xs, ys), n: n, mad: mad };
     }
-    function fmtCorr(r) { return r === null ? "—" : (r >= 0 ? " " : "−") + Math.abs(r).toFixed(2); }
 
-    function renderSimilarity() {
-      const grid = $("#sim-grid");
-      const models = DATA.models;
+    function renderSimilarity(tool) {
+      const grid = tool.dom.simGrid;
+      const sum = tool.dom.simSummary;
+      const models = tool.data.models;
+
+      if (models.length < 2) {
+        grid.innerHTML = "";
+        grid.style.gridTemplateColumns = "1fr";
+        sum.innerHTML = "";
+        const empty = document.createElement("div");
+        empty.className = "sim-empty";
+        empty.textContent = "Mindestens zwei Modelle nötig für die Ähnlichkeitsanalyse.";
+        grid.appendChild(empty);
+        return;
+      }
+
       grid.style.gridTemplateColumns = "140px repeat(" + models.length + ",minmax(64px,1fr))";
       grid.innerHTML = "";
 
-      // header row
       const corner = document.createElement("div");
       corner.className = "s-cell s-corner"; corner.textContent = "Modell";
       grid.appendChild(corner);
       models.forEach(m => {
         const h = document.createElement("div");
-        h.className = "s-head"; h.textContent = m.split("-").slice(0, 3).join("-"); h.title = m;
+        h.className = "s-head"; h.textContent = shortModel(m); h.title = m;
         grid.appendChild(h);
       });
 
-      // precompute matrix + find extreme pairs
       const stats = {};
       let bestPair = null, worstPair = null, bestV = -2, worstV = 2;
       models.forEach(a => {
         models.forEach(b => {
           const key = a + "\u0001" + b;
-          const st = modelPairStats(a, b);
+          const st = modelPairStats(tool, a, b);
           stats[key] = st;
-          if (a !== b) {
-            if (st.corr !== null) {
-              if (st.corr > bestV) { bestV = st.corr; bestPair = [a, b]; }
-              if (st.corr < worstV) { worstV = st.corr; worstPair = [a, b]; }
-            }
+          if (a !== b && st.corr !== null) {
+            if (st.corr > bestV) { bestV = st.corr; bestPair = [a, b]; }
+            if (st.corr < worstV) { worstV = st.corr; worstPair = [a, b]; }
           }
         });
       });
 
-      // summary chips
-      const sum = $("#sim-summary");
       const chips = [];
-      if (bestPair && bestV > -2) {
+      if (bestPair) {
         chips.push({
           k: "Ähnlichstes Paar", v: escapeHtml(shortModel(bestPair[0])) + " ↔ " + escapeHtml(shortModel(bestPair[1])),
           r: "r = " + fmtCorr(bestV).trim(), col: simColor((bestV + 1) / 2)
         });
       }
-      if (worstPair && worstV < 2) {
+      if (worstPair) {
         chips.push({
           k: "Unterschiedlichstes Paar", v: escapeHtml(shortModel(worstPair[0])) + " ↔ " + escapeHtml(shortModel(worstPair[1])),
           r: "r = " + fmtCorr(worstV).trim(), col: simColor((worstV + 1) / 2)
         });
       }
-      // average off-diagonal correlation
       let acc = 0, cnt = 0;
-      for (let i = 0; i < models.length; i++)for (let j = 0; j < models.length; j++) {
+      for (let i = 0; i < models.length; i++) for (let j = 0; j < models.length; j++) {
         if (i === j) continue;
         const r = stats[models[i] + "\u0001" + models[j]].corr;
         if (r !== null) { acc += r; cnt++; }
@@ -1096,11 +1471,10 @@
      <div><div class="sk">${c.k}</div><div class="sv">${c.v} <b>${c.r}</b></div></div></div>`
       ).join("");
 
-      // rows
       models.forEach(a => {
         const lab = document.createElement("div");
         lab.className = "s-lab";
-        lab.innerHTML = `<span class="dot" style="background:${DATA.modelColors[a]}"></span><span class="nm" title="${escapeHtml(a)}">${escapeHtml(shortModel(a))}</span>`;
+        lab.innerHTML = `<span class="dot" style="background:${tool.data.modelColors[a]}"></span><span class="nm" title="${escapeHtml(a)}">${escapeHtml(shortModel(a))}</span>`;
         grid.appendChild(lab);
         models.forEach(b => {
           const cell = document.createElement("div");
@@ -1130,32 +1504,90 @@
       });
     }
 
-    function shortModel(m) { return m.split("-").slice(0, 3).join("-"); }
+    function renderAll(tool) {
+      renderCards(tool);
+      renderHeatmap(tool);
+      renderSpread(tool);
+      renderSimilarity(tool);
+    }
 
-    (function simLegend() {
-      const stops = [];
-      for (let i = 0; i <= 10; i++) { const t = i / 10; stops.push(rgbStr(simColor(t)) + " " + Math.round(t * 100) + "%"); }
-      $("#sim-legend-bar").style.background = "linear-gradient(90deg," + stops.join(",") + ")";
-    })();
-
-    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-
-    function renderAll() { renderHeatmap(); renderSpread(); renderSimilarity(); }
-
-    /* ---- tabs ---- */
-    document.querySelectorAll(".tab").forEach(t => {
-      t.onclick = () => {
-        document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-        t.classList.add("active");
-        const v = t.dataset.view;
-        document.querySelectorAll(".view").forEach(x => x.classList.remove("active"));
-        $("#view-" + v).classList.add("active");
+    function setupTool(tool) {
+      tool.state = { sortKey: null, filterText: "" };
+      tool.dom = {
+        section: $("#sec-" + tool.id),
+        subtitle: $("#" + tool.id + "-subtitle"),
+        cards: $("#" + tool.id + "-cards"),
+        heatGrid: $("#" + tool.id + "-heat-grid"),
+        spreadGrid: $("#" + tool.id + "-spread-grid"),
+        simGrid: $("#" + tool.id + "-sim-grid"),
+        simSummary: $("#" + tool.id + "-sim-summary"),
+        legendBar: $("#" + tool.id + "-legend-bar"),
+        simLegendBar: $("#" + tool.id + "-sim-legend-bar"),
+        filter: $("#" + tool.id + "-filter"),
+        infoBtn: $("#sec-" + tool.id + " .info-btn"),
       };
-    });
-    $("#filter").addEventListener("input", e => { filterText = e.target.value; renderAll(); });
+      tool.dom.subtitle.textContent = tool.source;
+      renderGradientBar(tool.dom.legendBar, colorFor);
+      renderGradientBar(tool.dom.simLegendBar, simColor);
+      tool.dom.infoBtn.onclick = () => openModal(tool);
+      tool.dom.section.querySelectorAll(".tab").forEach(t => {
+        t.onclick = () => {
+          tool.dom.section.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+          t.classList.add("active");
+          const v = t.dataset.view;
+          tool.dom.section.querySelectorAll(".view").forEach(x => x.classList.remove("active"));
+          $("#" + tool.id + "-view-" + v).classList.add("active");
+        };
+      });
+      tool.dom.filter.addEventListener("input", e => { tool.state.filterText = e.target.value; renderAll(tool); });
+      renderAll(tool);
+    }
 
-    renderAll();
-    $("#rendered-info").textContent = DATA.models.length + " Modelle · " + DATA.parties.length + " Parteien";
+    TOOLS.forEach(setupTool);
+
+    /* ---- modal ---- */
+    const modalBackdrop = $("#modal-backdrop");
+    const modalTitle = $("#modal-title-text");
+    const modalSource = $("#modal-source");
+    const modalBody = $("#modal-body");
+    const modalClose = $("#modal-close");
+
+    function openModal(tool) {
+      modalTitle.textContent = tool.label;
+      modalSource.textContent = tool.subtitle;
+      modalBody.innerHTML = tool.notes_html;
+      modalBackdrop.classList.add("open");
+      modalBackdrop.setAttribute("aria-hidden", "false");
+      modalClose.focus();
+    }
+    function closeModal() {
+      modalBackdrop.classList.remove("open");
+      modalBackdrop.setAttribute("aria-hidden", "true");
+    }
+    modalClose.onclick = closeModal;
+    modalBackdrop.addEventListener("click", e => { if (e.target === modalBackdrop) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && modalBackdrop.classList.contains("open")) closeModal(); });
+
+    function showTool(id) {
+      TOOLS.forEach(t => {
+        const on = t.id === id;
+        t.dom.section.classList.toggle("active", on);
+      });
+      document.querySelectorAll(".tool-tab").forEach(b => {
+        b.classList.toggle("active", b.dataset.tool === id);
+      });
+    }
+    document.querySelectorAll(".tool-tab").forEach(b => {
+      b.onclick = () => showTool(b.dataset.tool);
+    });
+    showTool(TOOLS[0].id);
+
+    $("#rendered-info").textContent = TOOLS.map(t => {
+      const m = t.data.models.length;
+      const p = t.data.parties.length;
+      const gl = t.id === "wahlomat" ? "Parteien" : "Fraktionen";
+      return t.label + ": " + m + (m === 1 ? " Modell" : " Modelle") + " · " + p + " " + gl;
+    }).join("    ·    ");
   </script>
 </body>
 

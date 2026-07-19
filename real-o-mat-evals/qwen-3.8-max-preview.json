@@ -1,0 +1,247 @@
+[
+    {
+        "id": 0,
+        "these": "Bürgergeldempfänger*innen, die wiederholt eine existenzsichernde Arbeit ablehnen, soll für zwei Monate der komplette Regelsatz des Bürgergelds gestrichen werden.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine vollständige Streichung des Regelsatzes für zwei Monate gefährdet die Existenzgrundlage und kann Obdachlosigkeit und Hunger zur Folge haben. Sanktionen dürfen das soziokulturelle Existenzminimum nicht antasten – das hat auch das Bundesverfassungsgericht klargestellt. Abgestufte Kürzungen sind das angemessenere Mittel.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 1,
+        "these": "Bei der Einwanderung von Fachkräften ohne EU-Staatsbürgerschaft sollen einige Hürden abgebaut werden.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Deutschland steht vor einem massiven Fachkräftemangel, der Wohlstand und Sozialsysteme gefährdet. Bürokratische Hürden bei der Anerkennung von Abschlüssen und bei Visaverfahren sind ein reales Hindernis. Ein gezielter Abbau ist ökonomisch vernünftig und international wettbewerbsfähig.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 2,
+        "these": "Der gesetzliche Mindestlohn soll mindestens 12 Euro betragen.",
+        "kategorie": "Arbeit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Ein Mindestlohn von 12 Euro ist angesichts der Lebenshaltungskosten in Deutschland eher eine Untergrenze als eine großzügige Regelung. Er schützt vor Lohndumping und sichert, dass Vollzeitarbeit ein Auskommen ermöglicht. Die Einführung war ein richtiger und überfälliger Schritt.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 3,
+        "these": "Schwangere, die sich zu einem Schwangerschaftsabbruch beraten lassen möchten, sollen besser vor Gehsteigbelästigung geschützt werden.",
+        "kategorie": "Soziales",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Wer eine legale medizinische Beratung aufsucht, darf dabei nicht bedrängt, beschimpft oder eingeschüchtert werden. Der Schutz der Privatsphäre und der körperlichen Selbstbestimmung in einer ohnehin belastenden Situation ist eine Grundfrage der Menschenwürde.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 4,
+        "these": "Der Konsum und Besitz von Cannabis soll in Deutschland unter bestimmten Voraussetzungen erlaubt sein.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Prohibition von Cannabis hat ihre Ziele nicht erreicht, dafür aber Kriminalisierung, Schwarzmarkt und Ressourcenverschwendung bei Polizei und Justiz erzeugt. Eine regulierte Legalisierung mit Altersgrenzen, Qualitätskontrolle und Präventionsangeboten ist der evidenzbasiertere Ansatz.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 5,
+        "these": "Eine temporäre Impfpflicht für Beschäftigte in Alten- und Pflegeheimen soll die Corona-Pandemie eindämmen.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "In Pflegeheimen leben besonders vulnerable Menschen, für die eine Corona-Infektion tödlich enden kann. Eine zeitlich begrenzte Impfpflicht für das Personal, das täglich engen Kontakt mit diesen Menschen hat, ist eine verhältnismäßige Abwägung zwischen individueller Freiheit und dem Schutz von Leben.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 6,
+        "these": "Menschen sollen ohne psychologisches Gutachten ihren Geschlechtseintrag und Vornamen beim Standesamt ändern dürfen.",
+        "kategorie": "Gesundheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die geschlechtliche Identität ist eine zutiefst persönliche Angelegenheit. Ein staatlich erzwungenes psychologisches Gutachten pathologisiert trans und nicht-binäre Menschen und stellt eine entwürdigende Hürde dar. Selbstbestimmung beim Standesamt ist der richtige, entpathologisierende Weg.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 7,
+        "these": "Zur besseren Bekämpfung von schweren Verbrechen sollen IP-Adressen länger, nämlich für 3 Monate, gespeichert werden.",
+        "kategorie": "Innere Sicherheit",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine anlasslose Vorratsdatenspeicherung von IP-Adressen betrifft Millionen unbescholtener Bürger*innen und stellt einen tiefen Eingriff in die Privatsphäre dar. Der Europäische Gerichtshof hat wiederholt enge Grenzen gesetzt. Gezielte, richterlich angeordnete Maßnahmen sind das rechtsstaatlich gebotene Mittel.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 8,
+        "these": "Organisationen oder Projekte, die das Existenzrecht Israels in Frage stellen, sollen in Deutschland keine staatliche finanzielle Förderung erhalten.",
+        "kategorie": "Inneres",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Das Existenzrecht Israels anzuerkennen ist ein Grundpfeiler der deutschen Staatsräson. Wer dieses Recht fundamental bestreitet, bewegt sich außerhalb des demokratischen Konsenses. Staatliche Förderung an diese Grundvoraussetzung zu knüpfen, ist konsequent – solange legitime Kritik an Regierungspolitik nicht pauschal darunter fällt.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 9,
+        "these": "Ein Sondervermögen von 100 Milliarden Euro für die Bundeswehr soll die Verteidigung stärken.",
+        "kategorie": "Verteidigung",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Angesichts des russischen Angriffskriegs gegen die Ukraine und der veränderten Sicherheitslage in Europa ist eine besser ausgestattete Bundeswehr notwendig. Das Sondervermögen ist eine pragmatische Reaktion auf jahrelange Unterfinanzierung und dient der Bündnisfähigkeit und Abschreckung.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 10,
+        "these": "Deutschland soll das weitreichende Waffensystem Taurus an die Ukraine liefern.",
+        "kategorie": "Verteidigung",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Ukraine verteidigt sich gegen einen völkerrechtswidrigen Angriffskrieg und hat ein Recht auf Selbstverteidigung. Die Lieferung von Taurus würde der Ukraine helfen, russische Nachschublinien und Kommandozentren hinter der Front zu treffen und so eigene Verluste zu reduzieren. Zögern verlängert den Krieg.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 11,
+        "these": "Die Bundesregierung soll sich für den Erhalt des individuellen Rechts auf Asyl in der EU aussprechen.",
+        "kategorie": "Migration",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Das individuelle Recht auf Asyl ist eine der wichtigsten Lehren aus dem Nationalsozialismus und in der Genfer Flüchtlingskonvention sowie im Grundgesetz verankert. Es darf nicht durch pauschale Zurückweisungen oder Drittstaatenmodelle ausgehöhlt werden. Deutschland hat hier eine besondere historische Verantwortung.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 12,
+        "these": "Anerkannte Schutzberechtigte sollen ihren Status verlieren, wenn sie in ihre Heimat reisen.",
+        "kategorie": "Migration",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Eine automatische Aberkennung ohne Einzelfallprüfung ist zu starr. Es gibt legitime Gründe für eine Reise in die Heimat – etwa ein sterbendes Elternteil. Zudem kann eine kurze Reise nicht automatisch bedeuten, dass die Verfolgungsgefahr dauerhaft entfallen ist. Eine Einzelfallprüfung mit Verhältnismäßigkeit ist geboten.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 13,
+        "these": "Das Deutschlandticket für den öffentlichen Nahverkehr soll deutlich weniger als 49 Euro im Monat kosten.",
+        "kategorie": "Mobilität",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Ein günstiges, bundesweit gültiges Nahverkehrsticket ist ein zentrales Instrument für Klimawende, soziale Teilhabe und Entlastung einkommensschwacher Haushalte. Je niedriger der Preis, desto stärker der Umsteigeeffekt vom Auto. 49 Euro sind für Geringverdiener*innen und Studierende immer noch eine spürbare Belastung.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 14,
+        "these": "Die BAföG-Sätze für Schüler*innen und Studierende sollen um 5 Prozent beim Grundbedarf bzw. 20 Euro beim Wohngeld angehoben werden.",
+        "kategorie": "Bildung",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG"
+        ],
+        "eigene_meinung": "Angesichts der Inflation und explodierender Mieten in Universitätsstädten ist eine Anhebung um 5 Prozent bzw. 20 Euro ein Tropfen auf den heißen Stein. Das BAföG erreicht immer weniger Studierende und die Sätze liegen teils unter der Armutsgrenze. Es bräuchte eine strukturelle Reform mit automatischer Inflationsanpassung und deutlich höheren Sätzen.",
+        "entscheidung": "NICHT WEIT GENUG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 15,
+        "these": "In nationalen Notlagen soll die im Grundgesetz verankerte Schuldenbremse ausgesetzt werden.",
+        "kategorie": "Finanzen",
+        "optionen": [
+            "NICHT WEIT GENUG",
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Schuldenbremse ist als Regel sinnvoll, aber in echten Notlagen – Pandemien, Naturkatastrophen, Kriegen – muss der Staat handlungsfähig bleiben. Eine Aussetzung in klar definierten Ausnahmesituationen ist im Grundgesetz bereits vorgesehen und ökonomisch vernünftig, um langfristige Schäden zu vermeiden.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 16,
+        "these": "Um gesellschaftliche Herausforderungen zu bewältigen, sollen die vermögendsten Privatpersonen und Unternehmen einmalige Sonderabgaben leisten.",
+        "kategorie": "Finanzen",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "In Zeiten extremer Vermögenskonzentration und enormer öffentlicher Investitionsbedarfe ist es gerecht, die Leistungsfähigsten einmalig stärker heranzuziehen. Eine zeitlich begrenzte Sonderabgabe trifft nicht die breite Mittelschicht und kann helfen, Krisenlasten fair zu verteilen, ohne die Wirtschaftsstruktur zu gefährden.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": false
+    },
+    {
+        "id": 17,
+        "these": "Das deutsche Lieferkettengesetz zum Schutz von Menschenrechten und der Umwelt in globalen Lieferketten soll ausgesetzt werden.",
+        "kategorie": "Wirtschaft",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Das Lieferkettengesetz ist ein Mindeststandard, um sicherzustellen, dass deutsche Unternehmen nicht von Kinderarbeit, Zwangsarbeit oder Umweltzerstörung profitieren. Eine Aussetzung wäre ein Signal, dass Menschenrechte und Umweltschutz dem Profitstreben nachgeordnet sind. Bürokratieabbau darf nicht auf Kosten der Schwächsten gehen.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 18,
+        "these": "Für besseren Klimaschutz soll jede neu installierte Heizung in Neubaugebieten zu mindestens 65 Prozent mit erneuerbaren Energien betrieben werden.",
+        "kategorie": "Energie",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Neubauten haben eine Lebensdauer von Jahrzehnten. Wer heute eine fossile Heizung einbaut, zementiert CO₂-Emissionen und Abhängigkeit von Energieimporten für die nächsten 20–30 Jahre. Die 65-Prozent-Regel für Neubaugebiete ist technologisch machbar, planbar und ein essenzieller Baustein der Wärmewende.",
+        "entscheidung": "RICHTIG",
+        "doppelt_gewichten": true
+    },
+    {
+        "id": 19,
+        "these": "Mit der Subventionierung von Agrardiesel sollen Landwirtschaftsbetriebe weiter entlastet werden.",
+        "kategorie": "Landwirtschaft",
+        "optionen": [
+            "RICHTIG",
+            "ZU WEIT"
+        ],
+        "eigene_meinung": "Die Subventionierung fossiler Brennstoffe in der Landwirtschaft konterkariert Klimaziele und setzt falsche Anreize. Statt Agrardiesel zu bezuschussen, sollten Mittel in die Transformation fließen: nachhaltige Bewirtschaftung, Agroforst, ökologischen Landbau und gezielte Unterstützung kleinerer Betriebe beim Umbau.",
+        "entscheidung": "ZU WEIT",
+        "doppelt_gewichten": false
+    }
+]
